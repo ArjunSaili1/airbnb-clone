@@ -7,6 +7,7 @@ function SignUp() {
   const passwordRef = useRef(null);
   const passwordConfirmRef = useRef(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const { signUp } = useAuth();
 
   async function handleSignUp(e){
@@ -17,9 +18,13 @@ function SignUp() {
       return;
     }
     try{
+      setLoading(true)
       await signUp(emailRef.current.value, passwordRef.current.value)
     }catch(error){
       setError(error.code)
+    }
+    finally{
+      setLoading(false)
     }
   }
 
@@ -27,7 +32,7 @@ function SignUp() {
     <div className="modal-container">
         <form className="modal">
           <h1>Sign Up</h1>
-          <div>{error}</div>
+          {error ? <div>{error}</div> : null}
           <div className="form-field">
             <label htmlFor="email">Email</label>
             <input ref={emailRef} className="email" type="email"></input>
@@ -41,7 +46,10 @@ function SignUp() {
             <input ref={passwordConfirmRef} className="password" type="password"></input> 
           </div>
           <div>
-            <button onClick={handleSignUp}>Submit</button>
+            <button 
+            className="submit-button"
+            disabled={loading} 
+            onClick={handleSignUp}>Submit</button>
           </div>
       </form>
     </div>
