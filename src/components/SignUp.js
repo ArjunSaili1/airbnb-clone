@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 function SignUp() {
 
@@ -31,25 +32,28 @@ function SignUp() {
   return (
     <div className="modal-container">
         <form className="modal">
-          <h1>Sign Up</h1>
-          {error ? <div>{error}</div> : null}
+          <div className="modal-header">
+            <h1 className="modal-title">Sign Up</h1>
+            <h5 className="redirect-text">Already have an account? <Link to="/login">Sign in</Link></h5>
+            {error ? <h5 className="error">{error}</h5> : null}
+          </div>
           <div className="form-field">
             <label htmlFor="email">Email</label>
-            <input ref={emailRef} className="email" type="email"></input>
+            <input placeholder="example@email.com" 
+            ref={emailRef} className="email" type="email"></input>
           </div>
           <div className="form-field">
             <label htmlFor="password">Password</label>
             <input ref={passwordRef} className="password" type="password"></input>
           </div>
           <div className="form-field">
-            <label htmlFor="password confirm">Password Confirm</label>
+            <label htmlFor="password confirm">Re-enter Password</label>
             <input ref={passwordConfirmRef} className="password" type="password"></input> 
           </div>
-          <div>
+          <div className="submit-button">
             <button 
-            className="submit-button"
             disabled={loading} 
-            onClick={handleSignUp}>Submit</button>
+            onClick={handleSignUp}>Sign up</button>
           </div>
       </form>
     </div>
