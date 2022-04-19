@@ -34,7 +34,7 @@ function SignUp() {
         <form className="modal">
           <div className="modal-header">
             <h1 className="modal-title">Sign Up</h1>
-            <h5 className="redirect-text">Already have an account? <Link to="/login">Sign in</Link></h5>
+            <h5 className="redirect-text">Already have an account? <Link to="/login">Login</Link></h5>
             {error ? <h5 className="error">{error}</h5> : null}
           </div>
           <div className="form-field">
