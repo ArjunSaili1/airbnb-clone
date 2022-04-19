@@ -1,22 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html{
+html, button, input{
   font-family: 'DM Sans', sans-serif;
   font-size: min(50% + 1.5vw,20px);;
 }
 
+a{
+  text-decoration: none;
+  color: black;
+}
+
+button{
+  cursor: pointer;
+}
+
+input:focus::-webkit-input-placeholder{
+  color: transparent
+}
+
 .modal{
   display: flex;
-  gap: 10px;
+  gap: 15px;
   width: 40vw;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  border: 1px solid grey; 
+  height: auto;
+  border-radius: 5px;
+  padding: 3%;
+}
+
+.redirect-text{
+  margin: 10px 0;
+}
+
+.error{
+  color: red;
+}
+
+.modal-header{
+  display: grid;
+  place-items: center;
+  font-weight: 500;
 }
 
 .modal > *{
@@ -24,13 +55,29 @@ html{
 }
 
 .modal-container{
-  display: flex;
-  width: 100%;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   height: 100vh;
 }
 
 .form-field{
   display: flex;
+  gap: 10px;
   flex-direction: column;
+}
+
+.form-field > input{
+  font-size: 1rem;
+  padding: 1.6%;
+  border-radius: 5px;
+  border-width: 1px;
+}
+
+.submit-button{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-button > button{
+  padding: 1%;
 }
