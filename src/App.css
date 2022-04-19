@@ -81,3 +81,7 @@ input:focus::-webkit-input-placeholder{
 .submit-button > button{
   padding: 1%;
 }
+
+.password-email-sent{
+  color: green;
+}
