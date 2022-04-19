@@ -1,28 +1,49 @@
-import React, { useRef } from 'react'
-import { auth } from '../firebase'
-import { createUserWithEmailAndPassword } from '@firebase/auth';
+import React, { useRef, useState } from 'react'
+import { useAuth } from '../contexts/AuthContext';
 
 function SignUp() {
 
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const passwordConfirmRef = useRef(null);
+  const [error, setError] = useState(null);
+  const { signUp } = useAuth();
 
-  function signUpUser(e){
+  async function handleSignUp(e){
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
-      .then((userCredential)=>{
-        console.log(userCredential)
-      })
+    setError('');
+    if(passwordConfirmRef.current.value !== passwordRef.current.value){
+      setError("Passwords are not the same")
+      return;
+    }
+    try{
+      await signUp(emailRef.current.value, passwordRef.current.value)
+    }catch(error){
+      setError(error.code)
+    }
   }
 
   return (
-    <div>
-        <h1>Sign Up</h1>
-        <label>Email</label>
-        <input ref={emailRef} className="email" type="email"></input>
-        <label>Password</label>
-        <input ref={passwordRef} className="password" type="password"></input>
-        <button onClick={signUpUser}>Submit</button>
+    <div className="modal-container">
+        <form className="modal">
+          <h1>Sign Up</h1>
+          <div>{error}</div>
+          <div className="form-field">
+            <label htmlFor="email">Email</label>
+            <input ref={emailRef} className="email" type="email"></input>
+          </div>
+          <div className="form-field">
+            <label htmlFor="password">Password</label>
+            <input ref={passwordRef} className="password" type="password"></input>
+          </div>
+          <div className="form-field">
+            <label htmlFor="password confirm">Password Confirm</label>
+            <input ref={passwordConfirmRef} className="password" type="password"></input> 
+          </div>
+          <div>
+            <button onClick={handleSignUp}>Submit</button>
+          </div>
+      </form>
     </div>
   )
 }
