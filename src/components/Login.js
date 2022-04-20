@@ -1,14 +1,16 @@
 import React, { useRef, useState } from 'react'
+import { useNavigate } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 
 function Login() {
 
   const emailRef = useRef(null);
+  const nav = useNavigate()
   const passwordRef = useRef(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, signOutUser } = useAuth();
 
   async function handleLogin(e){
     e.preventDefault();
@@ -16,6 +18,7 @@ function Login() {
     try{
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
+      nav('/signedin')
     }catch(error){
       setError(error.code)
     }
@@ -26,6 +29,7 @@ function Login() {
 
   return (
     <div className="modal-container">
+        <button onClick={signOutUser}>sign out</button>
         <form className="modal">
           <div className="modal-header">
             <h1 className="modal-title">Login</h1>
