@@ -3,7 +3,8 @@ import {
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
     onAuthStateChanged,
-    sendPasswordResetEmail
+    sendPasswordResetEmail,
+    signOut
 } from '@firebase/auth';
 import { createContext,useState, useEffect} from "react";
 import { auth } from '../firebase';
@@ -28,14 +29,19 @@ export function AuthProvider({children}) {
         return sendPasswordResetEmail(auth, email);
     }
 
+    function signOutUser(){
+        return signOut(auth);
+    }
+
     useEffect(()=>{
         onAuthStateChanged(auth, user => {
             setCurrentUser(user);
         })
+        
     }, [])
 
     return (
-        <AuthContext.Provider value={{currentUser, signUp, login, forgotPassword}}>
+        <AuthContext.Provider value={{currentUser, signUp, login, forgotPassword, signOutUser}}>
             {children}
         </AuthContext.Provider>
     )
