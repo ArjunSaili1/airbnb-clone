@@ -1,11 +1,13 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SignUp from './components/SignUp';
+import RequireBirdPathSet from './components/RequireBirdPathSet';
 import RequireAuth from './components/RequireAuth';
 import Login from './components/Login';
 import ForgotPassword from './components/ForgotPassword';
 import { AuthProvider } from './contexts/AuthContext';
-import InitialPage from './components/InitialPage';
+import Bookings from './components/Bookings';
+import SetUpBirdPath from './components/SetUpBirdPath';
 
 function App() {
 
@@ -16,13 +18,18 @@ function App() {
           <Route path="/signup" element={<SignUp />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/forgot-password" element={<ForgotPassword/>}/>
-          <Route path="/signedin/*"
+          <Route path="/bookings"
           element={
             <RequireAuth>
-              <InitialPage/>
+              <RequireBirdPathSet>
+                <Bookings/>
+              </RequireBirdPathSet>
             </RequireAuth>
-          }>
-          </Route>
+          }/>
+          <Route path="/set-bird-path" element={
+          <RequireAuth>
+            <SetUpBirdPath/>
+          </RequireAuth>}/>
         </Routes>
       </AuthProvider>
     </BrowserRouter>
