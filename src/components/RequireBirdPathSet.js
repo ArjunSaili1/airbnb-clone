@@ -12,10 +12,14 @@ export default function RequireBirdPathSet({children}) {
 
     useEffect(()=>{
         async function checkIfBirdPath(){
-            const docRef = doc(db, "birdpaths", currentUser.uid);
-            console.log(currentUser.uid)
+            const docRef = doc(db, "users", currentUser.uid);
             const docSnap = await getDoc(docRef);
-            if(docSnap.exists()){setHasBirdPath(true)}
+            if(docSnap.exists()){
+                if(docSnap.data()["birdpath"].length > 0){
+                    setHasBirdPath(true)
+                }
+                else{setHasBirdPath(false)}
+            }
             else{setHasBirdPath(false)}
             setLoading(false);
         }
