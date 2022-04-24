@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SignUp from './components/SignUp';
+import UpdateAccount from './components/UpdateProfile';
 import RequireBirdPathSet from './components/RequireBirdPathSet';
 import RequireAuth from './components/RequireAuth';
 import Login from './components/Login';
@@ -41,6 +42,11 @@ function App() {
           <RequireAuth>
             <SetUpBirdPath/>
           </RequireAuth>}/>
+          <Route path="/update-profile" element={
+            <RequireAuth>
+              <UpdateAccount/>
+            </RequireAuth>
+          }/>
         </Routes>
       </AuthProvider>
     </BrowserRouter>
