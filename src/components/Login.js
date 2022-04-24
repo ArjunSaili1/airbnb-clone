@@ -10,7 +10,7 @@ function Login() {
   const passwordRef = useRef(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { login, signOutUser } = useAuth();
+  const { login } = useAuth();
 
   async function handleLogin(e){
     e.preventDefault();
@@ -29,7 +29,6 @@ function Login() {
 
   return (
     <div className="modal-container">
-        <button onClick={signOutUser}>sign out</button>
         <form className="modal">
           <div className="modal-header">
             <h1 className="modal-title">Login</h1>

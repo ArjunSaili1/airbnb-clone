@@ -85,3 +85,16 @@ input:focus::-webkit-input-placeholder{
 .password-email-sent{
   color: green;
 }
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  width: 100%;
+  border-bottom: black 1px solid;
+}
+
+.header-btn{
+  cursor: pointer;
+}
