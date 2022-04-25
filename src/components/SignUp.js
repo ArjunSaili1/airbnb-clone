@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 function SignUp() {
 
   const fullNameRef = useRef(null);
-  const cityRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const passwordConfirmRef = useRef(null);
@@ -27,9 +26,7 @@ function SignUp() {
       const userCredential = await signUp(emailRef.current.value, passwordRef.current.value)
       await setDoc(doc(db, "users", userCredential.user.uid), {
         name: fullNameRef.current.value,
-        city: cityRef.current.value,
-        emailRef: emailRef.current.value,
-        birdpath: []
+        email: emailRef.current.value,
       })
     }catch(error){
       setError(error.code)
@@ -50,10 +47,6 @@ function SignUp() {
           <div className="form-field">
             <label htmlFor="first-name">Full Name</label>
             <input placeholder="John Smith" ref={fullNameRef} type="text"></input>
-          </div>
-          <div className="form-field">
-            <label htmlFor="city">City</label>
-            <input placeholder="Toronto" ref={cityRef} type="text"></input>
           </div>
           <div className="form-field">
             <label htmlFor="email">Email</label>

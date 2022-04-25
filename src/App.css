@@ -56,6 +56,9 @@ input:focus::-webkit-input-placeholder{
 
 .modal-container{
   display: grid;
+  position: absolute;
+  width: 100%;
+  top: 0;
   place-items: center;
   height: 100vh;
 }
@@ -87,6 +90,9 @@ input:focus::-webkit-input-placeholder{
 }
 
 .header{
+  position: absolute;
+  z-index: 100;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;

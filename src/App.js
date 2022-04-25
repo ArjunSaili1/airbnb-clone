@@ -2,14 +2,14 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import SignUp from './components/SignUp';
 import UpdateAccount from './components/UpdateProfile';
-import RequireBirdPathSet from './components/RequireBirdPathSet';
+import RequireBooking from './components/RequireBooking';
 import RequireAuth from './components/RequireAuth';
 import Login from './components/Login';
 import ForgotPassword from './components/ForgotPassword';
 import { AuthProvider } from './contexts/AuthContext';
 import Bookings from './components/Bookings';
 import RequireNotUser from './components/RequireNotUser';
-import SetUpBirdPath from './components/SetUpBirdPath';
+import BookHome from './components/BookHome';
 
 function App() {
 
@@ -33,14 +33,14 @@ function App() {
           <Route path="/bookings"
           element={
             <RequireAuth>
-              <RequireBirdPathSet>
+              <RequireBooking>
                 <Bookings/>
-              </RequireBirdPathSet>
+              </RequireBooking>
             </RequireAuth>
           }/>
-          <Route path="/set-bird-path" element={
+          <Route path="/book-home" element={
           <RequireAuth>
-            <SetUpBirdPath/>
+            <BookHome/>
           </RequireAuth>}/>
           <Route path="/update-profile" element={
             <RequireAuth>

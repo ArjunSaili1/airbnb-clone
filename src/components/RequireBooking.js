@@ -5,32 +5,30 @@ import { doc, getDoc } from "firebase/firestore";
 import { useAuth } from '../contexts/AuthContext';
 import { Navigate } from 'react-router';
 
-export default function RequireBirdPathSet({children}) {
+export default function RequireBooking({children}) {
     const [loading, setLoading] = useState(true);
-    const [hasBirdPath, setHasBirdPath] = useState("init")
+    const [hasBooked, setHasBooked] = useState("init")
     const {currentUser} = useAuth();
 
     useEffect(()=>{
-        async function checkIfBirdPath(){
+        async function checkIfBooked(){
             const docRef = doc(db, "users", currentUser.uid);
             const docSnap = await getDoc(docRef);
             if(docSnap.exists()){
-                if(docSnap.data()["birdpath"].length > 0){
-                    setHasBirdPath(true)
-                }
-                else{setHasBirdPath(false)}
+                if(docSnap.data()["booking"]){setHasBooked(true)}
+                else{setHasBooked(false)}
             }
-            else{setHasBirdPath(false)}
+            else{setHasBooked(false)}
             setLoading(false);
         }
 
-        checkIfBirdPath();
+        checkIfBooked();
 
     }, [currentUser])
 
     return(<>
         {loading ? null :
-        hasBirdPath ? children :  <Navigate to="/set-bird-path"/>}
+        hasBooked ? children :  <Navigate to="/book-home"/>}
         </>
     )
 }

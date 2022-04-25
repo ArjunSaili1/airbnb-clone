@@ -18,7 +18,7 @@ function Login() {
     try{
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
-      nav('/bookings')
+      nav('/update-profile')
     }catch(error){
       setError(error.code)
     }
