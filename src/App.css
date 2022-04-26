@@ -25,8 +25,8 @@ input:focus::-webkit-input-placeholder{
 
 .modal{
   display: flex;
-  gap: 15px;
   width: 40vw;
+  gap: 15px;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -103,4 +103,49 @@ input:focus::-webkit-input-placeholder{
 
 .header-btn{
   cursor: pointer;
+}
+
+.set-booking-date{
+  display: flex;
+  width: 100%;
+  gap: 50px;
+  flex-direction: row;
+}
+
+.date-set-field{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.set-booking-form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px
+}
+
+.date-modal-btns{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.date-modal-btns > button{
+  padding: 1%;
+}
+
+.set-location-form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 30px;
+  align-items: center;
+}
+
+.set-location{
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
