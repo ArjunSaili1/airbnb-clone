@@ -8,6 +8,7 @@ export default function SetLocationModal({setModalScreen}) {
     const [locationNames, setLocationNames] = useState([])
     const [dbLocationNames, setDbLocationNames] = useState([])
     const [hidden, setHidden] = useState(true);
+    const [error, setError] = useState(null);
     const locationRef = useRef(null)
     const { addLocation, getLocationNames } = useDb()
     
@@ -21,6 +22,10 @@ export default function SetLocationModal({setModalScreen}) {
 
     async function handleSetLocation(e){
         e.preventDefault()
+        if(dbLocationNames.indexOf(locationRef.current.value) === -1){
+            setError("Sorry! We don't have any homes here.");
+            return;
+        }
         setLoading(true)
         await addLocation(locationRef.current.value)
         setLoading(false)
@@ -35,10 +40,12 @@ export default function SetLocationModal({setModalScreen}) {
     function autocompleteLocations(e){
         let tempLocations = []
         setLocationNames([]);
+        const locationInput = locationRef.current.value.replace(/\s+/g, '')
         if(locationRef.current.value !== ''){
             setHidden(false);
             dbLocationNames.forEach((name)=>{
-                if(name.toUpperCase().includes(locationRef.current.value.replace(/\s+/g, '').toUpperCase())){
+                if(tempLocations.indexOf(name) === -1 && 
+                name.toUpperCase().includes(locationInput.toUpperCase())){
                     tempLocations.push(name)
                 }
             })   
@@ -51,22 +58,23 @@ export default function SetLocationModal({setModalScreen}) {
     <>
         <div className="modal-header">
             <h3>Where will you be travelling?</h3>
+            <h6 className="location-error">{error}</h6>
         </div>
         <form onSubmit={handleSetLocation}className="set-location-form">
-            <label htmlFor="location">Enter a location</label>
             <div className="location-input-field">
-                <input onChange={autocompleteLocations} 
+                <input placeholder="Toronto" 
+                onChange={autocompleteLocations} 
                 ref={locationRef} type="text" 
-                className="location-input"></input>
+                required className="location-input"></input>
                 <div style={hidden ? {opacity: "0"}: {opacity: "100"}}
                 className="autocomplete-dropdown">
-                    <ul className="dropdown-list">
+                    <div className="dropdown-list">
                         {locationNames.map((name)=>{
-                            return <li className="dropdown-option"
+                            return <button className="dropdown-option"
                             onClick={selectOptionFromDropdown} 
-                            key={name}>{name}</li>
+                            key={name}>{name}</button>
                         })}
-                    </ul>
+                    </div>
                 </div>
             </div>
             <button className="submit-location" 
