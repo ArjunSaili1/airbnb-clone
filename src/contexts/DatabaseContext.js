@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, createContext } from 'react'
 import { db } from '../firebase'
 import { useAuth } from './AuthContext';
-import { setDoc, doc, updateDoc } from '@firebase/firestore';
+import { setDoc, doc, updateDoc, collection, addDoc, getDocs } from '@firebase/firestore';
 
 const DatabaseContext = createContext();
 
@@ -20,9 +20,27 @@ export function DbProvider({children}){
         })
     }
 
+    async function bookingExists(){
+        let booking = false;
+        const bookingCollection = collection(userDoc, "booking")
+        const bookings = await getDocs(bookingCollection);
+        bookings.forEach((bookingDoc)=>{
+            booking = doc(db, 'users', currentUser.uid, "booking", bookingDoc.id);
+        })
+        return {booking, bookingCollection};
+    }
+
     async function addDate(checkInDate, checkOutDate){
         if(!userDoc){return}
-        await updateDoc(userDoc, {
+        const {booking, bookingCollection} = await bookingExists()
+        if(booking){
+            await updateDoc(booking, {
+                checkIn: checkInDate,
+                checkOut: checkOutDate
+            })
+            return;
+        }
+        await addDoc(bookingCollection, {
             checkIn: checkInDate,
             checkOut: checkOutDate
         })
@@ -30,19 +48,25 @@ export function DbProvider({children}){
 
     async function addLocation(location){
         if(!userDoc){return}
-        await updateDoc(userDoc, {
+        const {booking, bookingCollection} = await bookingExists();
+        if(booking){
+            await updateDoc(booking, {
+                location: location
+            })
+            return
+        }
+        await addDoc(bookingCollection, {
             location: location
         })
     }
 
     useEffect(()=>{
-        if(currentUser){
-            setUserDoc(doc(db, "users", currentUser.uid))
-        }
+        if(!currentUser){return}
+        setUserDoc(doc(db, "users", currentUser.uid))
     }, [currentUser])
 
     return(
-        <DatabaseContext.Provider value={{userDoc, addDate, addUserToDb, addLocation}}>
+        <DatabaseContext.Provider value={{ addDate, addUserToDb, addLocation}}>
             {children}
         </DatabaseContext.Provider>
     )
