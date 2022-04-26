@@ -8,6 +8,7 @@ import Login from './components/Login';
 import ForgotPassword from './components/ForgotPassword';
 import { AuthProvider } from './contexts/AuthContext';
 import Bookings from './components/Bookings';
+import { DbProvider } from './contexts/DatabaseContext';
 import RequireNotUser from './components/RequireNotUser';
 import BookHome from './components/BookHome';
 
@@ -16,38 +17,40 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Routes>
-          <Route path="/signup" 
-          element={
-            <RequireNotUser>
-              <SignUp />
-            </RequireNotUser>
+        <DbProvider>
+          <Routes>
+            <Route path="/signup" 
+            element={
+              <RequireNotUser>
+                <SignUp />
+              </RequireNotUser>
+              }/>
+            <Route path="/login" 
+            element={
+              <RequireNotUser>
+                <Login />
+              </RequireNotUser>
             }/>
-          <Route path="/login" 
-          element={
-            <RequireNotUser>
-              <Login />
-            </RequireNotUser>
-          }/>
-          <Route path="/forgot-password" element={<ForgotPassword/>}/>
-          <Route path="/bookings"
-          element={
+            <Route path="/forgot-password" element={<ForgotPassword/>}/>
+            <Route path="/bookings"
+            element={
+              <RequireAuth>
+                <RequireBooking>
+                  <Bookings/>
+                </RequireBooking>
+              </RequireAuth>
+            }/>
+            <Route path="/book-home" element={
             <RequireAuth>
-              <RequireBooking>
-                <Bookings/>
-              </RequireBooking>
-            </RequireAuth>
-          }/>
-          <Route path="/book-home" element={
-          <RequireAuth>
-            <BookHome/>
-          </RequireAuth>}/>
-          <Route path="/update-profile" element={
-            <RequireAuth>
-              <UpdateAccount/>
-            </RequireAuth>
-          }/>
-        </Routes>
+              <BookHome/>
+            </RequireAuth>}/>
+            <Route path="/update-profile" element={
+              <RequireAuth>
+                <UpdateAccount/>
+              </RequireAuth>
+            }/>
+          </Routes>
+        </DbProvider>
       </AuthProvider>
     </BrowserRouter>
   );

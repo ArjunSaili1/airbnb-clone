@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react'
-import { setDoc, doc } from '@firebase/firestore';
+import { useDb } from '../contexts/DatabaseContext';
 import { useAuth } from '../contexts/AuthContext';
-import { db } from '../firebase';
 import { Link } from 'react-router-dom';
 
 function SignUp() {
@@ -13,6 +12,7 @@ function SignUp() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { signUp } = useAuth();
+  const { addUserToDb } = useDb();
 
   async function handleSignUp(e){
     e.preventDefault();
@@ -24,10 +24,7 @@ function SignUp() {
     try{
       setLoading(true)
       const userCredential = await signUp(emailRef.current.value, passwordRef.current.value)
-      await setDoc(doc(db, "users", userCredential.user.uid), {
-        name: fullNameRef.current.value,
-        email: emailRef.current.value,
-      })
+      await addUserToDb(userCredential.user.uid, fullNameRef.current.value, emailRef.current.value)
     }catch(error){
       setError(error.code)
     }
