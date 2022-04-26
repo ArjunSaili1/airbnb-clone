@@ -1,30 +1,22 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
-import { db } from '../firebase';
-import { doc, getDoc } from "firebase/firestore";
-import { useAuth } from '../contexts/AuthContext';
+import { useDb } from '../contexts/DatabaseContext';
 import { Navigate } from 'react-router';
 
 export default function RequireBooking({children}) {
     const [loading, setLoading] = useState(true);
     const [hasBooked, setHasBooked] = useState("init")
-    const {currentUser} = useAuth();
+    const {bookingExists} = useDb();
 
     useEffect(()=>{
         async function checkIfBooked(){
-            const docRef = doc(db, "users", currentUser.uid);
-            const docSnap = await getDoc(docRef);
-            if(docSnap.exists()){
-                if(docSnap.data()["booking"]){setHasBooked(true)}
-                else{setHasBooked(false)}
-            }
+            const {booking} = await bookingExists();
+            if(booking){setHasBooked(true)}
             else{setHasBooked(false)}
-            setLoading(false);
+            setLoading(false)
         }
-
         checkIfBooked();
-
-    }, [currentUser])
+    }, [bookingExists])
 
     return(<>
         {loading ? null :

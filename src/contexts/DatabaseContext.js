@@ -76,7 +76,7 @@ export function DbProvider({children}){
     }, [currentUser])
 
     return(
-        <DatabaseContext.Provider value={{ addDate, addUserToDb, addLocation, getLocationNames}}>
+        <DatabaseContext.Provider value={{ addDate, addUserToDb, addLocation, bookingExists, getLocationNames}}>
             {children}
         </DatabaseContext.Provider>
     )
