@@ -12,6 +12,16 @@ export function DbProvider({children}){
     const { currentUser } = useAuth();
     const [userDoc, setUserDoc] = useState(null);
 
+    async function getLocationNames(){
+        let names = [];
+        const locations = collection(db, "locations");
+        const locationsDocs = await getDocs(locations);
+        locationsDocs.forEach((location)=>{
+            names.push(location.data()["city"])
+        })
+        return names
+    }
+
     async function addUserToDb(userId, name, email){
         setUserDoc(doc(db, "users", userId));
         await setDoc(doc(db, "users", userId), {
@@ -66,7 +76,7 @@ export function DbProvider({children}){
     }, [currentUser])
 
     return(
-        <DatabaseContext.Provider value={{ addDate, addUserToDb, addLocation}}>
+        <DatabaseContext.Provider value={{ addDate, addUserToDb, addLocation, getLocationNames}}>
             {children}
         </DatabaseContext.Provider>
     )
