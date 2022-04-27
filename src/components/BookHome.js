@@ -3,6 +3,7 @@ import Header from './Header'
 import { useState } from 'react'
 import SetLocationModal from './SetLocationModal'
 import SetDatesModal from './SetDatesModal'
+import BookingCarousel from './BookingCarousel'
 
 export default function BookHome() {
 
@@ -11,7 +12,7 @@ export default function BookHome() {
   return (
     <div>
       <Header/>
-      {!modalScreen ? null :
+      {!modalScreen ? <BookingCarousel/> :
       <div className="modal-container">
         <div className="modal">
           {modalScreen === "date" ?
