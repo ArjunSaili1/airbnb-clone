@@ -25,8 +25,7 @@ input:focus::-webkit-input-placeholder{
 
 .modal{
   display: flex;
-  width: 40vw;
-  gap: 15px;
+  gap: 1em;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -65,6 +64,7 @@ input:focus::-webkit-input-placeholder{
 
 .form-field{
   display: flex;
+  width: 60vmin;
   gap: 10px;
   flex-direction: column;
 }
@@ -108,7 +108,7 @@ input:focus::-webkit-input-placeholder{
 .set-booking-date{
   display: flex;
   width: 100%;
-  gap: 50px;
+  gap: 3em;
   flex-direction: row;
 }
 
@@ -116,13 +116,13 @@ input:focus::-webkit-input-placeholder{
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.5em;
 }
 
 .set-booking-form{
   display: flex;
   flex-direction: column;
-  gap: 20px
+  gap: 2em;
 }
 
 .date-modal-btns{
@@ -139,7 +139,7 @@ input:focus::-webkit-input-placeholder{
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 60px;
+  gap: 40px;
   align-items: center;
 }
 
@@ -174,4 +174,18 @@ input:focus::-webkit-input-placeholder{
 
 .submit-location{
   padding: 2%;
+}
+
+.dropdown-option{
+  cursor: pointer;
+  width: 100%;
+  text-align: start;
+  background-color: unset;
+  border: none;
+}
+
+.location-error{
+  height: 1rem;
+  padding: 5px;
+  color: red;
 }
