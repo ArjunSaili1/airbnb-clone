@@ -10,17 +10,19 @@ export default function BookHome() {
   const [modalScreen, setModalScreen] = useState("date")
 
   return (
-    <div>
+    <div className="page">
       <Header/>
-      {!modalScreen ? <BookingCarousel/> :
-      <div className="modal-container">
-        <div className="modal">
-          {modalScreen === "date" ?
-          <SetDatesModal setModalScreen={setModalScreen}/> :
-          modalScreen === "location" ? 
-          <SetLocationModal setModalScreen={setModalScreen}/> :
-          null}
-        </div>
-      </div>}
+      <main className="page-content">
+        {!modalScreen ? <BookingCarousel/> :
+        <div className="modal-container">
+          <div className="modal">
+            {modalScreen === "date" ?
+            <SetDatesModal setModalScreen={setModalScreen}/> :
+            modalScreen === "location" ? 
+            <SetLocationModal setModalScreen={setModalScreen}/> :
+            null}
+          </div>
+        </div>}
+      </main>
     </div>  )
 }

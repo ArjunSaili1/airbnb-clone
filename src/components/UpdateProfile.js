@@ -3,9 +3,9 @@ import Header from './Header'
 
 export default function UpdateAccount() {
     return (
-    <div>
+    <div className="page">
         <Header/>
-        <h3>Update Profile</h3>
+        <h3 className="page-content">Update Profile</h3>
     </div>
     )
 }

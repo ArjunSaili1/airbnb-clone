@@ -3,9 +3,9 @@ import Header from './Header'
 
 export default function Bookings() {
   return (
-    <div>
+    <div className="page">
       <Header/>
-      <h3>Bookings</h3>
+      <h3 className="page-content">Bookings</h3>
     </div>
   )
 }
