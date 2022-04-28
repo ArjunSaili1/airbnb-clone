@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useDb } from '../contexts/DatabaseContext'
-import { motion } from 'framer-motion'
 import BookingOption from './BookingOption'
 
 export default function BookingCarousel() {
