@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, createContext } from 'react'
 import { db } from '../firebase'
 import { useAuth } from './AuthContext';
-import { setDoc, doc, updateDoc, collection, addDoc, getDocs, query, where } from '@firebase/firestore';
+import { setDoc, doc, updateDoc, collection, addDoc, getDocs, query, where, deleteDoc } from '@firebase/firestore';
 
 const DatabaseContext = createContext();
 
@@ -65,6 +65,11 @@ export function DbProvider({children}){
         return results
     }
 
+    async function deleteBooking(){
+        const {booking} = await bookingExists()
+        await deleteDoc(booking)
+    }
+
     async function addDate(checkInDate, checkOutDate){
         if(!userDoc){return}
         const {booking, bookingCollection} = await bookingExists()
@@ -101,7 +106,7 @@ export function DbProvider({children}){
     }, [currentUser])
 
     return(
-        <DatabaseContext.Provider value={{ getBookingOptions, setBooking, addDate, addUserToDb, addLocation, bookingExists, getLocationNames}}>
+        <DatabaseContext.Provider value={{ getBookingOptions, setBooking, deleteBooking, addDate, addUserToDb, addLocation, bookingExists, getLocationNames}}>
             {children}
         </DatabaseContext.Provider>
     )
