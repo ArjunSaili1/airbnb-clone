@@ -12,6 +12,15 @@ export function DbProvider({children}){
     const { currentUser } = useAuth();
     const [userDoc, setUserDoc] = useState(null);
 
+    async function setBooking(locationId){
+        const {booking} = await bookingExists();
+        if(booking){
+            await updateDoc(booking, {
+                "locationId": locationId
+            })
+        }
+    }
+
     async function getLocationNames(){
         let names = [];
         const locations = collection(db, "locations");
@@ -92,7 +101,7 @@ export function DbProvider({children}){
     }, [currentUser])
 
     return(
-        <DatabaseContext.Provider value={{ getBookingOptions, addDate, addUserToDb, addLocation, bookingExists, getLocationNames}}>
+        <DatabaseContext.Provider value={{ getBookingOptions, setBooking, addDate, addUserToDb, addLocation, bookingExists, getLocationNames}}>
             {children}
         </DatabaseContext.Provider>
     )
