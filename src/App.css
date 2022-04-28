@@ -59,7 +59,7 @@ input:focus::-webkit-input-placeholder{
   width: 100%;
   top: 0;
   place-items: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .form-field{
@@ -89,9 +89,15 @@ input:focus::-webkit-input-placeholder{
   color: green;
 }
 
+.page{
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+}
+
 .header{
-  position: absolute;
   z-index: 100;
+  flex: 0 1 auto;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -139,7 +145,7 @@ input:focus::-webkit-input-placeholder{
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 40px;
+  gap: 2.5em;
   align-items: center;
 }
 
@@ -162,13 +168,15 @@ input:focus::-webkit-input-placeholder{
 }
 
 .dropdown-list{
+  position: absolute;
+  background-color: white;
   width: 100%;
-  padding: 10px;
   border: 1px solid black;
   list-style: none;
 }
 
 .location-input-field{
+  position: relative;
   width: 80%;
 }
 
@@ -177,15 +185,81 @@ input:focus::-webkit-input-placeholder{
 }
 
 .dropdown-option{
+  padding: 0.5em;
   cursor: pointer;
+  font-size: 0.75em;
   width: 100%;
   text-align: start;
   background-color: unset;
-  border: none;
+  border: 0;
 }
 
 .location-error{
   height: 1rem;
   padding: 5px;
   color: red;
+}
+
+.forgot-pass{
+  width: fit-content;
+}
+
+.booking-img{
+  height: 100%;
+  width: 100%;
+}
+
+.booking-details{
+  width: 20em;
+  text-align: start;
+}
+
+.booking-carousel-ctn{
+  width: 100vw;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+}
+
+.booking-carousel{
+  position: relative;
+}
+
+.booking-option{
+  height: 80vh;
+  width: 35vw;
+  top: -40vh;
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 1em;
+  align-items: center;
+}  
+
+.book-btn{
+  align-self: flex-end;
+}
+
+.page-content{
+  position: relative;
+  flex: 1 1 auto;
+}
+
+.carousel-btns{
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.carousel-btns > button{
+  margin: 20px;
+  position: absolute;
 }
