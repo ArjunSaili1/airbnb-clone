@@ -18,8 +18,8 @@ export default function BookingCarousel() {
     return (
     <div>
         {options ? options.map((location)=>{
-            const {address, city, description, image, name, id} = location;
-            return <BookingOption key={id} address={address} city={city} description={description} image={image} name={name}/>
+            const {address, city, description, name, id} = location;
+            return <BookingOption key={id} id={id} address={address} city={city} description={description} name={name}/>
         }): null}
     </div>
     )
