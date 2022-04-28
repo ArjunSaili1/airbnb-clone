@@ -37,12 +37,12 @@ function Login() {
           </div>
           <div className="form-field">
             <label htmlFor="email">Email</label>
-            <input ref={emailRef} className="email" type="email"></input>
+            <input ref={emailRef} className="email" autoComplete="on" type="email"></input>
           </div>
           <div className="form-field">
             <label htmlFor="password">Password</label>
-            <input ref={passwordRef} className="password" type="password"></input>
-            <Link to="/forgot-password"><h6>Forget your password?</h6></Link>
+            <input ref={passwordRef} className="password" autoComplete="on" type="password"></input>
+            <Link className="forgot-pass" to="/forgot-password"><h6>Forget your password?</h6></Link>
           </div>
           <div className="submit-button">
             <button 

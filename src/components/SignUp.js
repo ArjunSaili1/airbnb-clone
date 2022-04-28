@@ -48,15 +48,15 @@ function SignUp() {
           <div className="form-field">
             <label htmlFor="email">Email</label>
             <input placeholder="example@email.com" 
-            ref={emailRef} className="email" type="email"></input>
+            ref={emailRef} className="email" autoComplete="on" type="email"></input>
           </div>
           <div className="form-field">
             <label htmlFor="password">Password</label>
-            <input ref={passwordRef} className="password" type="password"></input>
+            <input ref={passwordRef} className="password" autoComplete="on" type="password"></input>
           </div>
           <div className="form-field">
             <label htmlFor="password confirm">Re-enter Password</label>
-            <input ref={passwordConfirmRef} className="password" type="password"></input> 
+            <input ref={passwordConfirmRef} className="password" autoComplete="on" type="password"></input> 
           </div>
           <div className="submit-button">
             <button 
