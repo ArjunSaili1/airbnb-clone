@@ -6,7 +6,7 @@ import RequireAuth from './components/RequireAuth';
 import Login from './components/Login';
 import ForgotPassword from './components/ForgotPassword';
 import { AuthProvider } from './contexts/AuthContext';
-import Bookings from './components/Bookings';
+import MyBooking from './components/MyBooking';
 import { DbProvider } from './contexts/DatabaseContext';
 import RequireNotUser from './components/RequireNotUser';
 import BookHome from './components/BookHome';
@@ -36,10 +36,10 @@ function App() {
                 <ForgotPassword/>
               </RequireNotUser>
             }/>
-            <Route path="/bookings"
+            <Route path="/my-booking"
             element={
               <RequireAuth>
-                <Bookings/>
+                <MyBooking/>
               </RequireAuth>
             }/>
             <Route path="/book-home" element={

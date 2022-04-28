@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { useDb } from '../contexts/DatabaseContext';
 import Header from './Header'
 
-export default function Bookings() {
+export default function MyBooking() {
   const [loading, setLoading] = useState(true);
   const [hasBooked, setHasBooked] = useState("init")
   const {bookingExists} = useDb();
@@ -26,7 +26,7 @@ export default function Bookings() {
       <div className="page">
         <Header/>
         <div className="page-content">
-          <h1>Bookings</h1>
+          <h1>MyBooking</h1>
         </div>
       </div>
     : navigate("/book-home")}

@@ -21,7 +21,7 @@ export default function BookingOption({address, id, city, description, name, ind
 
     async function handleSetBooking(){
         await setBooking(id);
-        navigate("/bookings")
+        navigate("/my-booking")
     }
 
     return (

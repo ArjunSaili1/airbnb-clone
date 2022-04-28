@@ -7,8 +7,8 @@ export default function Header() {
     const {signOutUser} = useAuth()
     let navigate = useNavigate();
 
-    function goBookings(){
-        navigate("/bookings")
+    function goMyBooking(){
+        navigate("/my-booking")
     }
 
     function goBookHome(){
@@ -21,9 +21,9 @@ export default function Header() {
     
     return (
         <header className="header">
-            <h1 className="header-btn" onClick={goBookings}>Birdhouse</h1>
+            <h1 className="header-btn" onClick={goMyBooking}>Birdhouse</h1>
             <h4 className="header-btn" onClick={goBookHome}>Book a home</h4>
-            <h4 className="header-btn" onClick={goBookings}>Bookings</h4>
+            <h4 className="header-btn" onClick={goMyBooking}>My Booking</h4>
             <h4 className="header-btn" onClick={goUpdateAccount}>Update Profile</h4>
             <button className="header-btn" onClick={signOutUser}>Sign out</button>
         </header>

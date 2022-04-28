@@ -14,5 +14,5 @@ export default function RequireNotUser({children}) {
 
     return loading ? null : 
     !currentUser ? children : 
-    <Navigate to="/bookings"/>
+    <Navigate to="/my-booking"/>
 }
