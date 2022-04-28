@@ -17,8 +17,8 @@ export default function BookingCarousel() {
     },[getBookingOptions])
 
     function moveRight(){
-        if(position === options.length - 1){
-            setPosition(0)
+        if(position === options.length - 2){
+            setPosition(-1)
         }
         if(position < options.length - 2){
             setPosition(position + 1)
@@ -27,8 +27,8 @@ export default function BookingCarousel() {
     }
 
     function moveLeft(){
-        if(position === options.length - 1){
-            setPosition(0)
+        if(position === -1){
+            setPosition(options.length - 2)
         }
         if(position > -1){
             setPosition(position - 1)
