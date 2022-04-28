@@ -45,7 +45,7 @@ export function DbProvider({children}){
     async function getBookingOptions(){
         const results = []
         const {bookingSnap} = await bookingExists();
-        const userLocation = bookingSnap.data()["location"]
+        const userLocation = bookingSnap.data()["city"]
         const locationQuery = query(collection(db, "locations"), where("city", "==", userLocation));
         const resultDocs = await getDocs(locationQuery);
         resultDocs.forEach((loc)=>{
@@ -77,12 +77,12 @@ export function DbProvider({children}){
         const {booking, bookingCollection} = await bookingExists();
         if(booking){
             await updateDoc(booking, {
-                location: location
+                city: location
             })
             return
         }
         await addDoc(bookingCollection, {
-            location: location
+            city: location
         })
     }
 
