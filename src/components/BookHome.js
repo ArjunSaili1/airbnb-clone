@@ -9,18 +9,12 @@ import { useDb } from '../contexts/DatabaseContext'
 
 export default function BookHome() {
 
-  const [modalScreen, setModalScreen] = useState("loading")
-  const {bookingExists} = useDb();
+  const [modalScreen, setModalScreen] = useState("date")
+  const {hasBooking} = useDb();
 
   useEffect(()=>{
-
-    async function checkIfBooked(){
-      const {booking} = await bookingExists()
-      if(booking){setModalScreen("warning")}
-      else{setModalScreen("date")}
-    }
-    checkIfBooked()
-  }, [bookingExists])
+    if(hasBooking){setModalScreen("warning")}
+  }, [hasBooking])
 
   function removeWarning(){
     setModalScreen("date")
@@ -39,9 +33,10 @@ export default function BookHome() {
             modalScreen === "location" ? 
             <SetLocationModal setModalScreen={setModalScreen}/> :
             modalScreen === "warning" ?
-            <BookingWarning removeWarning={removeWarning}/> : null}
+            <BookingWarning removeWarning={removeWarning}/> :
+            null}
           </div>
         </div>}
       </main>
-    </div>  )
+    </div>)
 }
