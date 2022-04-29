@@ -20,7 +20,7 @@ export default function BookingOption({address, id, city, description, name, ind
     },[id])
 
     async function handleSetBooking(){
-        await addData({locationId: id});
+        await addData("locationId", id);
         navigate("/my-booking")
     }
 

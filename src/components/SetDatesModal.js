@@ -12,7 +12,8 @@ export default function SetDatesModal({setModalScreen}) {
     async function handleSetDate(e){
         e.preventDefault()
         setLoading(true)
-        await addData({checkIn: checkInDate, checkOut: checkOutDate});
+        await addData("checkIn", checkInDate);
+        await addData("checkOut", checkOutDate);
         setLoading(false)
         setModalScreen("location")
     }
