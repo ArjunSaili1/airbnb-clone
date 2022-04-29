@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { 
     createUserWithEmailAndPassword, 
+    updateProfile,
     signInWithEmailAndPassword, 
     onAuthStateChanged,
     sendPasswordResetEmail,
@@ -17,8 +18,12 @@ export function AuthProvider({children}) {
 
     const [currentUser, setCurrentUser] = useState(null);
 
-    function signUp(email, password){
-        return createUserWithEmailAndPassword(auth, email, password)
+    function signUp(email, password, name){
+        createUserWithEmailAndPassword(auth, email, password).then((userCred)=>{
+            updateProfile(userCred.user,{
+                displayName: name
+            })
+        })
     }
 
     function login(email, password){
