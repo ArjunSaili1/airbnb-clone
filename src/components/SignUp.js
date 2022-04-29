@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react'
-import { useDb } from '../contexts/DatabaseContext';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +11,6 @@ function SignUp() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const { signUp } = useAuth();
-  const { addUserToDb } = useDb();
 
   async function handleSignUp(e){
     e.preventDefault();
@@ -23,8 +21,7 @@ function SignUp() {
     }
     try{
       setLoading(true)
-      const userCredential = await signUp(emailRef.current.value, passwordRef.current.value)
-      await addUserToDb(userCredential.user.uid, fullNameRef.current.value, emailRef.current.value)
+      signUp(emailRef.current.value, passwordRef.current.value, fullNameRef.current.value)
     }catch(error){
       setError(error.code)
     }
