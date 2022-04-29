@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router'
 import { useDb } from '../contexts/DatabaseContext'
 
-export default function BookingSetWarning({removeWarning}) {
+export default function BookingWarning({removeWarning}) {
     const nav = useNavigate()
     const {deleteBooking} = useDb()
 

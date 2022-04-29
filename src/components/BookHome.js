@@ -3,13 +3,13 @@ import Header from './Header'
 import { useState } from 'react'
 import SetLocationModal from './SetLocationModal'
 import SetDatesModal from './SetDatesModal'
-import BookingSetWarning from './BookingSetWarning'
+import BookingWarning from './BookingWarning'
 import BookingCarousel from './BookingCarousel'
 import { useDb } from '../contexts/DatabaseContext'
 
 export default function BookHome() {
 
-  const [modalScreen, setModalScreen] = useState(null)
+  const [modalScreen, setModalScreen] = useState("loading")
   const {bookingExists} = useDb();
 
   useEffect(()=>{
@@ -30,7 +30,8 @@ export default function BookHome() {
     <div className="page">
       <Header/>
       <main className="page-content">
-        {!modalScreen ? <BookingCarousel/> :
+        {modalScreen === "loading" ? null :
+        !modalScreen ? <BookingCarousel/> :
         <div className="modal-container">
           <div className="modal">
             {modalScreen === "date" ?
@@ -38,7 +39,7 @@ export default function BookHome() {
             modalScreen === "location" ? 
             <SetLocationModal setModalScreen={setModalScreen}/> :
             modalScreen === "warning" ?
-            <BookingSetWarning removeWarning={removeWarning}/> : null}
+            <BookingWarning removeWarning={removeWarning}/> : null}
           </div>
         </div>}
       </main>
