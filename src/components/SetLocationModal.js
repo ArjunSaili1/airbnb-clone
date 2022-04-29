@@ -4,31 +4,28 @@ import { useDb } from '../contexts/DatabaseContext';
 
 export default function SetLocationModal({setModalScreen}) {
 
-    const [loading, setLoading] = useState(false);
+    const [autocomplete, setAutocomplete] = useState([])
     const [locationNames, setLocationNames] = useState([])
-    const [dbLocationNames, setDbLocationNames] = useState([])
     const [hidden, setHidden] = useState(true);
     const [error, setError] = useState(null);
     const locationRef = useRef(null)
-    const { addData, getLocationNames } = useDb()
+    const { addQuery, getLocationNames } = useDb()
     
     useEffect(()=>{
         async function setNames(){
             const names = await getLocationNames()
-            setDbLocationNames(names)
+            setLocationNames(names)
         }
         setNames()
     }, [getLocationNames])
 
-    async function handleSetLocation(e){
+    function handleSetLocation(e){
         e.preventDefault()
-        if(dbLocationNames.indexOf(locationRef.current.value) === -1){
+        if(locationNames.indexOf(locationRef.current.value) === -1){
             setError("Sorry! We don't have any homes here.");
             return;
         }
-        setLoading(true)
-        await addData({city: locationRef.current.value})
-        setLoading(false)
+        addQuery(locationRef.current.value)
         setModalScreen(false)
     }
 
@@ -38,20 +35,19 @@ export default function SetLocationModal({setModalScreen}) {
     }
 
     function autocompleteLocations(e){
-        let tempLocations = []
-        setLocationNames([]);
+        const temp = [];
         const locationInput = locationRef.current.value.replace(/\s+/g, '')
         if(locationRef.current.value !== ''){
             setHidden(false);
-            dbLocationNames.forEach((name)=>{
-                if(tempLocations.indexOf(name) === -1 && 
+            locationNames.forEach((name)=>{
+                if(temp.indexOf(name) === -1 && 
                 name.toUpperCase().includes(locationInput.toUpperCase())){
-                    tempLocations.push(name)
+                    temp.push(name)
                 }
             })   
         }
-        if(tempLocations.length < 1){setHidden(true)}
-        setLocationNames(tempLocations)
+        if(temp.length < 1){setHidden(true)}
+        setAutocomplete(temp)
     }
 
     return (
@@ -69,7 +65,7 @@ export default function SetLocationModal({setModalScreen}) {
                 <div style={hidden ? {opacity: "0"}: {opacity: "100"}}
                 className="autocomplete-dropdown">
                     <div className="dropdown-list">
-                        {locationNames.map((name)=>{
+                        {autocomplete.map((name)=>{
                             return <button className="dropdown-option"
                             onClick={selectOptionFromDropdown} 
                             key={name}>{name}</button>
@@ -77,8 +73,7 @@ export default function SetLocationModal({setModalScreen}) {
                     </div>
                 </div>
             </div>
-            <button className="submit-location" 
-            disabled={loading} type="submit">See Avaliable Homes</button>
+            <button className="submit-location" type="submit">See Avaliable Homes</button>
         </form>
     </>
     )
