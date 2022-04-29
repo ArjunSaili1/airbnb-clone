@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, createContext } from 'react'
 import { db } from '../firebase'
 import { useAuth } from './AuthContext';
-import { setDoc, doc, updateDoc, collection, addDoc, getDocs, query, where, deleteDoc } from '@firebase/firestore';
+import { setDoc, doc, updateDoc, collection, getDocs, getDoc, query, where } from '@firebase/firestore';
 
 const DatabaseContext = createContext();
 
@@ -10,43 +10,34 @@ export function useDb(){return useContext(DatabaseContext)}
 export function DbProvider({children}){
 
     const { currentUser } = useAuth();
+    const [locQuery, setLocQuery] = useState(null);
     const [userDoc, setUserDoc] = useState(null);
+    const [hasBooking, setHasbooking] = useState(false);
 
     async function getLocationNames(){
         let names = [];
-        const locations = collection(db, "locations");
-        const locationsDocs = await getDocs(locations);
-        locationsDocs.forEach((location)=>{
+        const locations = await getDocs(collection(db, "locations"));
+        locations.forEach((location)=>{
             names.push(location.data()["city"])
         })
         return names
     }
 
-    async function addUserToDb(userId, name, email){
-        setUserDoc(doc(db, "users", userId));
-        await setDoc(doc(db, "users", userId), {
-            name: name,
-            email: email,
+    async function addData(field, data){
+        if(!userDoc){return}
+        await updateDoc(userDoc, {
+            [`booking.${field}`]: data
         })
+        if(field === "locationId"){setHasbooking(true)}
     }
 
-    async function bookingExists(){
-        let booking = false;
-        let bookingSnap;
-        const bookingCollection = collection(userDoc, "booking")
-        const bookings = await getDocs(bookingCollection);
-        bookings.forEach((bookingDoc)=>{
-            bookingSnap = bookingDoc
-            booking = doc(db, 'users', currentUser.uid, "booking", bookingDoc.id);
-        })
-        return {booking, bookingCollection, bookingSnap};
+    function addQuery(query){
+        setLocQuery(query)
     }
 
     async function queryLocations(){
         const results = []
-        const {bookingSnap} = await bookingExists();
-        const userLocation = bookingSnap.data()["city"]
-        const locationQuery = query(collection(db, "locations"), where("city", "==", userLocation));
+        const locationQuery = query(collection(db, "locations"), where("city", "==", locQuery));
         const resultDocs = await getDocs(locationQuery);
         resultDocs.forEach((loc)=>{
             const result = loc.data();
@@ -57,33 +48,40 @@ export function DbProvider({children}){
     }
 
     async function deleteBooking(){
-        const {booking} = await bookingExists()
-        await deleteDoc(booking)
-    }
-
-    async function addData(data){
-        if(!userDoc){return}
-        const {booking, bookingCollection} = await bookingExists()
-        if(booking){
-            await updateDoc(booking, {
-                ...data
-            })
-            return;
-        }
-        await addDoc(bookingCollection, {
-            ...data
+        await updateDoc(userDoc, {
+            booking: {}
         })
     }
 
     useEffect(()=>{
+
+        async function checkForBooking(userId){
+            const userData = await getDoc(doc(db, "users", userId))
+            const bookingData = userData.data()["booking"]
+            if(bookingData["checkIn"] && bookingData["checkOut"] && bookingData["locationId"]){
+                setHasbooking(true)
+                return true
+            }
+            setHasbooking(false)
+            return false;
+        }
+
+        async function createBooking(userId){
+            setUserDoc(doc(db, "users", userId));
+            const result = await checkForBooking(userId)
+            if(!result){
+                await setDoc(doc(db, "users", userId), {
+                    booking: {}
+                })
+            }
+        }
         if(!currentUser){return}
-        setUserDoc(doc(db, "users", currentUser.uid))
+        createBooking(currentUser.uid);
     }, [currentUser])
 
     return(
-        <DatabaseContext.Provider value={{ addData, queryLocations, deleteBooking, addUserToDb, bookingExists, getLocationNames}}>
+        <DatabaseContext.Provider value={{ addData, hasBooking, addQuery, queryLocations, deleteBooking, getLocationNames}}>
             {children}
         </DatabaseContext.Provider>
     )
-
 }
