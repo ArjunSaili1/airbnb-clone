@@ -10,7 +10,7 @@ export default function SetLocationModal({setModalScreen}) {
     const [hidden, setHidden] = useState(true);
     const [error, setError] = useState(null);
     const locationRef = useRef(null)
-    const { addLocation, getLocationNames } = useDb()
+    const { addData, getLocationNames } = useDb()
     
     useEffect(()=>{
         async function setNames(){
@@ -27,7 +27,7 @@ export default function SetLocationModal({setModalScreen}) {
             return;
         }
         setLoading(true)
-        await addLocation(locationRef.current.value)
+        await addData({city: locationRef.current.value})
         setLoading(false)
         setModalScreen(false)
     }

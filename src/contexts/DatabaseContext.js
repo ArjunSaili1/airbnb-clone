@@ -12,15 +12,6 @@ export function DbProvider({children}){
     const { currentUser } = useAuth();
     const [userDoc, setUserDoc] = useState(null);
 
-    async function setBooking(locationId){
-        const {booking} = await bookingExists();
-        if(booking){
-            await updateDoc(booking, {
-                "locationId": locationId
-            })
-        }
-    }
-
     async function getLocationNames(){
         let names = [];
         const locations = collection(db, "locations");
@@ -51,7 +42,7 @@ export function DbProvider({children}){
         return {booking, bookingCollection, bookingSnap};
     }
 
-    async function getBookingOptions(){
+    async function queryLocations(){
         const results = []
         const {bookingSnap} = await bookingExists();
         const userLocation = bookingSnap.data()["city"]
@@ -70,33 +61,17 @@ export function DbProvider({children}){
         await deleteDoc(booking)
     }
 
-    async function addDate(checkInDate, checkOutDate){
+    async function addData(data){
         if(!userDoc){return}
         const {booking, bookingCollection} = await bookingExists()
         if(booking){
             await updateDoc(booking, {
-                checkIn: checkInDate,
-                checkOut: checkOutDate
+                ...data
             })
             return;
         }
         await addDoc(bookingCollection, {
-            checkIn: checkInDate,
-            checkOut: checkOutDate
-        })
-    }
-
-    async function addLocation(location){
-        if(!userDoc){return}
-        const {booking, bookingCollection} = await bookingExists();
-        if(booking){
-            await updateDoc(booking, {
-                city: location
-            })
-            return
-        }
-        await addDoc(bookingCollection, {
-            city: location
+            ...data
         })
     }
 
@@ -106,7 +81,7 @@ export function DbProvider({children}){
     }, [currentUser])
 
     return(
-        <DatabaseContext.Provider value={{ getBookingOptions, setBooking, deleteBooking, addDate, addUserToDb, addLocation, bookingExists, getLocationNames}}>
+        <DatabaseContext.Provider value={{ addData, queryLocations, deleteBooking, addUserToDb, bookingExists, getLocationNames}}>
             {children}
         </DatabaseContext.Provider>
     )

@@ -4,17 +4,17 @@ import BookingOption from './BookingOption'
 
 export default function BookingCarousel() {
 
-    const { getBookingOptions } = useDb()
+    const { queryLocations } = useDb()
     const [options, setOptions] = useState(null)
     const [position, setPosition] = useState(0);
 
     useEffect(()=>{
         async function setBookingOptions(){
-            const optionsResults = await getBookingOptions()
+            const optionsResults = await queryLocations()
             setOptions(optionsResults);
         }
         setBookingOptions()
-    },[getBookingOptions])
+    },[queryLocations])
 
     function moveRight(){
         if(position === options.length - 2){
@@ -23,7 +23,6 @@ export default function BookingCarousel() {
         if(position < options.length - 2){
             setPosition(position + 1)
         }
-
     }
 
     function moveLeft(){

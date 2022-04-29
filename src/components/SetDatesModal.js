@@ -7,12 +7,12 @@ export default function SetDatesModal({setModalScreen}) {
     const [checkInDate, setCheckInDate] = useState(new Date().toLocaleDateString('en-ca'));
     const [checkOutDate, setCheckOutDate] = useState(null);
     const [loading, setLoading] = useState(false);
-    const { addDate } = useDb();
+    const { addData } = useDb();
 
     async function handleSetDate(e){
         e.preventDefault()
         setLoading(true)
-        await addDate(checkInDate, checkOutDate);
+        await addData({checkIn: checkInDate, checkOut: checkOutDate});
         setLoading(false)
         setModalScreen("location")
     }

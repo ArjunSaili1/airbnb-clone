@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 export default function BookingOption({address, id, city, description, name, index, position}) {
 
     const [image, setImage] = useState(null);
-    const {setBooking} = useDb();
+    const {addData} = useDb();
     const navigate = useNavigate();
 
     useEffect(()=>{
@@ -20,7 +20,7 @@ export default function BookingOption({address, id, city, description, name, ind
     },[id])
 
     async function handleSetBooking(){
-        await setBooking(id);
+        await addData({locationId: id});
         navigate("/my-booking")
     }
 
