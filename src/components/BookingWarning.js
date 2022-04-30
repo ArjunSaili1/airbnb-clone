@@ -1,10 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
-import { useDb } from '../contexts/DatabaseContext'
 
 export default function BookingWarning({removeWarning}) {
     const nav = useNavigate()
-    const {deleteBooking} = useDb()
 
     function handleCancel(e){
         e.preventDefault()
@@ -14,7 +12,6 @@ export default function BookingWarning({removeWarning}) {
     async function handleContinue(e){
         e.preventDefault()
         removeWarning()
-        await deleteBooking();
     }
 
     return (

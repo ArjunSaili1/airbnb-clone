@@ -1,26 +1,24 @@
 import React from 'react'
-import { useState } from 'react';
-import { useDb } from '../contexts/DatabaseContext';
+import { useState, useRef } from 'react';
 
-export default function SetDatesModal({setModalScreen}) {
+export default function SetDatesModal({setCheckIn, setCheckOut, setModalScreen}) {
 
-    const [checkInDate, setCheckInDate] = useState(new Date().toLocaleDateString('en-ca'));
-    const [checkOutDate, setCheckOutDate] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const { addData } = useDb();
+    const [min, setMin] = useState(new Date().toLocaleDateString('en-ca'));
+    const [max, setMax] = useState(null);
+    const checkInRef = useRef(null)
+    const checkOutRef = useRef(null)
 
-    async function handleSetDate(e){
+
+    function handleSetDate(e){
         e.preventDefault()
-        setLoading(true)
-        await addData("checkIn", checkInDate);
-        await addData("checkOut", checkOutDate);
-        setLoading(false)
+        setCheckIn(checkInRef.current.value)
+        setCheckOut(checkOutRef.current.value)
         setModalScreen("location")
     }
 
     function resetDates(){
-        setCheckInDate(new Date().toLocaleDateString('en-ca'))
-        setCheckOutDate(null)
+        setMin(new Date().toLocaleDateString('en-ca'))
+        setMax(null)
     }
 
     return (
@@ -32,21 +30,23 @@ export default function SetDatesModal({setModalScreen}) {
                 <div className="set-booking-date">
                     <div className="date-set-field">
                         <label htmlFor="check-in-date"> Check In:</label>
-                        <input min={new Date().toLocaleDateString('en-ca')} 
-                        onChange={(e)=>{setCheckInDate(e.target.value)}}
-                        max={checkOutDate}
+                        <input min={min} 
+                        onChange={(e)=>{setMin(e.target.value)}}
+                        max={max}
+                        ref={checkInRef}
                         required type="date"></input>
                     </div>
                     <div className="date-set-field">
                         <label htmlFor="check-out-date">Check Out:</label>
-                        <input min={checkInDate}
-                        onChange={(e)=>{setCheckOutDate(e.target.value)}}
+                        <input min={min}
+                        ref={checkOutRef}
+                        onChange={(e)=>{setMax(e.target.value)}}
                         required type="date"></input>
                     </div>
                 </div>
                 <div className="date-modal-btns">
                     <button onClick={resetDates} type="button" className="reset-date">Reset</button>
-                    <button disabled={loading} type="submit" className="submit-date">Next</button>
+                    <button type="submit" className="submit-date">Next</button>
                 </div>
             </form>
         </>

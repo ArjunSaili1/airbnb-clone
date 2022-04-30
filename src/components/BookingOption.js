@@ -2,14 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from '../firebase';
 import { motion } from 'framer-motion';  
-import { useDb } from '../contexts/DatabaseContext';
-import { useNavigate } from 'react-router';
 
-export default function BookingOption({address, id, city, description, name, index, position}) {
+export default function BookingOption({locationData, index, position, setLocation, loading}) {
 
     const [image, setImage] = useState(null);
-    const {addData} = useDb();
-    const navigate = useNavigate();
+    const {address, id, city, description, name} = locationData;
 
     useEffect(()=>{
         async function getBookingImage(){
@@ -19,9 +16,8 @@ export default function BookingOption({address, id, city, description, name, ind
         getBookingImage();
     },[id])
 
-    async function handleSetBooking(){
-        await addData("locationId", id);
-        navigate("/my-booking")
+    function handleSetBooking(){
+        setLocation(id)
     }
 
     return (
@@ -45,7 +41,7 @@ export default function BookingOption({address, id, city, description, name, ind
             <h4>{city}</h4>
             <h6><em>{description}</em></h6>
         </div>
-        <button className="book-btn" onClick={handleSetBooking}>Book</button>
+        <button className="book-btn" disabled={loading} onClick={handleSetBooking}>Book</button>
     </motion.article>
     )
 }
