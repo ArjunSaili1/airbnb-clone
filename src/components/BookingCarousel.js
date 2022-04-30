@@ -5,29 +5,29 @@ import BookingOption from './BookingOption'
 export default function BookingCarousel({setLocation, loading}) {
 
     const { queryLocations } = useDb()
-    const [options, setOptions] = useState(null)
+    const [locationIds, setLocationIds] = useState(null)
     const [position, setPosition] = useState(0);
 
     useEffect(()=>{
         async function setBookingOptions(){
-            const optionsResults = await queryLocations()
-            setOptions(optionsResults);
+            const queryResult = await queryLocations()
+            setLocationIds(queryResult);
         }
         setBookingOptions()
     },[queryLocations])
 
     function moveRight(){
-        if(position === options.length - 2){
+        if(position === locationIds.length - 2){
             setPosition(-1)
         }
-        if(position < options.length - 2){
+        if(position < locationIds.length - 2){
             setPosition(position + 1)
         }
     }
 
     function moveLeft(){
         if(position === -1){
-            setPosition(options.length - 2)
+            setPosition(locationIds.length - 2)
         }
         if(position > -1){
             setPosition(position - 1)
@@ -38,15 +38,13 @@ export default function BookingCarousel({setLocation, loading}) {
     <>
         <div className="booking-carousel-ctn">
             <div className="booking-carousel">
-                {options ? options.map((location, index )=>{
-                    const {address, city, description, name, id} = location;
-                    const locationData = {address, city, description, name, id}; 
+                {locationIds ? locationIds.map((id, index )=>{
                     return(
                     <BookingOption 
                     setLocation={setLocation}
                     loading={loading}
                     key={id} 
-                    locationData={locationData}
+                    locationId={id}
                     index={index}
                     position={position}/>
                     )

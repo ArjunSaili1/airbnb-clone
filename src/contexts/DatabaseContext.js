@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, createContext } from 'react'
 import { db } from '../firebase'
 import { useAuth } from './AuthContext';
-import { setDoc, doc, updateDoc, collection, getDocs, query, where, onSnapshot } from '@firebase/firestore';
+import { setDoc, doc, updateDoc, collection, getDocs, getDoc, query, where, onSnapshot } from '@firebase/firestore';
 
 const DatabaseContext = createContext();
 
@@ -39,11 +39,15 @@ export function DbProvider({children}){
         const locationQuery = query(collection(db, "locations"), where("city", "==", locQuery));
         const resultDocs = await getDocs(locationQuery);
         resultDocs.forEach((loc)=>{
-            const result = loc.data();
-            result["id"] = loc.id
-            results.push(result)
+            results.push(loc.id)
         })
         return results
+    }
+
+    async function getBookingDetails(id){
+        const details = await getDoc(doc(db, "locations", id))
+        if(details.exists()){return details.data()}
+        return false
     }
 
     useEffect(()=>{
@@ -67,7 +71,7 @@ export function DbProvider({children}){
     }, [bookingData, currentUser])
 
     return(
-        <DatabaseContext.Provider value={{ addData, bookingData, addQuery, queryLocations, getLocationNames}}>
+        <DatabaseContext.Provider value={{ addData, getBookingDetails, bookingData, addQuery, queryLocations, getLocationNames}}>
             {children}
         </DatabaseContext.Provider>
     )
