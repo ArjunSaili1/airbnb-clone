@@ -46,10 +46,6 @@ export function DbProvider({children}){
         return results
     }
 
-    async function deleteBooking(){
-        await setDoc(bookingDoc, {})
-    }
-
     useEffect(()=>{
         if(!currentUser){return}
         const bookDoc = doc(db, "bookings", currentUser.uid)
@@ -71,7 +67,7 @@ export function DbProvider({children}){
     }, [bookingData, currentUser])
 
     return(
-        <DatabaseContext.Provider value={{ addData, bookingData, addQuery, queryLocations, deleteBooking, getLocationNames}}>
+        <DatabaseContext.Provider value={{ addData, bookingData, addQuery, queryLocations, getLocationNames}}>
             {children}
         </DatabaseContext.Provider>
     )
