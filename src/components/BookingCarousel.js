@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDb } from '../contexts/DatabaseContext'
 import BookingOption from './BookingOption'
+import { motion } from 'framer-motion'
 
 export default function BookingCarousel({setLocation, loading}) {
 
@@ -40,13 +41,26 @@ export default function BookingCarousel({setLocation, loading}) {
             <div className="booking-carousel">
                 {locationIds ? locationIds.map((id, index )=>{
                     return(
-                    <BookingOption 
-                    setLocation={setLocation}
-                    loading={loading}
+                    <motion.article 
                     key={id} 
-                    locationId={id}
-                    index={index}
-                    position={position}/>
+                    className="booking-option"
+                    style={index === position + 1? {zIndex: 100}: null}
+                    initial={{
+                        rotation: -180, 
+                        scale: 0}}
+                    animate={{
+                        rotation: 0, 
+                        scale: index === position + 1? 1 : 0.6,
+                        left: `${(index - position) * 35 - 52.5}vw `
+                    }}
+                    transition={{
+                        damping: 20
+                    }}>
+                        <BookingOption 
+                        setLocation={setLocation}
+                        loading={loading}
+                        locationId={id}/>
+                    </motion.article>
                     )
                 }): null}
             </div>
