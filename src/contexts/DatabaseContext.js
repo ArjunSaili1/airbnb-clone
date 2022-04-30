@@ -11,7 +11,7 @@ export function DbProvider({children}){
 
     const { currentUser } = useAuth();
     const [bookingDoc, setBookingDoc] = useState(null)
-    const [bookingData, setBookingData] = useState(null)
+    const [bookingData, setBookingData] = useState({})
     const [locQuery, setLocQuery] = useState(null);
 
     async function getLocationNames(){
@@ -53,22 +53,20 @@ export function DbProvider({children}){
     useEffect(()=>{
         if(!currentUser){return}
         const bookDoc = doc(db, "bookings", currentUser.uid)
+        async function makeDoc(){
+            await setDoc(doc(db, "bookings", currentUser.uid), {})
+        }
         const unsub = onSnapshot(bookDoc, (booking) =>{
-            setBookingData(booking.data())
+            if(booking.data() === undefined){
+                makeDoc();
+            }
+            else{
+                setBookingData(booking.data())
+            }
         })
         setBookingDoc(bookDoc);
         return unsub
     }, [currentUser])
-
-    useEffect(()=>{
-        if(!currentUser){return}
-        async function makeDoc(){
-            await setDoc(doc(db, "bookings", currentUser.uid), {})
-        }
-        if(!bookingData){
-            makeDoc();
-        }
-    }, [bookingData, currentUser])
 
     return(
         <DatabaseContext.Provider value={{ addData, getBookingDetails, bookingData, addQuery, queryLocations, getLocationNames}}>
