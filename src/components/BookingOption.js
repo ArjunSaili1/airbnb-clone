@@ -24,8 +24,8 @@ export default function BookingOption({locationId, setLocation, loading}) {
 
     return details ? 
         <>
-            <img className="booking-img" src={image} alt={details["name"]}/>
-            <div className="booking-details">
+            <img className="booking-option-img" src={image} alt={details["name"]}/>
+            <div className="booking-option-details">
                 <h3>{details["name"]}</h3>
                 <h4>{details["address"]}</h4>
                 <h4>{details["city"]}</h4>
