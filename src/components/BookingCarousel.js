@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDb } from '../contexts/DatabaseContext'
 import BookingOption from './BookingOption'
 
-export default function BookingCarousel() {
+export default function BookingCarousel({setLocation, loading}) {
 
     const { queryLocations } = useDb()
     const [options, setOptions] = useState(null)
@@ -40,13 +40,13 @@ export default function BookingCarousel() {
             <div className="booking-carousel">
                 {options ? options.map((location, index )=>{
                     const {address, city, description, name, id} = location;
+                    const locationData = {address, city, description, name, id}; 
                     return(
-                    <BookingOption key={id} 
-                    id={id} 
-                    address={address}  
-                    city={city} 
-                    description={description} 
-                    name={name}
+                    <BookingOption 
+                    setLocation={setLocation}
+                    loading={loading}
+                    key={id} 
+                    locationData={locationData}
                     index={index}
                     position={position}/>
                     )
