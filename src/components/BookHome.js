@@ -34,7 +34,7 @@ export default function BookHome() {
     if(checkIn && checkOut && location){
       addBooking()
     }
-  }, [checkIn, checkOut, location, addData, navigate, bookingData])
+  }, [checkIn, checkOut, location, addData, navigate])
 
   function removeWarning(){
     setModalScreen("date")
