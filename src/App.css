@@ -27,7 +27,9 @@ input:focus::-webkit-input-placeholder{
 
 .modal{
   display: flex;
+  z-index: 300;
   gap: 1em;
+  background-color: white;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -277,6 +279,7 @@ input:focus::-webkit-input-placeholder{
 
 .booking{
   position: relative;
+  z-index: 1;
   border-radius: 10px;
   display: flex;
   gap: 2%;
@@ -316,4 +319,30 @@ input:focus::-webkit-input-placeholder{
 
 .details-ctn{
   padding: 5px 0;
+}
+
+.overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 101;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.edit-form{
+  width: 40vw;
+  gap: 10px;
+  padding: 2% 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.edit-form > *{
+  flex-basis: 100%;
+}
+
+.edit-form-btns{
+  padding: 5% 0 0 0;
+  display: flex;
+  justify-content: space-between;
 }
