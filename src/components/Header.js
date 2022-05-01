@@ -1,6 +1,7 @@
 import React from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router'
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function Header() {
     
@@ -25,7 +26,7 @@ export default function Header() {
             <h4 className="header-btn" onClick={goBookHome}>Book a home</h4>
             <h4 className="header-btn" onClick={goMyBooking}>My Booking</h4>
             <h4 className="header-btn" onClick={goUpdateAccount}>Update Profile</h4>
-            <button className="header-btn" onClick={signOutUser}>Sign out</button>
+            <LogoutIcon className="header-btn" onClick={signOutUser}/>
         </header>
     )
 }
