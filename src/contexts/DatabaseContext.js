@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect, createContext } from 'react'
 import { db } from '../firebase'
 import { useAuth } from './AuthContext';
-import { setDoc, doc, updateDoc, collection, getDocs, getDoc, query, where, onSnapshot } from '@firebase/firestore';
+import { setDoc, deleteDoc, doc, updateDoc, collection, getDocs, getDoc, query, where, onSnapshot } from '@firebase/firestore';
 
 const DatabaseContext = createContext();
 
@@ -50,6 +50,11 @@ export function DbProvider({children}){
         return false
     }
 
+    async function deleteBooking(){
+        if(!bookingDoc){return false}
+        await deleteDoc(bookingDoc)
+    }
+
     useEffect(()=>{
         if(!currentUser){return}
         const bookDoc = doc(db, "bookings", currentUser.uid)
@@ -69,7 +74,7 @@ export function DbProvider({children}){
     }, [currentUser])
 
     return(
-        <DatabaseContext.Provider value={{ addData, getBookingDetails, bookingData, addQuery, queryLocations, getLocationNames}}>
+        <DatabaseContext.Provider value={{ addData, deleteBooking, getBookingDetails, bookingData, addQuery, queryLocations, getLocationNames}}>
             {children}
         </DatabaseContext.Provider>
     )
