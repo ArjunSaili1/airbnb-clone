@@ -5,6 +5,7 @@ import ModalWrapper from '../styled/ModalWrapper';
 import Modal from '../styled/Modal';
 import ModalHeader from '../styled/ModalHeader';
 import Button from '../styled/Button';
+import AuthFormField from '../styled/AuthFormField';
 
 function ForgotPassword() {
 
@@ -34,16 +35,16 @@ function ForgotPassword() {
     <ModalWrapper>
         <Modal>
           <ModalHeader>
-            <h1 className="modal-title">Forgot Password</h1>
-            <h5 className="redirect-text">Remember your password? <Link to="/login">Log in</Link></h5>
-            {error ? <h5 className="error">{error}</h5> : null}
-            {success ? <h5 className="password-email-sent">Email Sent! Please Check Your Inbox</h5>:null}
+            <h1>Forgot Password</h1>
+            <h5 style={{margin: "10px 0"}}>Remember your password? <Link to="/login">Log in</Link></h5>
+            {error ? <h5 style={{color: "red"}}>{error}</h5> : null}
+            {success ? <h5 style={{color: "green"}}>Email Sent! Please Check Your Inbox</h5>:null}
           </ModalHeader>
-          <div className="form-field">
+          <AuthFormField>
             <label htmlFor="email">Email</label>
-            <input ref={emailRef} className="email" type="email"></input>
-          </div>
-          <div className="submit-button">
+            <input ref={emailRef} type="email"></input>
+          </AuthFormField>
+          <div>
             <Button 
             disabled={loading} 
             onClick={handleForgotPass}>Send Password Reset Email</Button>

@@ -5,6 +5,7 @@ import ModalWrapper from '../styled/ModalWrapper';
 import Modal from '../styled/Modal';
 import ModalHeader from '../styled/ModalHeader';
 import Button from '../styled/Button';
+import AuthFormField from '../styled/AuthFormField';
 
 function SignUp() {
 
@@ -42,23 +43,23 @@ function SignUp() {
             <h5 className="redirect-text">Already have an account? <Link to="/login">Login</Link></h5>
             {error ? <h5 className="error">{error}</h5> : null}
           </ModalHeader>
-          <div className="form-field">
+          <AuthFormField>
             <label htmlFor="first-name">Full Name</label>
             <input placeholder="John Smith" ref={fullNameRef} type="text"></input>
-          </div>
-          <div className="form-field">
+          </AuthFormField>
+          <AuthFormField>
             <label htmlFor="email">Email</label>
             <input placeholder="example@email.com" 
             ref={emailRef} className="email" autoComplete="on" type="email"></input>
-          </div>
-          <div className="form-field">
+          </AuthFormField>
+          <AuthFormField>
             <label htmlFor="password">Password</label>
             <input ref={passwordRef} className="password" autoComplete="on" type="password"></input>
-          </div>
-          <div className="form-field">
+          </AuthFormField>
+          <AuthFormField>
             <label htmlFor="password confirm">Re-enter Password</label>
             <input ref={passwordConfirmRef} className="password" autoComplete="on" type="password"></input> 
-          </div>
+          </AuthFormField>
           <div className="submit-button">
             <Button 
             disabled={loading} 

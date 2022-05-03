@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export default styled`
+export default styled.div`
   padding: 3% 2%;
   display: flex;
   flex-flow: column;
