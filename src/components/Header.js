@@ -2,6 +2,7 @@ import React from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router'
 import LogoutIcon from '@mui/icons-material/Logout';
+import StyledHeader from '../styled/StyledHeader';
 
 export default function Header() {
     
@@ -21,12 +22,12 @@ export default function Header() {
     }
     
     return (
-        <header className="header">
-            <h1 className="header-btn" onClick={goMyBooking}>Birdhouse</h1>
-            <h4 className="header-btn" onClick={goBookHome}>Book a home</h4>
-            <h4 className="header-btn" onClick={goMyBooking}>My Booking</h4>
-            <h4 className="header-btn" onClick={goUpdateAccount}>Update Profile</h4>
-            <LogoutIcon className="header-btn" onClick={signOutUser}/>
-        </header>
+        <StyledHeader>
+            <h1 style={{cursor: "pointer"}} onClick={goMyBooking}>Birdhouse</h1>
+            <h4 style={{cursor: "pointer"}} onClick={goBookHome}>Book a home</h4>
+            <h4 style={{cursor: "pointer"}} onClick={goMyBooking}>My Booking</h4>
+            <h4 style={{cursor: "pointer"}} onClick={goUpdateAccount}>Update Profile</h4>
+            <LogoutIcon style={{cursor: "pointer"}} onClick={signOutUser}/>
+        </StyledHeader>
     )
 }
