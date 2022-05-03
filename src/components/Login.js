@@ -36,18 +36,18 @@ function Login() {
     <ModalWrapper>
         <Modal>
           <ModalHeader>
-            <h1 className="modal-title">Login</h1>
-            <h5 className="redirect-text">Don't have an account? <Link to="/signup">Sign up</Link></h5>
-            {error ? <h5 className="error">{error}</h5> : null}
+            <h1>Login</h1>
+            <h5 style={{margin: "10px 0"}}>Don't have an account? <Link to="/signup">Sign up</Link></h5>
+            {error ? <h5>{error}</h5> : null}
           </ModalHeader>
           <AuthFormField>
             <label htmlFor="email">Email</label>
-            <input ref={emailRef} className="email" autoComplete="on" type="email"></input>
+            <input ref={emailRef} autoComplete="on" type="email"></input>
           </AuthFormField>
           <AuthFormField>
             <label htmlFor="password">Password</label>
-            <input ref={passwordRef} className="password" autoComplete="on" type="password"></input>
-            <Link className="forgot-pass" to="/forgot-password"><h6>Forget your password?</h6></Link>
+            <input ref={passwordRef} autoComplete="on" type="password"></input>
+            <Link style={{width: "fit-content"}} to="/forgot-password"><h6>Forget your password?</h6></Link>
           </AuthFormField>
           <div>
             <Button 
