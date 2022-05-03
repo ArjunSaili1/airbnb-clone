@@ -230,10 +230,12 @@ input:focus::-webkit-input-placeholder{
 
 .booking-carousel{
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .booking-option{
-  height: 80vh;
+  height: fit-content;
   width: 35vw;
   position: absolute;
   overflow: hidden;

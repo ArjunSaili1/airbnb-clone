@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDb } from '../contexts/DatabaseContext'
 import BookingOption from './BookingOption'
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { motion } from 'framer-motion'
 
 export default function BookingCarousel({setLocation, loading}) {
@@ -66,8 +68,8 @@ export default function BookingCarousel({setLocation, loading}) {
             </div>
         </div>
         <div className="carousel-btns" style={{width: "100vw"}}>
-            <button onClick={moveRight} style={{right: 0}}>Right</button>
-            <button onClick={moveLeft} style={{left: 0}}>Left</button>
+            <button onClick={moveRight} style={{right: 0}}><ArrowForwardIosIcon/></button>
+            <button onClick={moveLeft} style={{left: 0}}><ArrowBackIosIcon/></button>
         </div>
     </>
     )
