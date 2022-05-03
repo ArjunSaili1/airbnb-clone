@@ -1,4 +1,6 @@
 import React, { useContext } from 'react'
+import { storage } from '../firebase';
+import { ref, getDownloadURL, uploadBytesResumable} from '@firebase/storage';
 import { 
     createUserWithEmailAndPassword, 
     updateProfile,
@@ -20,9 +22,33 @@ export function AuthProvider({children}) {
 
     function signUp(email, password, name){
         createUserWithEmailAndPassword(auth, email, password).then((userCred)=>{
-            updateProfile(userCred.user,{
-                displayName: name
-            })
+            updateName(name, userCred)
+            setProfilePic(userCred, false);
+        })
+    }
+
+    function updateName(name, userCred){
+        updateProfile(userCred ? userCred.user : currentUser, {
+            displayName: name
+        })
+    }
+
+    function updateProfilePic(profilePicFile){
+        if(!currentUser){}
+        const profilePicRef = ref(storage, `profile-pictures/${currentUser.uid}`)
+        const profilePicUpload = uploadBytesResumable(profilePicRef, profilePicFile);
+        profilePicUpload.on('state_changed',
+            ()=>{setProfilePic(null, profilePicUpload.snapshot.ref);
+            })    
+    }
+
+    function setProfilePic(userCred, fileRef){
+        console.log(fileRef)
+        let file = fileRef ? fileRef : ref(storage, "profile-pictures/Default.jpg")
+        getDownloadURL(file).then((url)=>{
+            updateProfile(userCred ? userCred.user : currentUser, {
+                photoURL: url
+            })  
         })
     }
 
@@ -42,11 +68,16 @@ export function AuthProvider({children}) {
         onAuthStateChanged(auth, user => {
             setCurrentUser(user);
         })
-        
+
     }, [])
 
+    useEffect(() => {
+        console.log(currentUser )
+    }, [currentUser])
+    
+
     return (
-        <AuthContext.Provider value={{currentUser, signUp, login, forgotPassword, signOutUser}}>
+        <AuthContext.Provider value={{currentUser, signUp, updateProfilePic, updateName, login, forgotPassword, signOutUser}}>
             {children}
         </AuthContext.Provider>
     )
