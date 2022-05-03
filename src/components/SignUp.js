@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import ModalWrapper from '../styled/ModalWrapper';
 import Modal from '../styled/Modal';
+import ModalHeader from '../styled/ModalHeader';
 
 function SignUp() {
 
@@ -35,11 +36,11 @@ function SignUp() {
   return (
     <ModalWrapper>
         <Modal>
-          <div className="modal-header">
+          <ModalHeader>
             <h1 className="modal-title">Sign Up</h1>
             <h5 className="redirect-text">Already have an account? <Link to="/login">Login</Link></h5>
             {error ? <h5 className="error">{error}</h5> : null}
-          </div>
+          </ModalHeader>
           <div className="form-field">
             <label htmlFor="first-name">Full Name</label>
             <input placeholder="John Smith" ref={fullNameRef} type="text"></input>

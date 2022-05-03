@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import Modal from '../styled/Modal';
 import ModalWrapper from '../styled/ModalWrapper';
 import { useDb } from '../contexts/DatabaseContext'
+import ModalHeader from '../styled/ModalHeader';
 
 export default function EditModal({ bookingData, hideModal}) {
     
@@ -23,9 +24,9 @@ export default function EditModal({ bookingData, hideModal}) {
         <div className="overlay" onClick={hideModal}></div>
         <ModalWrapper>
                 <Modal>
-                    <div className="modal-header">
+                    <ModalHeader>
                         <h1>Edit Booking</h1>
-                    </div>
+                    </ModalHeader>
                     <form onSubmit={editBooking}>  
                         <div className="edit-form">
                             <h4>Check In</h4>

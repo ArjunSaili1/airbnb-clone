@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDb } from '../contexts/DatabaseContext';
+import ModalHeader from '../styled/ModalHeader';
 
 export default function SetLocationModal({setModalScreen}) {
 
@@ -51,10 +52,10 @@ export default function SetLocationModal({setModalScreen}) {
 
     return (
     <>
-        <div className="modal-header">
+        <ModalHeader>
             <h3>Where will you be travelling?</h3>
             <h6 className="location-error">{error}</h6>
-        </div>
+        </ModalHeader>
         <form onSubmit={handleSetLocation}className="set-location-form">
             <div className="location-input-field">
                 <input placeholder="Toronto" 

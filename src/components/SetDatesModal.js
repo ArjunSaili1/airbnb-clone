@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useRef } from 'react';
+import ModalHeader from '../styled/ModalHeader';
 
 export default function SetDatesModal({setCheckIn, setCheckOut, setModalScreen}) {
 
@@ -23,9 +24,9 @@ export default function SetDatesModal({setCheckIn, setCheckOut, setModalScreen})
 
     return (
         <>
-            <div className="modal-header">
+            <ModalHeader>
                 <h3>When will you be travelling?</h3>
-            </div>
+            </ModalHeader>
             <form onSubmit={handleSetDate} className="set-booking-form">
                 <div className="set-booking-date">
                     <div className="date-set-field">

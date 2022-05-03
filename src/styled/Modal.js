@@ -12,8 +12,4 @@ export default styled.div`
   height: auto;
   border-radius: 5px;
   padding: 3%;
-
-  > *{
-    width: 100%;
-  }
-`
+`;

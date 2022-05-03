@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import ModalWrapper from '../styled/ModalWrapper';
 import Modal from '../styled/Modal';
+import ModalHeader from '../styled/ModalHeader';
 
 function ForgotPassword() {
 
@@ -31,12 +32,12 @@ function ForgotPassword() {
   return (
     <ModalWrapper>
         <Modal>
-          <div className="modal-header">
+          <ModalHeader>
             <h1 className="modal-title">Forgot Password</h1>
             <h5 className="redirect-text">Remember your password? <Link to="/login">Log in</Link></h5>
             {error ? <h5 className="error">{error}</h5> : null}
             {success ? <h5 className="password-email-sent">Email Sent! Please Check Your Inbox</h5>:null}
-          </div>
+          </ModalHeader>
           <div className="form-field">
             <label htmlFor="email">Email</label>
             <input ref={emailRef} className="email" type="email"></input>
