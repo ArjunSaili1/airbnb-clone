@@ -5,9 +5,11 @@ import ModalWrapper from '../styled/ModalWrapper'
 import SetLocationModal from './SetLocationModal'
 import SetDatesModal from './SetDatesModal'
 import BookingWarning from './BookingWarning'
+import Page from '../styled/Page'
 import BookingCarousel from './BookingCarousel'
 import { useDb } from '../contexts/DatabaseContext'
 import { useNavigate } from 'react-router'
+import PageContent from '../styled/PageContent'
 
 export default function BookHome() {
 
@@ -45,9 +47,9 @@ export default function BookHome() {
   }
 
   return (
-    <div className="page">
+    <Page>
       <Header/>
-      <main className="page-content">
+      <PageContent>
         {modalScreen === "loading" ? null :
         !modalScreen ? <BookingCarousel loading={loading} setLocation={setLocation}/> :
         <ModalWrapper>
@@ -61,6 +63,6 @@ export default function BookHome() {
             null}
           </Modal>
         </ModalWrapper>}
-      </main>
-    </div>)
+      </PageContent>
+    </Page>)
 }

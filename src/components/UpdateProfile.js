@@ -1,6 +1,8 @@
 import React, {useRef} from 'react'
 import { useAuth } from '../contexts/AuthContext';
 import Header from './Header'
+import Page from '../styled/Page';
+import PageContent from '../styled/PageContent';
 
 export default function UpdateAccount() {
 
@@ -21,9 +23,9 @@ export default function UpdateAccount() {
     }
 
     return (
-    <div className="page">
+    <Page>
         <Header/>
-        <div className="page-content">
+        <PageContent>
             <form onSubmit={handleUpdateProfile} className="update-profile-form">
                 <div className="profile-pic-ctn">
                     <div className="profile-pic">
@@ -54,7 +56,7 @@ export default function UpdateAccount() {
                 </div>
                 <button type="submit">Submit</button>
             </form>
-        </div>
-    </div>
+        </PageContent>
+    </Page>
     )
 }
