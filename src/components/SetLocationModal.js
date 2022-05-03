@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { useState, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useDb } from '../contexts/DatabaseContext';
 
 export default function SetLocationModal({setModalScreen}) {

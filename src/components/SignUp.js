@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
+import ModalWrapper from '../styled/ModalWrapper';
 
 function SignUp() {
 
@@ -31,7 +32,7 @@ function SignUp() {
   }
 
   return (
-    <div className="modal-container">
+    <ModalWrapper>
         <form className="modal">
           <div className="modal-header">
             <h1 className="modal-title">Sign Up</h1>
@@ -61,7 +62,7 @@ function SignUp() {
             onClick={handleSignUp}>Sign up</button>
           </div>
       </form>
-    </div>
+    </ModalWrapper>
   )
 }
 

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
+import ModalWrapper from '../styled/ModalWrapper';
 
 function Login() {
 
@@ -28,7 +29,7 @@ function Login() {
   }
 
   return (
-    <div className="modal-container">
+    <ModalWrapper>
         <form className="modal">
           <div className="modal-header">
             <h1 className="modal-title">Login</h1>
@@ -50,7 +51,7 @@ function Login() {
             onClick={handleLogin}>Login</button>
           </div>
       </form>
-    </div>
+    </ModalWrapper>
   )
 }
 
