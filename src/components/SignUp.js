@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import ModalWrapper from '../styled/ModalWrapper';
+import Modal from '../styled/Modal';
 
 function SignUp() {
 
@@ -33,7 +34,7 @@ function SignUp() {
 
   return (
     <ModalWrapper>
-        <form className="modal">
+        <Modal>
           <div className="modal-header">
             <h1 className="modal-title">Sign Up</h1>
             <h5 className="redirect-text">Already have an account? <Link to="/login">Login</Link></h5>
@@ -61,7 +62,7 @@ function SignUp() {
             disabled={loading} 
             onClick={handleSignUp}>Sign up</button>
           </div>
-      </form>
+      </Modal>
     </ModalWrapper>
   )
 }

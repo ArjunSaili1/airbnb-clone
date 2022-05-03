@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Header from './Header'
+import Modal from '../styled/Modal'
 import ModalWrapper from '../styled/ModalWrapper'
 import SetLocationModal from './SetLocationModal'
 import SetDatesModal from './SetDatesModal'
@@ -50,7 +51,7 @@ export default function BookHome() {
         {modalScreen === "loading" ? null :
         !modalScreen ? <BookingCarousel loading={loading} setLocation={setLocation}/> :
         <ModalWrapper>
-          <div className="modal">
+          <Modal>
             {modalScreen === "date" ?
             <SetDatesModal setCheckIn={setCheckIn} setCheckOut={setCheckOut} setModalScreen={setModalScreen}/> :
             modalScreen === "location" ? 
@@ -58,7 +59,7 @@ export default function BookHome() {
             modalScreen === "warning" ?
             <BookingWarning removeWarning={removeWarning}/> :
             null}
-          </div>
+          </Modal>
         </ModalWrapper>}
       </main>
     </div>)

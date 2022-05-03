@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import ModalWrapper from '../styled/ModalWrapper';
+import Modal from '../styled/Modal';
 
 function Login() {
 
@@ -30,7 +31,7 @@ function Login() {
 
   return (
     <ModalWrapper>
-        <form className="modal">
+        <Modal>
           <div className="modal-header">
             <h1 className="modal-title">Login</h1>
             <h5 className="redirect-text">Don't have an account? <Link to="/signup">Sign up</Link></h5>
@@ -50,7 +51,7 @@ function Login() {
             disabled={loading} 
             onClick={handleLogin}>Login</button>
           </div>
-      </form>
+      </Modal>
     </ModalWrapper>
   )
 }

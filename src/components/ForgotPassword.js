@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import ModalWrapper from '../styled/ModalWrapper';
+import Modal from '../styled/Modal';
 
 function ForgotPassword() {
 
@@ -29,7 +30,7 @@ function ForgotPassword() {
 
   return (
     <ModalWrapper>
-        <form className="modal">
+        <Modal>
           <div className="modal-header">
             <h1 className="modal-title">Forgot Password</h1>
             <h5 className="redirect-text">Remember your password? <Link to="/login">Log in</Link></h5>
@@ -45,7 +46,7 @@ function ForgotPassword() {
             disabled={loading} 
             onClick={handleForgotPass}>Send Password Reset Email</button>
           </div>
-      </form>
+      </Modal>
     </ModalWrapper>
   )
 }

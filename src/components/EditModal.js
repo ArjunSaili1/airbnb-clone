@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import Modal from '../styled/Modal';
 import ModalWrapper from '../styled/ModalWrapper';
 import { useDb } from '../contexts/DatabaseContext'
 
@@ -21,7 +22,7 @@ export default function EditModal({ bookingData, hideModal}) {
     <>
         <div className="overlay" onClick={hideModal}></div>
         <ModalWrapper>
-                <div className="modal">
+                <Modal>
                     <div className="modal-header">
                         <h1>Edit Booking</h1>
                     </div>
@@ -49,7 +50,7 @@ export default function EditModal({ bookingData, hideModal}) {
                             <button type="submit">Edit</button>
                         </div>
                     </form>
-                </div>
+                </Modal>
             </ModalWrapper>
     </>)
 }
