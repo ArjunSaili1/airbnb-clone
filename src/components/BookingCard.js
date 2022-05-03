@@ -3,11 +3,14 @@ import { ref, getDownloadURL } from "firebase/storage";
 import { useDb } from '../contexts/DatabaseContext';
 import { useAuth } from '../contexts/AuthContext';
 import { storage } from '../firebase';
+import BookingCardWrapper from '../styled/BookingCardWrapper';
+import BookingCardMain from '../styled/BookingCardMain';
 import InfoIcon from '@mui/icons-material/InfoOutlined';
 import InfoIconFilled from '@mui/icons-material/Info';
 import EditIcon from '@mui/icons-material/EditOutlined';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditModal from './EditModal';
+import BookingCardFooter from '../styled/BookingCardFooter';
 
 export default function BookingCard({bookingData}) {
 
@@ -40,24 +43,30 @@ export default function BookingCard({bookingData}) {
         <>
             {showEdit ? 
             <EditModal bookingData={bookingData} hideModal={hideModal} show={showEdit}/> : null}
-            <div style={{backgroundColor: `#${bookingInfo["color"]}`}} className="booking">
-                <img className="booked-img" src={image} alt={bookingInfo["name"]}/>
-                <div className="booked-details">
+            <BookingCardWrapper style={{backgroundColor: `#${bookingInfo["color"]}`}}>
+                <img style={{
+                    minWidth: "200px",
+                    flex: "1 auto 15vw",
+                    borderRadius: "10px"
+                }} src={image} alt={bookingInfo["name"]}/>
+                <BookingCardMain>
                     <h3>{firstName}'s booking at {bookingInfo["name"]} in {bookingInfo["city"]}</h3>
                     <h5>From: {checkIn} To: {checkOut}</h5>
-                    <div className="booking-footer" style={{height: "3em"}}>
-                        <div className="update-btn">
+                    <BookingCardFooter style={{height: "3em"}}>
+                        <div>
                             <button onClick={()=> setShowDetails(!showDetails)}>{!showDetails ? <InfoIcon/> : <InfoIconFilled/>}</button>
                             <button onClick={()=> setShowEdit(true)}><EditIcon/></button>
                             <button onClick={handleDelete}><DeleteIcon/></button>
                         </div>
-                        <div className="details-ctn">
+                        <div style={{
+                            padding: "5px 0"
+                        }}>
                             <h5>{showDetails ? `Address: ${bookingInfo["address"]}` : null}</h5>
                             <h5>{showDetails ? `Description: ${bookingInfo["description"]}` : null}</h5>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </BookingCardFooter>
+                </BookingCardMain>
+            </BookingCardWrapper>
         </>
     :null
 }
