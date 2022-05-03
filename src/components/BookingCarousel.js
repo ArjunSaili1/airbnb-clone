@@ -3,7 +3,10 @@ import { useDb } from '../contexts/DatabaseContext'
 import BookingOption from './BookingOption'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { motion } from 'framer-motion'
+import Carousel from '../styled/Carousel';
+import CarouselWrapper from '../styled/CarouselWrapper';
+import CarouselButtons from '../styled/CarouselButtons';
+import StyledOption from '../styled/StyledOption';
 
 export default function BookingCarousel({setLocation, loading}) {
 
@@ -39,13 +42,12 @@ export default function BookingCarousel({setLocation, loading}) {
 
     return (
     <>
-        <div className="booking-carousel-ctn">
-            <div className="booking-carousel">
+        <CarouselWrapper>
+            <Carousel>
                 {locationIds ? locationIds.map((id, index )=>{
                     return(
-                    <motion.article 
+                    <StyledOption
                     key={id} 
-                    className="booking-option"
                     style={index === position + 1? {zIndex: 100}: null}
                     initial={{
                         rotation: -180, 
@@ -53,7 +55,7 @@ export default function BookingCarousel({setLocation, loading}) {
                     animate={{
                         rotation: 0, 
                         scale: index === position + 1? 1 : 0.6,
-                        left: `${(index - position) * 35 - 52.5}vw `
+                        left: `${(index - position) * 35 - 52.5}vmax `
                     }}
                     transition={{
                         damping: 20
@@ -62,15 +64,15 @@ export default function BookingCarousel({setLocation, loading}) {
                         setLocation={setLocation}
                         loading={loading}
                         locationId={id}/>
-                    </motion.article>
+                    </StyledOption>
                     )
                 }): null}
-            </div>
-        </div>
-        <div className="carousel-btns" style={{width: "100vw"}}>
-            <button onClick={moveRight} style={{right: 0}}><ArrowForwardIosIcon/></button>
-            <button onClick={moveLeft} style={{left: 0}}><ArrowBackIosIcon/></button>
-        </div>
+            </Carousel>
+        </CarouselWrapper>
+        <CarouselButtons>
+            <button onClick={moveRight} style={{right: -10, zIndex: 1000}}><ArrowForwardIosIcon style={{fontSize: "3em", color:"red"}}/></button>
+            <button onClick={moveLeft} style={{left: -10, zIndex: 1000, color: "red"}}><ArrowBackIosIcon style={{fontSize: "3em", color:"red"}}/></button>
+        </CarouselButtons>
     </>
     )
 }

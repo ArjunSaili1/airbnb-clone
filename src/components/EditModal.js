@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import Modal from '../styled/Modal';
 import ModalWrapper from '../styled/ModalWrapper';
 import { useDb } from '../contexts/DatabaseContext'
+import Button from '../styled/Button';
 import ModalHeader from '../styled/ModalHeader';
 import { AnimatePresence } from 'framer-motion';
 
@@ -48,8 +49,8 @@ export default function EditModal({ bookingData, hideModal}) {
                             defaultValue={bookingData["checkOut"]}/>
                         </div>   
                         <div className="edit-form-btns">
-                            <button onClick={hideModal}>Cancel</button>
-                            <button type="submit">Edit</button>
+                            <Button onClick={hideModal}>Cancel</Button>
+                            <Button type="submit">Edit</Button>
                         </div>
                     </form>
                 </Modal>

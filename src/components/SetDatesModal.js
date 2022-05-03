@@ -1,6 +1,6 @@
-import { AnimatePresence } from 'framer-motion';
 import React from 'react'
 import { useState, useRef } from 'react';
+import Button from '../styled/Button';
 import ModalHeader from '../styled/ModalHeader';
 
 export default function SetDatesModal({setCheckIn, setCheckOut, setModalScreen}) {
@@ -24,7 +24,7 @@ export default function SetDatesModal({setCheckIn, setCheckOut, setModalScreen})
     }
 
     return (
-        <AnimatePresence>
+        <>
             <ModalHeader animate={{opacity: 1}} initial={{opacity: 0}}>
                 <h3>When will you be travelling?</h3>
             </ModalHeader>
@@ -49,10 +49,10 @@ export default function SetDatesModal({setCheckIn, setCheckOut, setModalScreen})
                     </div>
                 </div>
                 <div className="date-modal-btns">
-                    <button onClick={resetDates} type="button" className="reset-date">Reset</button>
-                    <button type="submit" className="submit-date">Next</button>
+                    <Button onClick={resetDates} type="button">Reset</Button>
+                    <Button type="submit">Next</Button>
                 </div>
             </form>
-        </AnimatePresence>
+        </>
     )
 }

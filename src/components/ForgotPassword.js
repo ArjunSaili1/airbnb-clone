@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ModalWrapper from '../styled/ModalWrapper';
 import Modal from '../styled/Modal';
 import ModalHeader from '../styled/ModalHeader';
+import Button from '../styled/Button';
 
 function ForgotPassword() {
 
@@ -43,9 +44,9 @@ function ForgotPassword() {
             <input ref={emailRef} className="email" type="email"></input>
           </div>
           <div className="submit-button">
-            <button 
+            <Button 
             disabled={loading} 
-            onClick={handleForgotPass}>Send Password Reset Email</button>
+            onClick={handleForgotPass}>Send Password Reset Email</Button>
           </div>
       </Modal>
     </ModalWrapper>

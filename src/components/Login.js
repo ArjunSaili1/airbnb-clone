@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import ModalWrapper from '../styled/ModalWrapper';
 import Modal from '../styled/Modal';
 import ModalHeader from '../styled/ModalHeader';
+import Button from '../styled/Button';
 
 function Login() {
 
@@ -47,10 +48,10 @@ function Login() {
             <input ref={passwordRef} className="password" autoComplete="on" type="password"></input>
             <Link className="forgot-pass" to="/forgot-password"><h6>Forget your password?</h6></Link>
           </div>
-          <div className="submit-button">
-            <button 
+          <div>
+            <Button 
             disabled={loading} 
-            onClick={handleLogin}>Login</button>
+            onClick={handleLogin}>Login</Button>
           </div>
       </Modal>
     </ModalWrapper>

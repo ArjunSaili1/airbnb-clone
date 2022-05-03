@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import Header from './Header'
 import Page from '../styled/Page';
 import PageContent from '../styled/PageContent';
+import Button from '../styled/Button';
 
 export default function UpdateAccount() {
 
@@ -51,10 +52,10 @@ export default function UpdateAccount() {
                 <div className="update-form-section">
                     <h3>Reset Password</h3>
                     <div>
-                        <button onClick={sendResetEmail}>Send Reset Email</button>
+                        <Button onClick={sendResetEmail}>Send Reset Email</Button>
                     </div>
                 </div>
-                <button type="submit">Submit</button>
+                <Button type="submit">Submit</Button>
             </form>
         </PageContent>
     </Page>

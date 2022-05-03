@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
+import Button from '../styled/Button'
 import ModalHeader from '../styled/ModalHeader'
 
 export default function BookingWarning({removeWarning}) {
@@ -23,8 +24,8 @@ export default function BookingWarning({removeWarning}) {
             <em><h6>Continuing will delete your previous booking</h6></em>
         </ModalHeader>
         <form className="warning-btns">
-            <button onClick={handleContinue}>Continue</button>
-            <button onClick={handleCancel}>Cancel</button>
+            <Button cancel onClick={handleCancel}>Cancel</Button>
+            <Button submit onClick={handleContinue}>Continue</Button>
         </form>
     </>
     )

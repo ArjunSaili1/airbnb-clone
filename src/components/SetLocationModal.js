@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useState, useRef } from 'react'
 import { useDb } from '../contexts/DatabaseContext';
+import Button from '../styled/Button';
 import ModalHeader from '../styled/ModalHeader';
 
 export default function SetLocationModal({setModalScreen}) {
@@ -76,7 +77,7 @@ export default function SetLocationModal({setModalScreen}) {
                     </div>
                 </div>
             </div>
-            <button className="submit-location" type="submit">See Avaliable Homes</button>
+            <Button type="submit">See Avaliable Homes</Button>
         </motion.form>
     </>
     )

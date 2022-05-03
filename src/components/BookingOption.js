@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ref, getDownloadURL } from "firebase/storage";
 import { useDb } from '../contexts/DatabaseContext';
 import { storage } from '../firebase';
+import Button from '../styled/Button';
 
 export default function BookingOption({locationId, setLocation, loading}) {
 
@@ -24,14 +25,14 @@ export default function BookingOption({locationId, setLocation, loading}) {
 
     return details ? 
         <>
-            <img className="booking-option-img" src={image} alt={details["name"]}/>
-            <div className="booking-option-details">
+            <img src={image} alt={details["name"]}/>
+            <div style={{width: "100%", textAlign: "start"}}>
                 <h3>{details["name"]}</h3>
                 <h4>{details["address"]}</h4>
                 <h4>{details["city"]}</h4>
                 <h6><em>{details["description"]}</em></h6>
             </div>
-            <button className="book-btn" disabled={loading} onClick={handleSetBooking}>Book</button>
+            <Button submit style={{alignSelf: "flex-end"} }disabled={loading} onClick={handleSetBooking}>Book</Button>
         </>
     :null
 }

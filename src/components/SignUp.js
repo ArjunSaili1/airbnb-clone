@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import ModalWrapper from '../styled/ModalWrapper';
 import Modal from '../styled/Modal';
 import ModalHeader from '../styled/ModalHeader';
+import Button from '../styled/Button';
 
 function SignUp() {
 
@@ -59,9 +60,9 @@ function SignUp() {
             <input ref={passwordConfirmRef} className="password" autoComplete="on" type="password"></input> 
           </div>
           <div className="submit-button">
-            <button 
+            <Button 
             disabled={loading} 
-            onClick={handleSignUp}>Sign up</button>
+            onClick={handleSignUp}>Sign up</Button>
           </div>
       </Modal>
     </ModalWrapper>
