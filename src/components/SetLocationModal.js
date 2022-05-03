@@ -1,8 +1,11 @@
-import { motion } from 'framer-motion';
 import React, { useEffect, useState, useRef } from 'react'
 import { useDb } from '../contexts/DatabaseContext';
 import Button from '../styled/Button';
 import ModalHeader from '../styled/ModalHeader';
+import LocationForm from '../styled/LocationForm';
+import LocationInput from '../styled/LocationInput';
+import Dropdown from '../styled/Dropdown';
+import DropdownOption from '../styled/DropdownOption';
 
 export default function SetLocationModal({setModalScreen}) {
 
@@ -56,29 +59,34 @@ export default function SetLocationModal({setModalScreen}) {
     <>
         <ModalHeader animate={{opacity: 1}} initial={{opacity: 0}}>
             <h3>Where will you be travelling?</h3>
-            <h6 className="location-error">{error}</h6>
+            <h6 style={{height: "1rem",
+                        padding: "5px",
+                        color: "red"}}>{error}</h6>
         </ModalHeader>
-        <motion.form 
-        animate={{opacity: 1}} initial={{opacity: 0}}
-        onSubmit={handleSetLocation}className="set-location-form">
-            <div className="location-input-field">
-                <input placeholder="Toronto" 
+        <LocationForm
+        animate={{opacity: 1}} 
+        initial={{opacity: 0}}
+        onSubmit={handleSetLocation}>
+            <div style={{position: "relative", width: "80%"}}>
+                <LocationInput placeholder="Toronto" 
                 onChange={autocompleteLocations} 
                 ref={locationRef} type="text" 
-                required className="location-input"></input>
-                <div style={hidden ? {opacity: "0"}: {opacity: "100"}}
-                className="autocomplete-dropdown">
-                    <div className="dropdown-list">
+                required></LocationInput>
+                <div style={{
+                 opacity: `${hidden ? "0" : "100"}`,
+                 width: "100%",
+                 height: "1rem"}}>
+                    <Dropdown>
                         {autocomplete.map((name)=>{
-                            return <button className="dropdown-option"
+                            return <DropdownOption
                             onClick={selectOptionFromDropdown} 
-                            key={name}>{name}</button>
+                            key={name}>{name}</DropdownOption>
                         })}
-                    </div>
+                    </Dropdown>
                 </div>
             </div>
             <Button type="submit">See Avaliable Homes</Button>
-        </motion.form>
+        </LocationForm>
     </>
     )
 }

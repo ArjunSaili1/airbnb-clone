@@ -39,9 +39,9 @@ function SignUp() {
     <ModalWrapper>
         <Modal>
           <ModalHeader>
-            <h1 className="modal-title">Sign Up</h1>
-            <h5 className="redirect-text">Already have an account? <Link to="/login">Login</Link></h5>
-            {error ? <h5 className="error">{error}</h5> : null}
+            <h1>Sign Up</h1>
+            <h5 style={{margin: "10px 0"}}>Already have an account? <Link to="/login">Login</Link></h5>
+            {error ? <h5 style={{color: "red"}}>{error}</h5> : null}
           </ModalHeader>
           <AuthFormField>
             <label htmlFor="first-name">Full Name</label>
@@ -50,17 +50,20 @@ function SignUp() {
           <AuthFormField>
             <label htmlFor="email">Email</label>
             <input placeholder="example@email.com" 
-            ref={emailRef} className="email" autoComplete="on" type="email"></input>
+            ref={emailRef} autoComplete="on" type="email"></input>
           </AuthFormField>
           <AuthFormField>
             <label htmlFor="password">Password</label>
-            <input ref={passwordRef} className="password" autoComplete="on" type="password"></input>
+            <input ref={passwordRef} autoComplete="on" type="password"></input>
           </AuthFormField>
           <AuthFormField>
             <label htmlFor="password confirm">Re-enter Password</label>
-            <input ref={passwordConfirmRef} className="password" autoComplete="on" type="password"></input> 
+            <input ref={passwordConfirmRef} autoComplete="on" type="password"></input> 
           </AuthFormField>
-          <div className="submit-button">
+          <div style={{
+            display: "flex",
+            justifyContent: "flex-end"
+          }}>
             <Button 
             disabled={loading} 
             onClick={handleSignUp}>Sign up</Button>
