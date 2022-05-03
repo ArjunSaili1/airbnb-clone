@@ -46,8 +46,8 @@ export default function BookingCard({bookingData}) {
             <BookingCardWrapper style={{backgroundColor: `#${bookingInfo["color"]}`}}>
                 <img style={{
                     minWidth: "200px",
-                    flex: "1 auto 15vw",
-                    borderRadius: "10px"
+                    flex: "1 1 15vw",
+                    borderRadius: "10px",
                 }} src={image} alt={bookingInfo["name"]}/>
                 <BookingCardMain>
                     <h3>{firstName}'s booking at {bookingInfo["name"]} in {bookingInfo["city"]}</h3>
