@@ -348,3 +348,39 @@ input:focus::-webkit-input-placeholder{
   display: flex;
   justify-content: space-between;
 }
+
+.update-profile-form{
+  padding: 2%;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  width: 50vmax;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.profile-pic > img{
+  border-radius: 50%;
+  border: 1px solid black;
+  height: 130px;
+  width: 130px;
+}
+
+.profile-pic-ctn{
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.update-form-section{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-basis: 100%;
+}
+
+.profile-pic-upload{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
