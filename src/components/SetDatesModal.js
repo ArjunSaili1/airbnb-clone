@@ -2,6 +2,9 @@ import React from 'react'
 import { useState, useRef } from 'react';
 import Button from '../styled/Button';
 import ModalHeader from '../styled/ModalHeader';
+import BookingDateForm from '../styled/BookingDateForm';
+import BookingDateFormMain from '../styled/BookingDateFormMain';
+import BookingDateFormField from '../styled/BookingDateFormField';
 
 export default function SetDatesModal({setCheckIn, setCheckOut, setModalScreen}) {
 
@@ -28,31 +31,34 @@ export default function SetDatesModal({setCheckIn, setCheckOut, setModalScreen})
             <ModalHeader animate={{opacity: 1}} initial={{opacity: 0}}>
                 <h3>When will you be travelling?</h3>
             </ModalHeader>
-            <form 
+            <BookingDateForm 
             animate={{opacity: 1}} initial={{opacity: 0}}
-            onSubmit={handleSetDate} className="set-booking-form">
-                <div className="set-booking-date">
-                    <div className="date-set-field">
+            onSubmit={handleSetDate}>
+                <BookingDateFormMain>
+                    <BookingDateFormField>
                         <label htmlFor="check-in-date"> Check In:</label>
                         <input min={min} 
                         onChange={(e)=>{setMin(e.target.value)}}
                         max={max}
                         ref={checkInRef}
                         required type="date"></input>
-                    </div>
-                    <div className="date-set-field">
+                    </BookingDateFormField>
+                    <BookingDateFormField>
                         <label htmlFor="check-out-date">Check Out:</label>
                         <input min={min}
                         ref={checkOutRef}
                         onChange={(e)=>{setMax(e.target.value)}}
                         required type="date"></input>
-                    </div>
-                </div>
-                <div className="date-modal-btns">
+                    </BookingDateFormField>
+                </BookingDateFormMain>
+                <div style={{  
+                    display: "flex",
+                    width: "100%",
+                    justifyContent: "space-between"}}>
                     <Button onClick={resetDates} type="button">Reset</Button>
                     <Button type="submit">Next</Button>
                 </div>
-            </form>
+            </BookingDateForm>
         </>
     )
 }
