@@ -23,7 +23,11 @@ export default function BookingWarning({removeWarning}) {
             <h5>You already have a booking</h5>
             <em><h6>Continuing will delete your previous booking</h6></em>
         </ModalHeader>
-        <form className="warning-btns">
+        <form style={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "space-evenly"
+        }}>
             <Button cancel onClick={handleCancel}>Cancel</Button>
             <Button submit onClick={handleContinue}>Continue</Button>
         </form>
