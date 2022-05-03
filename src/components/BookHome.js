@@ -49,14 +49,14 @@ export default function BookHome() {
   return (
     <Page>
       <Header/>
-      <PageContent>
+      <PageContent animate={{opacity: 1}} initial={{opacity: 0}}>
         {modalScreen === "loading" ? null :
         !modalScreen ? <BookingCarousel loading={loading} setLocation={setLocation}/> :
         <ModalWrapper>
           <Modal>
             {modalScreen === "date" ?
-            <SetDatesModal setCheckIn={setCheckIn} setCheckOut={setCheckOut} setModalScreen={setModalScreen}/> :
-            modalScreen === "location" ? 
+            <SetDatesModal setCheckIn={setCheckIn} setCheckOut={setCheckOut} setModalScreen={setModalScreen}/>
+            : modalScreen === "location" ? 
             <SetLocationModal setModalScreen={setModalScreen}/> :
             modalScreen === "warning" ?
             <BookingWarning removeWarning={removeWarning}/> :

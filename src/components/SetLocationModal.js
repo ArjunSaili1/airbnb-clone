@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React, { useEffect, useState, useRef } from 'react'
 import { useDb } from '../contexts/DatabaseContext';
 import ModalHeader from '../styled/ModalHeader';
@@ -52,11 +53,13 @@ export default function SetLocationModal({setModalScreen}) {
 
     return (
     <>
-        <ModalHeader>
+        <ModalHeader animate={{opacity: 1}} initial={{opacity: 0}}>
             <h3>Where will you be travelling?</h3>
             <h6 className="location-error">{error}</h6>
         </ModalHeader>
-        <form onSubmit={handleSetLocation}className="set-location-form">
+        <motion.form 
+        animate={{opacity: 1}} initial={{opacity: 0}}
+        onSubmit={handleSetLocation}className="set-location-form">
             <div className="location-input-field">
                 <input placeholder="Toronto" 
                 onChange={autocompleteLocations} 
@@ -74,7 +77,7 @@ export default function SetLocationModal({setModalScreen}) {
                 </div>
             </div>
             <button className="submit-location" type="submit">See Avaliable Homes</button>
-        </form>
+        </motion.form>
     </>
     )
 }

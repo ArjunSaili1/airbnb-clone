@@ -3,6 +3,7 @@ import Modal from '../styled/Modal';
 import ModalWrapper from '../styled/ModalWrapper';
 import { useDb } from '../contexts/DatabaseContext'
 import ModalHeader from '../styled/ModalHeader';
+import { AnimatePresence } from 'framer-motion';
 
 export default function EditModal({ bookingData, hideModal}) {
     
@@ -20,7 +21,7 @@ export default function EditModal({ bookingData, hideModal}) {
     }
 
     return(
-    <>
+    <AnimatePresence>
         <div className="overlay" onClick={hideModal}></div>
         <ModalWrapper>
                 <Modal>
@@ -52,6 +53,6 @@ export default function EditModal({ bookingData, hideModal}) {
                         </div>
                     </form>
                 </Modal>
-            </ModalWrapper>
-    </>)
+        </ModalWrapper>
+    </AnimatePresence>)
 }

@@ -38,7 +38,8 @@ export default function BookingCard({bookingData}) {
 
     return bookingInfo ? 
         <>
-            {showEdit ? <EditModal bookingData={bookingData} hideModal={hideModal} show={showEdit}/> : null}
+            {showEdit ? 
+            <EditModal bookingData={bookingData} hideModal={hideModal} show={showEdit}/> : null}
             <div style={{backgroundColor: `#${bookingInfo["color"]}`}} className="booking">
                 <img className="booked-img" src={image} alt={bookingInfo["name"]}/>
                 <div className="booked-details">

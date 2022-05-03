@@ -1,6 +1,7 @@
 import styled from "styled-components"
+import { motion } from "framer-motion";
 
-export default styled.div`
+export default styled(motion.div)`
   display: flex;
   z-index: 300;
   gap: 1em;

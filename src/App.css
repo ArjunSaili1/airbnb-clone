@@ -25,45 +25,12 @@ input:focus::-webkit-input-placeholder{
   color: transparent
 }
 
-.modal{
-  display: flex;
-  z-index: 300;
-  gap: 1em;
-  background-color: white;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  border: 1px solid grey; 
-  height: auto;
-  border-radius: 5px;
-  padding: 3%;
-}
-
 .redirect-text{
   margin: 10px 0;
 }
 
 .error{
   color: red;
-}
-
-.modal-header{
-  display: grid;
-  place-items: center;
-  font-weight: 500;
-}
-
-.modal > *{
-  width: 100%;
-}
-
-.modal-container{
-  display: grid;
-  position: absolute;
-  width: 100%;
-  top: 0;
-  place-items: center;
-  height: 100%;
 }
 
 .form-field{

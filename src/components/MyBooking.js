@@ -12,7 +12,7 @@ export default function MyBooking() {
   return(
     <Page>
       <Header/>
-      <PageContent>
+      <PageContent animate={{opacity: 1}} initial={{opacity: 0}}>
       {!(Object.keys(bookingData).length === 0) ?
           <BookingCard bookingData={bookingData}/>
       : <h1>No Bookings Found</h1>}

@@ -25,7 +25,7 @@ export default function UpdateAccount() {
     return (
     <Page>
         <Header/>
-        <PageContent>
+        <PageContent animate={{opacity: 1}} initial={{opacity: 0}}>
             <form onSubmit={handleUpdateProfile} className="update-profile-form">
                 <div className="profile-pic-ctn">
                     <div className="profile-pic">
