@@ -4,6 +4,8 @@ import ModalWrapper from '../styled/ModalWrapper';
 import { useDb } from '../contexts/DatabaseContext'
 import Button from '../styled/Button';
 import ModalHeader from '../styled/ModalHeader';
+import Overlay from '../styled/Overlay';
+import EditBookingForm from '../styled/EditBookingForm';
 import { AnimatePresence } from 'framer-motion';
 
 export default function EditModal({ bookingData, hideModal}) {
@@ -23,14 +25,14 @@ export default function EditModal({ bookingData, hideModal}) {
 
     return(
     <AnimatePresence>
-        <div className="overlay" onClick={hideModal}></div>
+        <Overlay onClick={hideModal}></Overlay>
         <ModalWrapper>
                 <Modal>
                     <ModalHeader>
                         <h1>Edit Booking</h1>
                     </ModalHeader>
                     <form onSubmit={editBooking}>  
-                        <div className="edit-form">
+                        <EditBookingForm>
                             <h4>Check In</h4>
                             <input min={min}
                             max={max}
@@ -38,8 +40,8 @@ export default function EditModal({ bookingData, hideModal}) {
                             ref={checkInRef} 
                             type="date" 
                             defaultValue={bookingData["checkIn"]}/>
-                        </div>    
-                        <div className="edit-form">
+                        </EditBookingForm>    
+                        <EditBookingForm>
                             <h4>Check Out</h4>
                             <input min={min} 
                             max={max}
@@ -47,8 +49,11 @@ export default function EditModal({ bookingData, hideModal}) {
                             ref={checkOutRef} 
                             type="date" 
                             defaultValue={bookingData["checkOut"]}/>
-                        </div>   
-                        <div className="edit-form-btns">
+                        </EditBookingForm>   
+                        <div style={{  
+                            padding: "5% 0 0 0",
+                            display: "flex",
+                            justifyContent: "space-between"}}>
                             <Button onClick={hideModal}>Cancel</Button>
                             <Button type="submit">Edit</Button>
                         </div>
