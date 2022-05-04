@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { storage } from '../firebase';
-import { ref, getDownloadURL, uploadBytesResumable} from '@firebase/storage';
+import { ref, getDownloadURL, uploadBytes} from '@firebase/storage';
 import { 
     createUserWithEmailAndPassword, 
     updateProfile,
@@ -33,17 +33,20 @@ export function AuthProvider({children}) {
         })
     }
 
-    function updateProfilePic(profilePicFile){
-        if(!currentUser){}
+    async function updateProfilePic(profilePicFile){
+        if(!currentUser){console.log()}
         const profilePicRef = ref(storage, `profile-pictures/${currentUser.uid}`)
-        const profilePicUpload = uploadBytesResumable(profilePicRef, profilePicFile);
-        profilePicUpload.on('state_changed',
-            ()=>{setProfilePic(null, profilePicUpload.snapshot.ref);
-            })    
+        console.log(profilePicRef)
+        try{
+            const profilePicUpload = await uploadBytes(profilePicRef, profilePicFile);
+            setProfilePic(null, profilePicUpload.ref)
+        }
+        catch{
+            return false;
+        } 
     }
 
     function setProfilePic(userCred, fileRef){
-        console.log(fileRef)
         let file = fileRef ? fileRef : ref(storage, "profile-pictures/Default.jpg")
         getDownloadURL(file).then((url)=>{
             updateProfile(userCred ? userCred.user : currentUser, {

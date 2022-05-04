@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useRef, useState} from 'react'
 import { useAuth } from '../contexts/AuthContext';
 import Header from './Header'
 import Page from '../styled/Page';
@@ -13,13 +13,21 @@ export default function UpdateAccount() {
 
     const fileRef = useRef(null)
     const nameRef = useRef(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
     const {updateProfilePic, currentUser, forgotPassword, updateName} = useAuth()
     const {photoURL, displayName, email, phoneNumber} = currentUser;
 
-    function handleUpdateProfile(e){
+    async function handleUpdateProfile(e){
         e.preventDefault()
-        if(fileRef.current.files[0]){updateProfilePic(fileRef.current.files[0])}
+        if(fileRef.current.files[0]){
+            setLoading(true)
+            const upload = await updateProfilePic(fileRef.current.files[0])
+            if(!upload){setError(true)}
+            setLoading(false);
+        }
         if(nameRef.current.value){updateName(nameRef.current.value)}
+        window.location.reload();
     }
 
     function sendResetEmail(e){
@@ -59,7 +67,10 @@ export default function UpdateAccount() {
                         <Button onClick={sendResetEmail}>Send Reset Email</Button>
                     </div>
                 </UpdateFormSection>
-                <Button type="submit">Submit</Button>
+                <div style={{display: "flex", alignItems: "center", gap: "10px"}}>
+                    <Button disabled={loading} type="submit">Submit</Button>
+                    {error ? <h5 style={{color: "red"}}>There was an error uploading your file</h5> : null}
+                </div>
             </UpdateForm>
         </PageContent>
     </Page>
