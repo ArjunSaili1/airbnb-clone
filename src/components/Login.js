@@ -2,11 +2,11 @@ import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
-import ModalWrapper from '../styled/ModalWrapper';
-import Modal from '../styled/Modal';
-import ModalHeader from '../styled/ModalHeader';
-import Button from '../styled/Button';
-import AuthFormField from '../styled/AuthFormField';
+import ModalWrapper from './UI components/ModalWrapper';
+import Modal from './UI components/Modal';
+import ModalHeader from './UI components/ModalHeader';
+import Button from './UI components/Button';
+import AuthFormField from './UI components/AuthFormField';
 
 function Login() {
 

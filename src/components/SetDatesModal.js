@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useRef } from 'react';
-import Button from '../styled/Button';
-import ModalHeader from '../styled/ModalHeader';
+import Button from './UI components/Button';
+import ModalHeader from './UI components/ModalHeader';
 import BookingDateForm from '../styled/BookingDateForm';
 import BookingDateFormMain from '../styled/BookingDateFormMain';
 import BookingDateFormField from '../styled/BookingDateFormField';

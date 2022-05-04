@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react'
-import Modal from '../styled/Modal';
-import ModalWrapper from '../styled/ModalWrapper';
+import Modal from './UI components/Modal';
+import ModalWrapper from './UI components/ModalWrapper';
 import { useDb } from '../contexts/DatabaseContext'
-import Button from '../styled/Button';
-import ModalHeader from '../styled/ModalHeader';
+import Button from './UI components/Button';
+import ModalHeader from './UI components/ModalHeader';
 import Overlay from '../styled/Overlay';
 import EditBookingForm from '../styled/EditBookingForm';
 import { AnimatePresence } from 'framer-motion';

@@ -1,9 +1,9 @@
 import React, {useRef, useState} from 'react'
 import { useAuth } from '../contexts/AuthContext';
 import Header from './Header'
-import Page from '../styled/Page';
-import PageContent from '../styled/PageContent';
-import Button from '../styled/Button';
+import Page from './UI components/Page';
+import PageContent from './UI components/PageContent';
+import Button from './UI components/Button';
 import UpdateFormSection from '../styled/UpdateFormSection';
 import UpdateForm from '../styled/UpdateForm';
 import UpdateProfilePicWrapper from '../styled/UpdateProfilePicWrapper';

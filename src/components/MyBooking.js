@@ -2,8 +2,8 @@ import React from 'react'
 import Header from './Header'
 import { useDb } from '../contexts/DatabaseContext'
 import BookingCard from './BookingCard'
-import Page from '../styled/Page'
-import PageContent from '../styled/PageContent'
+import Page from './UI components/Page'
+import PageContent from './UI components/PageContent'
 
 export default function MyBooking() {
 

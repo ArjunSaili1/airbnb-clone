@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDb } from '../contexts/DatabaseContext';
-import Button from '../styled/Button';
-import ModalHeader from '../styled/ModalHeader';
+import Button from './UI components/Button';
+import ModalHeader from './UI components/ModalHeader';
 import LocationForm from '../styled/LocationForm';
 import LocationInput from '../styled/LocationInput';
 import Dropdown from '../styled/Dropdown';
