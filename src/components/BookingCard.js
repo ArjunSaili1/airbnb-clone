@@ -6,6 +6,7 @@ import { storage } from '../firebase';
 import BookingCardWrapper from '../styled/BookingCardWrapper';
 import BookingCardMain from '../styled/BookingCardMain';
 import InfoIcon from '@mui/icons-material/InfoOutlined';
+import BookingImage from '../styled/BookingImage';
 import InfoIconFilled from '@mui/icons-material/Info';
 import EditIcon from '@mui/icons-material/EditOutlined';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -44,11 +45,7 @@ export default function BookingCard({bookingData}) {
             {showEdit ? 
             <EditModal bookingData={bookingData} hideModal={hideModal} show={showEdit}/> : null}
             <BookingCardWrapper style={{backgroundColor: `#${bookingInfo["color"]}`}}>
-                <img style={{
-                    minWidth: "200px",
-                    flex: "1 1 15vw",
-                    borderRadius: "10px",
-                }} src={image} alt={bookingInfo["name"]}/>
+                <BookingImage src={image} alt={bookingInfo["name"]}/>
                 <BookingCardMain>
                     <h3>{firstName}'s booking at {bookingInfo["name"]} in {bookingInfo["city"]}</h3>
                     <h5>From: {checkIn} To: {checkOut}</h5>
