@@ -2,11 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
-import ModalWrapper from '../../SharedStyles/ModalWrapper';
-import Modal from '../../SharedStyles/Modal';
-import ModalHeader from '../../SharedStyles/ModalHeader';
-import Button from '../../SharedStyles/Button';
-import AuthFormField from '../../SharedStyles/AuthFormField';
+import { ModalHeader, Modal, ModalWrapper, Button, AuthFormField } from '../../SharedStyles';
 
 function Login() {
 

@@ -1,9 +1,7 @@
 import React, {useRef, useState} from 'react'
 import { useAuth } from '../../../contexts/AuthContext';
 import Header from '../../Header/Header'
-import Page from '../../SharedStyles/Page';
-import PageContent from '../../SharedStyles/PageContent';
-import Button from '../../SharedStyles/Button';
+import {Page, PageContent, Button} from '../../SharedStyles'
 import { UpdateForm, UpdateFormSection, UpdateProfilePicWrapper, ProfilePic } from './UpdateProfile.styled';
 
 export default function UpdateAccount() {

@@ -2,8 +2,7 @@ import React from 'react'
 import Header from '../../Header/Header'
 import { useDb } from '../../../contexts/DatabaseContext'
 import BookingCard from './BookingCard/BookingCard'
-import Page from '../../SharedStyles/Page'
-import PageContent from '../../SharedStyles/PageContent'
+import {Page, PageContent} from '../../SharedStyles'
 
 export default function MyBooking() {
 
