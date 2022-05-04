@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router'
-import Button from './sharedUI/Button'
-import ModalHeader from './sharedUI/ModalHeader'
+import Button from '../../SharedStyles/Button'
+import ModalHeader from '../../SharedStyles/ModalHeader'
 
 export default function BookingWarning({removeWarning}) {
     const nav = useNavigate()

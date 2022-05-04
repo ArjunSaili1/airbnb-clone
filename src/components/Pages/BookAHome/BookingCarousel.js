@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useDb } from '../contexts/DatabaseContext'
+import { useDb } from '../../../contexts/DatabaseContext'
 import BookingOption from './BookingOption'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import Carousel from '../styled/Carousel';
-import CarouselWrapper from '../styled/CarouselWrapper';
-import CarouselButtons from '../styled/CarouselButtons';
-import StyledOption from '../styled/StyledOption';
+import Carousel from '../../../styled/Carousel';
+import CarouselWrapper from '../../../styled/CarouselWrapper';
+import CarouselButtons from '../../../styled/CarouselButtons';
+import StyledOption from '../../../styled/StyledOption';
 
 export default function BookingCarousel({setLocation, loading}) {
 

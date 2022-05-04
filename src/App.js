@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SignUp from './components/SignUp';
-import UpdateAccount from './components/UpdateProfile';
-import RequireAuth from './components/RequireAuth';
-import Login from './components/Login';
-import ForgotPassword from './components/ForgotPassword';
+import SignUp from './components/Pages/SignUp/SignUp';
+import UpdateAccount from './components/Pages/UpdateProfile/UpdateProfile';
+import RequireAuth from './privateRoutes/RequireAuth';
+import Login from './components/Pages/Login/Login';
+import ForgotPassword from './components/Pages/ForgotPassword/ForgotPassword';
 import { AuthProvider } from './contexts/AuthContext';
-import MyBooking from './components/MyBooking';
+import MyBooking from './components/Pages/MyBooking/MyBooking';
 import { DbProvider } from './contexts/DatabaseContext';
-import RequireNotUser from './components/RequireNotUser';
-import BookHome from './components/BookHome';
-import GlobalStyles from './components/GlobalStyles';
+import RequireNotUser from './privateRoutes/RequireNotUser';
+import BookHome from './components/Pages/BookAHome/BookHome';
+import GlobalStyles from './GlobalStyles';
 
 function App() {
 

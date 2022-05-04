@@ -1,13 +1,13 @@
 import React, {useRef, useState} from 'react'
-import { useAuth } from '../contexts/AuthContext';
-import Header from './Header'
-import Page from './sharedUI/Page';
-import PageContent from './sharedUI/PageContent';
-import Button from './sharedUI/Button';
-import UpdateFormSection from '../styled/UpdateFormSection';
-import UpdateForm from '../styled/UpdateForm';
-import UpdateProfilePicWrapper from '../styled/UpdateProfilePicWrapper';
-import ProfilePic from '../styled/ProfilePic';
+import { useAuth } from '../../../contexts/AuthContext';
+import Header from '../../Header/Header'
+import Page from '../../SharedStyles/Page';
+import PageContent from '../../SharedStyles/PageContent';
+import Button from '../../SharedStyles/Button';
+import UpdateFormSection from '../../../styled/UpdateFormSection';
+import UpdateForm from '../../../styled/UpdateForm';
+import UpdateProfilePicWrapper from '../../../styled/UpdateProfilePicWrapper';
+import ProfilePic from '../../../styled/ProfilePic';
 
 export default function UpdateAccount() {
 

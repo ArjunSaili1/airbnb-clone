@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
-import Modal from './sharedUI/Modal';
-import ModalWrapper from './sharedUI/ModalWrapper';
-import { useDb } from '../contexts/DatabaseContext'
-import Button from './sharedUI/Button';
-import ModalHeader from './sharedUI/ModalHeader';
-import Overlay from '../styled/Overlay';
-import EditBookingForm from '../styled/EditBookingForm';
+import Modal from '../../SharedStyles/Modal';
+import ModalWrapper from '../../SharedStyles/ModalWrapper';
+import { useDb } from '../../../contexts/DatabaseContext'
+import Button from '../../SharedStyles/Button';
+import ModalHeader from '../../SharedStyles/ModalHeader';
+import Overlay from '../../../styled/Overlay';
+import EditBookingForm from '../../../styled/EditBookingForm';
 import { AnimatePresence } from 'framer-motion';
 
 export default function EditModal({ bookingData, hideModal}) {

@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { useDb } from '../contexts/DatabaseContext';
-import Button from './sharedUI/Button';
-import ModalHeader from './sharedUI/ModalHeader';
-import LocationForm from '../styled/LocationForm';
-import LocationInput from '../styled/LocationInput';
-import Dropdown from '../styled/Dropdown';
-import DropdownOption from '../styled/DropdownOption';
+import { useDb } from '../../../contexts/DatabaseContext';
+import Button from '../../SharedStyles/Button';
+import ModalHeader from '../../SharedStyles/ModalHeader';
+import LocationForm from '../../../styled/LocationForm';
+import LocationInput from '../../../styled/LocationInput';
+import Dropdown from '../../../styled/Dropdown';
+import DropdownOption from '../../../styled/DropdownOption';
 
 export default function SetLocationModal({setModalScreen}) {
 

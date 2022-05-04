@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState, useRef } from 'react';
-import Button from './sharedUI/Button';
-import ModalHeader from './sharedUI/ModalHeader';
-import BookingDateForm from '../styled/BookingDateForm';
-import BookingDateFormMain from '../styled/BookingDateFormMain';
-import BookingDateFormField from '../styled/BookingDateFormField';
+import Button from '../../SharedStyles/Button';
+import ModalHeader from '../../SharedStyles/ModalHeader';
+import BookingDateForm from '../../../styled/BookingDateForm';
+import BookingDateFormMain from '../../../styled/BookingDateFormMain';
+import BookingDateFormField from '../../../styled/BookingDateFormField';
 
 export default function SetDatesModal({setCheckIn, setCheckOut, setModalScreen}) {
 

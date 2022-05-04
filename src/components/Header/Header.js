@@ -1,8 +1,8 @@
 import React from 'react'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../../contexts/AuthContext'
 import { useNavigate } from 'react-router'
 import LogoutIcon from '@mui/icons-material/Logout';
-import StyledHeader from '../styled/StyledHeader';
+import StyledHeader from '../../styled/StyledHeader';
 
 export default function Header() {
     

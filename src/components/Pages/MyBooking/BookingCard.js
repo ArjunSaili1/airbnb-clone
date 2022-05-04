@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { ref, getDownloadURL } from "firebase/storage";
-import { useDb } from '../contexts/DatabaseContext';
-import { useAuth } from '../contexts/AuthContext';
-import { storage } from '../firebase';
-import BookingCardWrapper from '../styled/BookingCardWrapper';
-import BookingCardMain from '../styled/BookingCardMain';
+import { useDb } from '../../../contexts/DatabaseContext';
+import { useAuth } from '../../../contexts/AuthContext';
+import { storage } from '../../../firebase';
+import BookingCardWrapper from '../../../styled/BookingCardWrapper';
+import BookingCardMain from '../../../styled/BookingCardMain';
 import InfoIcon from '@mui/icons-material/InfoOutlined';
-import BookingImage from '../styled/BookingImage';
+import BookingImage from '../../../styled/BookingImage';
 import InfoIconFilled from '@mui/icons-material/Info';
 import EditIcon from '@mui/icons-material/EditOutlined';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditModal from './EditModal';
-import BookingCardFooter from '../styled/BookingCardFooter';
+import BookingCardFooter from '../../../styled/BookingCardFooter';
 
 export default function BookingCard({bookingData}) {
 
