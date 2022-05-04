@@ -1,12 +1,10 @@
 import React, { useRef, useState } from 'react'
-import Modal from '../../SharedStyles/Modal';
-import ModalWrapper from '../../SharedStyles/ModalWrapper';
-import { useDb } from '../../../contexts/DatabaseContext'
-import Button from '../../SharedStyles/Button';
-import ModalHeader from '../../SharedStyles/ModalHeader';
-import Overlay from '../../../styled/Overlay';
-import EditBookingForm from '../../../styled/EditBookingForm';
-import { AnimatePresence } from 'framer-motion';
+import Modal from '../../../SharedStyles/Modal';
+import ModalWrapper from '../../../SharedStyles/ModalWrapper';
+import { useDb } from '../../../../contexts/DatabaseContext'
+import Button from '../../../SharedStyles/Button';
+import ModalHeader from '../../../SharedStyles/ModalHeader';
+import { Overlay, EditBookingForm } from './EditModal.styled';
 
 export default function EditModal({ bookingData, hideModal}) {
     
@@ -24,7 +22,7 @@ export default function EditModal({ bookingData, hideModal}) {
     }
 
     return(
-    <AnimatePresence>
+    <>
         <Overlay onClick={hideModal}></Overlay>
         <ModalWrapper>
                 <Modal>
@@ -60,5 +58,5 @@ export default function EditModal({ bookingData, hideModal}) {
                     </form>
                 </Modal>
         </ModalWrapper>
-    </AnimatePresence>)
+    </>)
 }

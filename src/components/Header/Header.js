@@ -2,7 +2,7 @@ import React from 'react'
 import { useAuth } from '../../contexts/AuthContext'
 import { useNavigate } from 'react-router'
 import LogoutIcon from '@mui/icons-material/Logout';
-import StyledHeader from '../../styled/StyledHeader';
+import StyledHeader from './Header.styled';
 
 export default function Header() {
     
