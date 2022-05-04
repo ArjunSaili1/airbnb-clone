@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
-import ModalWrapper from './UI components/ModalWrapper';
-import Modal from './UI components/Modal';
-import ModalHeader from './UI components/ModalHeader';
-import Button from './UI components/Button';
-import AuthFormField from './UI components/AuthFormField';
+import ModalWrapper from './sharedUI/ModalWrapper';
+import Modal from './sharedUI/Modal';
+import ModalHeader from './sharedUI/ModalHeader';
+import Button from './sharedUI/Button';
+import AuthFormField from './sharedUI/AuthFormField';
 
 function SignUp() {
 

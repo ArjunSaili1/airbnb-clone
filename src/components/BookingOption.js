@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ref, getDownloadURL } from "firebase/storage";
 import { useDb } from '../contexts/DatabaseContext';
 import { storage } from '../firebase';
-import Button from './UI components/Button';
+import Button from './sharedUI/Button';
 
 export default function BookingOption({locationId, setLocation, loading}) {
 

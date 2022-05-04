@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Header from './Header'
-import Modal from './UI components/Modal'
-import ModalWrapper from './UI components/ModalWrapper'
+import Modal from './sharedUI/Modal'
+import ModalWrapper from './sharedUI/ModalWrapper'
 import SetLocationModal from './SetLocationModal'
 import SetDatesModal from './SetDatesModal'
 import BookingWarning from './BookingWarning'
-import Page from './UI components/Page'
+import Page from './sharedUI/Page'
 import BookingCarousel from './BookingCarousel'
 import { useDb } from '../contexts/DatabaseContext'
 import { useNavigate } from 'react-router'
-import PageContent from './UI components/PageContent'
+import PageContent from './sharedUI/PageContent'
 
 export default function BookHome() {
 
