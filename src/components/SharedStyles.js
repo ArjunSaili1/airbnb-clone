@@ -59,7 +59,7 @@ const Modal = styled(motion.div)`
     padding: 3%;
 `
 
-const ModalWrapper =  styled.div`
+const ModalWrapper = styled.div`
     display: grid;
     position: absolute;
     width: 100%;

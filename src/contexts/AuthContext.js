@@ -34,9 +34,8 @@ export function AuthProvider({children}) {
     }
 
     async function updateProfilePic(profilePicFile){
-        if(!currentUser){console.log()}
+        if(!currentUser){}
         const profilePicRef = ref(storage, `profile-pictures/${currentUser.uid}`)
-        console.log(profilePicRef)
         try{
             const profilePicUpload = await uploadBytes(profilePicRef, profilePicFile);
             setProfilePic(null, profilePicUpload.ref)
@@ -71,13 +70,7 @@ export function AuthProvider({children}) {
         onAuthStateChanged(auth, user => {
             setCurrentUser(user);
         })
-
     }, [])
-
-    useEffect(() => {
-        console.log(currentUser )
-    }, [currentUser])
-    
 
     return (
         <AuthContext.Provider value={{currentUser, signUp, updateProfilePic, updateName, login, forgotPassword, signOutUser}}>

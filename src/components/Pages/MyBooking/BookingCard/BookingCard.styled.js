@@ -24,7 +24,7 @@ const BookingCardMain = styled.div`
 const BookingImage = styled.img`
     min-width: 200px;
     flex: 1 1 15vh;
-    border-radius: "10px";
+    border-radius: 10px;
     height: auto;
 `
 
