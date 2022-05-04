@@ -4,10 +4,7 @@ import Header from '../../Header/Header'
 import Page from '../../SharedStyles/Page';
 import PageContent from '../../SharedStyles/PageContent';
 import Button from '../../SharedStyles/Button';
-import UpdateFormSection from '../../../styled/UpdateFormSection';
-import UpdateForm from '../../../styled/UpdateForm';
-import UpdateProfilePicWrapper from '../../../styled/UpdateProfilePicWrapper';
-import ProfilePic from '../../../styled/ProfilePic';
+import { UpdateForm, UpdateFormSection, UpdateProfilePicWrapper, ProfilePic } from './UpdateProfile.styled';
 
 export default function UpdateAccount() {
 
