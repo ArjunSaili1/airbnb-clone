@@ -10,6 +10,7 @@ import MyBooking from './components/MyBooking';
 import { DbProvider } from './contexts/DatabaseContext';
 import RequireNotUser from './components/RequireNotUser';
 import BookHome from './components/BookHome';
+import GlobalStyles from './components/GlobalStyles';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <DbProvider>
+          <GlobalStyles/>
           <Routes>
             <Route path="/signup" 
             element={
