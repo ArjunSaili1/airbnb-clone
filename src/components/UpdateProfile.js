@@ -4,6 +4,10 @@ import Header from './Header'
 import Page from '../styled/Page';
 import PageContent from '../styled/PageContent';
 import Button from '../styled/Button';
+import UpdateFormSection from '../styled/UpdateFormSection';
+import UpdateForm from '../styled/UpdateForm';
+import UpdateProfilePicWrapper from '../styled/UpdateProfilePicWrapper';
+import ProfilePic from '../styled/ProfilePic';
 
 export default function UpdateAccount() {
 
@@ -27,36 +31,36 @@ export default function UpdateAccount() {
     <Page>
         <Header/>
         <PageContent animate={{opacity: 1}} initial={{opacity: 0}}>
-            <form onSubmit={handleUpdateProfile} className="update-profile-form">
-                <div className="profile-pic-ctn">
-                    <div className="profile-pic">
-                        <img alt={displayName} src={photoURL}/>
+            <UpdateForm onSubmit={handleUpdateProfile}>
+                <UpdateProfilePicWrapper>
+                    <div>
+                        <ProfilePic alt={displayName} src={photoURL}/>
                     </div>
-                    <div className="update-form-section">
+                    <UpdateFormSection>
                         <h3>Profile Picture</h3>
                         <input ref={fileRef} type="file" accept="image/png, image/jpeg"></input>
-                    </div>
-                </div>
-                <div className="update-form-section">
+                    </UpdateFormSection>
+                </UpdateProfilePicWrapper>
+                <UpdateFormSection>
                     <h3>Full Name</h3>
                     <input ref={nameRef} type="text" defaultValue={displayName}/>
-                </div>
-                <div className="update-form-section">
+                </UpdateFormSection>
+                <UpdateFormSection>
                     <h3>Email</h3>
                     <input type="text" defaultValue={email}/>
-                </div>
-                <div className="update-form-section">
+                </UpdateFormSection>
+                <UpdateFormSection>
                     <h3>Phone Number</h3>
                     <input htmlFor="phone" type="tel" defaultValue={phoneNumber}/>
-                </div>
-                <div className="update-form-section">
+                </UpdateFormSection>
+                <UpdateFormSection>
                     <h3>Reset Password</h3>
                     <div>
                         <Button onClick={sendResetEmail}>Send Reset Email</Button>
                     </div>
-                </div>
+                </UpdateFormSection>
                 <Button type="submit">Submit</Button>
-            </form>
+            </UpdateForm>
         </PageContent>
     </Page>
     )
