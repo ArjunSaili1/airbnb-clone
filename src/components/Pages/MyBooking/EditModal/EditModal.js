@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
-import {Modal, ModalWrapper, Button, ModalHeader} from '../../../SharedStyles'
+import {Modal, ModalWrapper, Button, ModalHeader, Overlay} from '../../../SharedStyles'
 import { useDb } from '../../../../contexts/DatabaseContext'
-import { Overlay, EditBookingForm } from './EditModal.styled';
+import { EditBookingForm } from './EditModal.styled';
 
 export default function EditModal({ bookingData, hideModal}) {
     

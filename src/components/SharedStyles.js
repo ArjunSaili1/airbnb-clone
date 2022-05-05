@@ -8,6 +8,14 @@ const AuthFormField = styled.div`
     flex-direction: column;
 `
 
+const Overlay = styled.div`
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 101;
+    background-color: rgba(0,0,0,0.5);
+`
+
 const Button = styled.button`
     background-color: ${props => 
     props.submit ?  "#55D6BE" : 
@@ -85,6 +93,7 @@ const Page =  styled.div`
 
 const PageContent = styled(motion.main)`
     position: relative;
+    z-index: 200;
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
@@ -93,4 +102,4 @@ const PageContent = styled(motion.main)`
     background-color: var(--background);    
 `
 
-export {AuthFormField, Button, Modal, ModalWrapper, ModalHeader, Page, PageContent}
+export {AuthFormField, Overlay, Button, Modal, ModalWrapper, ModalHeader, Page, PageContent}
