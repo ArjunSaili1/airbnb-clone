@@ -41,6 +41,26 @@ const StyledMobileMenu = styled.div`
   background-color: var(--background);
   width: 430px;
   height: 100%;
+  display: flex;
+  padding: 50px;
+  gap: 50px;
+  flex-direction: column;
+
+  svg{
+    color: var(--secondary);
+  }
+
+  > a{
+    font-weight: 500;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 1.2em;
+  }
+
+  h4{
+    color: var(--primary);
+  }
 
   @media (max-width: 430px){
     width: 100% !important;

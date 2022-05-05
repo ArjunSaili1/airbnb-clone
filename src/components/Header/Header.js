@@ -14,7 +14,7 @@ export default function Header() {
     const {signOutUser} = useAuth()
     const [showMobileMenu, setShowMobileMenu] = useState(false)
     const navLinks = [{
-        text: "Book a home",
+        text: "Book A Home",
         nav: "/book-home"
     },
     {
@@ -32,12 +32,12 @@ export default function Header() {
                 <a href="/my-booking"><h1>Birdhouse</h1></a>
                 {mediaQuery ?  <MenuIcon onClick={()=>{setShowMobileMenu(!showMobileMenu)}}/> :
                 <>
-                    {navLinks.map(({text, nav})=> <a href={nav}onClick={nav}>{text}</a>)}
+                    {navLinks.map(({text, nav})=> <a key={text} href={nav}>{text}</a>)}
                     <button onClick={signOutUser}><LogoutIcon/></button>
                 </>
                 }
             </StyledHeader>
-            {showMobileMenu ? <MobileMenu hide={()=>{setShowMobileMenu(false)}}/> : null}
+            {showMobileMenu ? <MobileMenu navLinks={navLinks} hide={()=>{setShowMobileMenu(false)}}/> : null}
         </>
     )
 }
