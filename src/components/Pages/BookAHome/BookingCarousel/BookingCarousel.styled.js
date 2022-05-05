@@ -17,12 +17,14 @@ const Carousel = styled.div`
 `
 
 const CarouselButtons = styled.div`
-    width: 100vw;
+    width: 100%;
     display: flex;
+    position: relative;
+    margin-left: 2%;
     height: 100%;
-    padding: 0 2%;
     justify-content: space-between;
-    align-items: center;s
+    align-items: center;
+    padding: 2%;
 `
 const StyledOption = styled(motion.article)`
     height: fit-content;
@@ -35,7 +37,7 @@ const StyledOption = styled(motion.article)`
     border-radius: 10px;
     align-items: center;
     background-color: var(--primary);
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 `
 
 const StyledOptionInfo = styled.div`
@@ -47,17 +49,19 @@ const StyledOptionInfo = styled.div`
     > div {
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 0.25em;
+        margin-bottom: 0.5em;
     }
 `
 
 const CarouselArrow = styled.button`
     z-index: 1000;
-    color: var(--primary);
-    
+    color: var(--secondary);
+    position: relative;
+    overflow: hidden;
     > * {
-        font-size: 2.5em !important;
-    }
+        font-size: 5em !important;
+    } 
 `
 
 export {CarouselWrapper, Carousel, CarouselButtons, StyledOption, StyledOptionInfo, CarouselArrow}
