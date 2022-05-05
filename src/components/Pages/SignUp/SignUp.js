@@ -68,7 +68,9 @@ function SignUp() {
             justifyContent: "flex-end"
           }}>
             <Button 
-            disabled={loading} 
+            submit
+            style={{fontSize: "0.9em"}}
+            disabled={loading}
             onClick={handleSignUp}>Sign up</Button>
           </div>
       </Modal>

@@ -52,8 +52,8 @@ export default function SetDatesModal({setCheckIn, setCheckOut, setModalScreen})
                     display: "flex",
                     width: "100%",
                     justifyContent: "space-between"}}>
-                    <Button onClick={resetDates} type="button">Reset</Button>
-                    <Button type="submit">Next</Button>
+                    <Button cancel onClick={resetDates} type="button">Reset</Button>
+                    <Button submit type="submit">Next</Button>
                 </div>
             </BookingDateForm>
         </>

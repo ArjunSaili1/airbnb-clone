@@ -52,13 +52,13 @@ function Login() {
           <AuthFormField>
             <label htmlFor="email">Email</label>
             <input tabIndex="1" ref={emailRef} autoComplete="on" type="email"></input>
-            <div style={{fontSize: "0.7em"}}>
+            <h6 style={{fontWeight: "400"}}>
               Just Visiting? <span onClick={guestLogin} 
               style={{
                 cursor: "pointer",
                 fontSize: "inherit", 
                 fontWeight: "bold"}}>Login as a guest</span>
-            </div>
+            </h6>
           </AuthFormField>
           <AuthFormField>
             <label htmlFor="password">Password</label>
@@ -68,7 +68,9 @@ function Login() {
           <div>
             <Button
             type="submit"
-            tabIndex="3   "
+            tabIndex="3"
+            submit
+            style={{fontSize: "0.9em"}}
             disabled={loading}>Login</Button>
           </div>
       </Modal>

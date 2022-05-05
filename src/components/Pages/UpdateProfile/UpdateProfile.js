@@ -22,7 +22,7 @@ export default function UpdateAccount() {
             setLoading(false);
         }
         if(nameRef.current.value){updateName(nameRef.current.value)}
-        window.location.reload();
+        if(!loading){window.location.reload()}
     }
 
     function sendResetEmail(e){
@@ -59,11 +59,11 @@ export default function UpdateAccount() {
                 <UpdateFormSection>
                     <h3>Reset Password</h3>
                     <div>
-                        <Button onClick={sendResetEmail}>Send Reset Email</Button>
+                        <Button cancel onClick={sendResetEmail}>Send Reset Email</Button>
                     </div>
                 </UpdateFormSection>
                 <div style={{display: "flex", alignItems: "center", gap: "10px"}}>
-                    <Button disabled={loading} type="submit">Submit</Button>
+                    <Button submit disabled={loading} type="submit">Submit</Button>
                     {error ? <h5 style={{color: "red"}}>There was an error uploading your file</h5> : null}
                 </div>
             </UpdateForm>
