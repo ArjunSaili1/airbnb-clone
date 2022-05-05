@@ -63,8 +63,14 @@ export default function SetLocationModal({setModalScreen}) {
         }
     }
 
+    function handleCloseDropdown(e){
+        if(e.target.tagName !== "INPUT"){
+            setHidden(true)
+        }
+    }
+
     return (
-    <>
+    <div onClick={handleCloseDropdown}>
         <ModalHeader animate={{opacity: 1}} initial={{opacity: 0}}>
             <h3>Where will you be travelling?</h3>
             <h6 style={{height: "1rem",
@@ -87,7 +93,7 @@ export default function SetLocationModal({setModalScreen}) {
             </div>
             <Button submit type="submit">See Avaliable Homes</Button>
         </LocationForm>
-    </>
+    </div>
     )
 }
 
