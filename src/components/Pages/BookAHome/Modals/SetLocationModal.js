@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDb } from '../../../../contexts/DatabaseContext';
 import {Button, ModalHeader} from '../../../SharedStyles'
-import { Dropdown, DropdownOption, LocationForm, LocationInput } from './Modal.styled';
+import Dropdown from './Dropdown';
+import { LocationForm, LocationInput } from './BookHomeModal.styled';
 
 export default function SetLocationModal({setModalScreen}) {
 
@@ -9,6 +10,7 @@ export default function SetLocationModal({setModalScreen}) {
     const [locationNames, setLocationNames] = useState([])
     const [hidden, setHidden] = useState(true);
     const [error, setError] = useState(null);
+    const [focusIndex, setFocusIndex] = useState(-1);
     const locationRef = useRef(null)
     const { addQuery, getLocationNames } = useDb()
     
@@ -30,12 +32,12 @@ export default function SetLocationModal({setModalScreen}) {
         setModalScreen(false)
     }
 
-    function selectOptionFromDropdown(e){
+    function selectLocation(e){
         locationRef.current.value = e.target.textContent;
         setHidden(true)
     }
 
-    function autocompleteLocations(e){
+    function autocompleteLocations(){
         const temp = [];
         const locationInput = locationRef.current.value.replace(/\s+/g, '')
         if(locationRef.current.value !== ''){
@@ -51,6 +53,17 @@ export default function SetLocationModal({setModalScreen}) {
         setAutocomplete(temp)
     }
 
+    function handleFocus(e){
+        if(e.key === "ArrowDown" && focusIndex < autocomplete.length - 1){
+            locationRef.current.blur()  
+            setFocusIndex(focusIndex + 1)
+        }
+        if(e.key === "ArrowUp" && focusIndex > -1){
+            if(focusIndex === 0){locationRef.current.focus()}
+            setFocusIndex(focusIndex - 1)
+        }
+    }
+
     return (
     <>
         <ModalHeader animate={{opacity: 1}} initial={{opacity: 0}}>
@@ -64,25 +77,18 @@ export default function SetLocationModal({setModalScreen}) {
         initial={{opacity: 0}}
         onSubmit={handleSetLocation}>
             <div style={{position: "relative", width: "80%"}}>
-                <LocationInput placeholder="Toronto" 
-                onChange={autocompleteLocations} 
+                <LocationInput 
+                tabIndex="1"
+                placeholder="Toronto" 
+                onChange={autocompleteLocations}
                 ref={locationRef} type="text" 
+                onKeyDown={handleFocus}
                 required></LocationInput>
-                <div style={{
-                 opacity: `${hidden ? "0" : "100"}`,
-                 width: "100%",
-                 height: "1rem"}}>
-                    <Dropdown>
-                        {autocomplete.map((name)=>{
-                            return <DropdownOption
-                            onClick={selectOptionFromDropdown} 
-                            key={name}>{name}</DropdownOption>
-                        })}
-                    </Dropdown>
-                </div>
+                    <Dropdown handleFocus={handleFocus} focusIndex={focusIndex} hidden={hidden} options={autocomplete} selectLocation={selectLocation}/>
             </div>
-            <Button type="submit">See Avaliable Homes</Button>
+            <Button submit type="submit">See Avaliable Homes</Button>
         </LocationForm>
     </>
     )
 }
+
