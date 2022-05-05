@@ -9,7 +9,6 @@ export default function Dropdown({handleFocus, options, selectLocation, hidden, 
         optionsRef.current = optionsRef.current.slice(0, options.length)
         optionsRef.current.forEach((option, index)=>{
             if(index === focusIndex){
-                console.log(option)
                 option.focus()
             }
         })
@@ -24,6 +23,7 @@ export default function Dropdown({handleFocus, options, selectLocation, hidden, 
                     tabIndex={index + 1}
                     ref={el => optionsRef.current[index] = el}
                     onClick={selectLocation} 
+                    onFocus={selectLocation}
                     key={name}>{name}</DropdownOption>
                 }) : null}
             </StyledDropdown>

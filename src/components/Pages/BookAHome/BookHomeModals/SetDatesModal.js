@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useRef } from 'react';
 import {Button, ModalHeader} from '../../../SharedStyles'
-import { BookingDateForm, BookingDateFormMain, BookingDateFormField } from './Modal.styled';
+import { BookingDateForm, BookingDateFormMain, BookingDateFormField } from './BookHomeModal.styled';
 
 export default function SetDatesModal({setCheckIn, setCheckOut, setModalScreen}) {
 

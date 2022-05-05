@@ -25,7 +25,7 @@ const LocationForm = styled(motion.form)`
     display: flex;
     flex-direction: column;
     width: 100%;
-    gap: 2.5em;
+    gap: 1em;
     align-items: center;
 `
 
@@ -35,23 +35,30 @@ const LocationInput = styled.input`
     padding: 10px;
 `
 
-const Dropdown = styled.div`
+const StyledDropdown = styled.div`
     position: absolute;
-    background-color: white;
+    background-color: #FDFFFC;
     width: 100%;
     border: 1px solid black;
+    border-width: 0 1px 1px 1px;
+    border-radius: 0 0 10px 10px;
     list-style: none;
 `
 
-const DropdownOption = styled.div`
+const DropdownOption = styled.button`
+    display: inline-block;
     padding: 0.5em;
     cursor: pointer;
     font-size: 0.75em;
     width: 100%;
     text-align: start;
-    background-color: unset;
+    background-color: inherit;
+    border-radius: inherit;
     border: 0;
     cursor: pointer;
+    :focus{
+        filter: brightness(0.9);
+    }
 `
 
-export {BookingDateForm, BookingDateFormMain, BookingDateFormField, LocationForm, LocationInput, Dropdown, DropdownOption}
+export {BookingDateForm, BookingDateFormMain, BookingDateFormField, LocationForm, LocationInput, StyledDropdown, DropdownOption}

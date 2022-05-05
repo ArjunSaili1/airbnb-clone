@@ -34,7 +34,6 @@ export default function SetLocationModal({setModalScreen}) {
 
     function selectLocation(e){
         locationRef.current.value = e.target.textContent;
-        setHidden(true)
     }
 
     function autocompleteLocations(){
