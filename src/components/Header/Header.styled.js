@@ -10,4 +10,18 @@ export default styled.header`
   padding: 20px 40px;
   width: 100%;
   border-bottom: black 1px solid;
+  background-color: var(--dark);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  > *{
+    color: var(--primary)
+  }
+
+  > h4:hover{
+    filter: brightness(0.97)
+  }
+
+  > h4:active{
+    filter: brightness(0.85)
+  }
 `
