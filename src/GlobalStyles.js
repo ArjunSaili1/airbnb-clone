@@ -5,8 +5,8 @@ const GlobalStyles = createGlobalStyle`
     :root{
         --dark: #4C5454;
         --primary: #FF715B;
-        --background: #1EA896;
-        --secondary: #FCDFA6;
+        --background: #FCDFA6 ;
+        --secondary: #1EA896;
     }
 
     *{
@@ -22,7 +22,7 @@ const GlobalStyles = createGlobalStyle`
 
     a{
         text-decoration: none;
-        color: black;
+        color: white;
     }
 
     button{

@@ -45,7 +45,7 @@ const Button = styled.button`
 const Modal = styled(motion.div)`
     display: flex;
     z-index: 300;
-    gap: 1em;
+    gap: 20px;
     background-color: white;
     align-items: center;
     flex-direction: column;
@@ -54,7 +54,11 @@ const Modal = styled(motion.div)`
     border-radius: 5px;
     padding: 3%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    background-color: var(--secondary);
+    background-color: var(--dark);
+
+    >*{
+        color: white;
+    }
 `
 
 const ModalWrapper = styled.div`
@@ -71,9 +75,6 @@ const ModalHeader = styled(motion.div)`
     display: grid;
     place-items: center;
     font-weight: 500;
-    > h3{
-        color: black;
-    }
 `
 
 const Page =  styled.div`
