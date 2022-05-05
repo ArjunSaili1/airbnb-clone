@@ -6,25 +6,18 @@ const AuthFormField = styled.div`
     width: 60vmin;
     gap: 10px;
     flex-direction: column;
-
-    > input{
-        font-size: 1rem;
-        padding: 1.6%;
-        border-radius: 5px;
-        border-width: 1px;
-    }
 `
 
 const Button = styled.button`
     background-color: ${props => 
-    props.submit ?  "#77dd77" : 
-    props.cancel ? "#dc3545" : "#FFFFFF"};
-    border: 1px solid #222222;
-    border-radius: 10px;
+    props.submit ?  "#55D6BE" : 
+    props.cancel ? "var(--primary)" : "#FFFFFF"};
+    border: 1px solid var(--dark);
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 0.8em;
+    font-size: 0.75em;
     font-weight: 600;
-    padding: 10px 15px;
+    padding: 9px;
     text-align: center;
 
     &:focus-visible {
@@ -32,8 +25,12 @@ const Button = styled.button`
         transition: box-shadow .2s;
     }
 
+    &:hover{
+        filter: brightness(0.97);
+    }
+
     &:active {
-        background-color: #F7F7F7;
+        filter: brightness(0.9);
         border-color: #000000;
         transform: scale(.95);
     }
@@ -53,10 +50,11 @@ const Modal = styled(motion.div)`
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid grey; 
     height: auto;
     border-radius: 5px;
     padding: 3%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    background-color: var(--secondary);
 `
 
 const ModalWrapper = styled.div`
@@ -66,12 +64,16 @@ const ModalWrapper = styled.div`
     top: 0;
     place-items: center;
     height: 100%;
+    background-color: var(--background);    
 `
 
 const ModalHeader = styled(motion.div)`
     display: grid;
     place-items: center;
     font-weight: 500;
+    > h3{
+        color: black;
+    }
 `
 
 const Page =  styled.div`
@@ -87,6 +89,7 @@ const PageContent = styled(motion.main)`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: var(--background);    
 `
 
 export {AuthFormField, Button, Modal, ModalWrapper, ModalHeader, Page, PageContent}
