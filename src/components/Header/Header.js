@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useAuth } from '../../contexts/AuthContext'
-import { useNavigate } from 'react-router'
 import LogoutIcon from '@mui/icons-material/Logout';
 import { StyledHeader } from './Header.styled';
 import { useMediaQuery } from '@mui/material';
@@ -13,31 +12,28 @@ export default function Header() {
     const theme = useTheme()
     const mediaQuery = useMediaQuery(theme.breakpoints.down('sm'));
     const {signOutUser} = useAuth()
-    let navigate = useNavigate();
     const [showMobileMenu, setShowMobileMenu] = useState(false)
-
-    function goMyBooking(){
-        navigate("/my-booking")
-    }
-
-    function goBookHome(){
-        navigate("/book-home")
-    }
-
-    function goUpdateAccount(){
-        navigate("/update-profile")
-    }
+    const navLinks = [{
+        text: "Book a home",
+        nav: "/book-home"
+    },
+    {
+        text: "My Booking",
+        nav: "/my-booking"
+    },
+    {
+        text: "Update Profile",
+        nav: "/update-profile"
+    }]
     
     return (
         <>
             <StyledHeader>
-                <h1 style={{cursor: "pointer"}} onClick={goMyBooking}>Birdhouse</h1>
+                <a href="/my-booking"><h1>Birdhouse</h1></a>
                 {mediaQuery ?  <MenuIcon onClick={()=>{setShowMobileMenu(!showMobileMenu)}}/> :
                 <>
-                    <h4 style={{cursor: "pointer"}} onClick={goBookHome}>Book a home</h4>
-                    <h4 style={{cursor: "pointer"}} onClick={goMyBooking}>My Booking</h4>
-                    <h4 style={{cursor: "pointer"}} onClick={goUpdateAccount}>Update Profile</h4>
-                    <LogoutIcon style={{cursor: "pointer"}} onClick={signOutUser}/>
+                    {navLinks.map(({text, nav})=> <a href={nav}onClick={nav}>{text}</a>)}
+                    <button onClick={signOutUser}><LogoutIcon/></button>
                 </>
                 }
             </StyledHeader>

@@ -17,11 +17,15 @@ const StyledHeader = styled.header`
     color: var(--primary)
   }
 
-  > h4:hover{
+  a{
+    font-weight: 500;
+  }
+
+  > a:hover{
     filter: brightness(0.97)
   }
 
-  > h4:active{
+  > a:active{
     filter: brightness(0.85)
   }
 `
