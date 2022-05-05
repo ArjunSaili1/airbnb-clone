@@ -67,8 +67,8 @@ export default function BookingCarousel({setLocation, loading}) {
             </Carousel>
         </CarouselWrapper>
         <CarouselButtons>
-            <CarouselArrow left onClick={moveLeft}><ArrowForwardIosIcon/></CarouselArrow>
             <CarouselArrow right onClick={moveRight}><ArrowBackIosIcon/></CarouselArrow>
+            <CarouselArrow left onClick={moveLeft}><ArrowForwardIosIcon/></CarouselArrow>
         </CarouselButtons>
     </>
     )

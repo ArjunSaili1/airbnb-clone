@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 const CarouselWrapper = styled.div`
     width: 100vw;
     height: 100%;
-    top: 2vh;
     overflow: hidden;
     display: flex;
     position: absolute;
@@ -19,19 +18,11 @@ const Carousel = styled.div`
 
 const CarouselButtons = styled.div`
     width: 100vw;
-    height: 100%;
     display: flex;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    align-items: center;
-    position: relative;
-
-    > button{
-        margin: 20px;
-        position: absolute;
-    }
+    height: 100%;
+    padding: 0 2%;
+    justify-content: space-between;
+    align-items: center;s
 `
 const StyledOption = styled(motion.article)`
     height: fit-content;
@@ -41,22 +32,32 @@ const StyledOption = styled(motion.article)`
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
     border-radius: 10px;
-    padding: 1em;
     align-items: center;
-    background-color: var(--secondary);
+    background-color: var(--primary);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+`
+
+const StyledOptionInfo = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    > div {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
 `
 
 const CarouselArrow = styled.button`
     z-index: 1000;
-    left: ${props => props.left ? -10 : 0};
-    right: ${props => props.right ? -10 : 0};
-
+    color: var(--primary);
+    
     > * {
-        font-size: "3em";
-        color: var(--primary);  
+        font-size: 2.5em !important;
     }
 `
 
-export {CarouselWrapper, Carousel, CarouselButtons, StyledOption, CarouselArrow}
+export {CarouselWrapper, Carousel, CarouselButtons, StyledOption, StyledOptionInfo, CarouselArrow}
