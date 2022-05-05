@@ -13,6 +13,13 @@ function SignUp() {
   const [loading, setLoading] = useState(false);
   const { signUp } = useAuth();
 
+  function formatErrorMsg(error){
+    const errorWords = error.replace(/(.*?[/])/, "").replace(/[-]+/g, ' ').split(" ");
+    return errorWords.map((word)=>{
+      return word[0].toUpperCase() + word.slice(1)
+    }).join(' ')
+  }
+
   async function handleSignUp(e){
     e.preventDefault();
     setError('');
@@ -24,7 +31,7 @@ function SignUp() {
       setLoading(true)
       signUp(emailRef.current.value, passwordRef.current.value, fullNameRef.current.value)
     }catch(error){
-      setError(error.code)
+      setError(formatErrorMsg(error.code))
     }
     finally{
       setLoading(false)
