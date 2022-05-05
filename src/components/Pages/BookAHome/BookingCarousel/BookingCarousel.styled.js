@@ -45,6 +45,18 @@ const StyledOption = styled(motion.article)`
     border-radius: 10px;
     padding: 1em;
     align-items: center;
+    background-color: var(--secondary);
 `
 
-export {CarouselWrapper, Carousel, CarouselButtons, StyledOption}
+const CarouselArrow = styled.button`
+    z-index: 1000;
+    left: ${props => props.left ? -10 : 0};
+    right: ${props => props.right ? -10 : 0};
+
+    > * {
+        font-size: "3em";
+        color: var(--primary);  
+    }
+`
+
+export {CarouselWrapper, Carousel, CarouselButtons, StyledOption, CarouselArrow}

@@ -3,7 +3,7 @@ import { useDb } from '../../../../contexts/DatabaseContext'
 import BookingOption from './BookingOption'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Carousel, CarouselWrapper, CarouselButtons, StyledOption } from './BookingCarousel.styled';
+import { Carousel, CarouselWrapper, CarouselButtons, StyledOption, CarouselArrow} from './BookingCarousel.styled';
 
 export default function BookingCarousel({setLocation, loading}) {
 
@@ -19,7 +19,7 @@ export default function BookingCarousel({setLocation, loading}) {
         setBookingOptions()
     },[queryLocations])
 
-    function moveRight(){
+    function moveLeft(){
         if(position === locationIds.length - 2){
             setPosition(-1)
         }
@@ -28,7 +28,7 @@ export default function BookingCarousel({setLocation, loading}) {
         }
     }
 
-    function moveLeft(){
+    function moveRight(){
         if(position === -1){
             setPosition(locationIds.length - 2)
         }
@@ -67,8 +67,8 @@ export default function BookingCarousel({setLocation, loading}) {
             </Carousel>
         </CarouselWrapper>
         <CarouselButtons>
-            <button onClick={moveRight} style={{right: -10, zIndex: 1000}}><ArrowForwardIosIcon style={{fontSize: "3em", color:"red"}}/></button>
-            <button onClick={moveLeft} style={{left: -10, zIndex: 1000, color: "red"}}><ArrowBackIosIcon style={{fontSize: "3em", color:"red"}}/></button>
+            <CarouselArrow left onClick={moveLeft}><ArrowForwardIosIcon/></CarouselArrow>
+            <CarouselArrow right onClick={moveRight}><ArrowBackIosIcon/></CarouselArrow>
         </CarouselButtons>
     </>
     )
