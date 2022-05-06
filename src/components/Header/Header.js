@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext'
 import LogoutIcon from '@mui/icons-material/Logout';
 import { StyledHeader } from './Header.styled';
@@ -29,10 +30,10 @@ export default function Header() {
     return (
         <>
             <StyledHeader>
-                <a href="/my-booking"><h1>Birdhouse</h1></a>
+                <Link to="/my-booking"><h1>Birdhouse</h1></Link>
                 {mediaQuery ?  <MenuIcon onClick={()=>{setShowMobileMenu(!showMobileMenu)}}/> :
                 <>
-                    {navLinks.map(({text, nav})=> <a key={text} href={nav}>{text}</a>)}
+                    {navLinks.map(({text, nav})=> <Link key={text} to={nav}>{text}</Link>)}
                     <button onClick={signOutUser}><LogoutIcon/></button>
                 </>
                 }

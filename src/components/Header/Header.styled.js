@@ -50,7 +50,7 @@ const StyledMobileMenu = styled.div`
     color: var(--secondary);
   }
 
-  > a{
+  > Link{
     font-weight: 500;
     display: flex;
     gap: 10px;
