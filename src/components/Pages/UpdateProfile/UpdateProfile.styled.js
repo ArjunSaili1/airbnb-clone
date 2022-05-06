@@ -1,33 +1,46 @@
 import styled from 'styled-components'
 
 const UpdateForm =  styled.form`
-    padding: 2%;
+    background-color: var(--dark);
+    margin: 20px 0;
+    padding: 20px;
     overflow: hidden;
     border-radius: 10px;
     display: flex;
-    width: 80vw;
+    width: 95%;
+    max-width: 1000px;
     gap: 30px;
     flex-wrap: wrap;
+
+    h3 {
+        color: var(--primary);
+    }
 `
 
 const ProfilePic = styled.img`
     border-radius: 50%;
     border: 1px solid black;
-    height: 130px;
-    width: 130px;
+    aspect-ratio: 1/1;
+    width: 7rem;
 `
 
 const UpdateFormSection = styled.div`
+    padding: 5px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     flex-basis: 100%;
+
+    > input {
+        color: var(--primary);
+        font-size: 0.75em;
+    }
 `
 
 const UpdateProfilePicWrapper = styled.div`
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 2%;
 `
 
 export {UpdateForm, ProfilePic, UpdateProfilePicWrapper, UpdateFormSection}
