@@ -17,15 +17,15 @@ const StyledHeader = styled.header`
     color: var(--primary)
   }
 
-  a{
+  Link{
     font-weight: 500;
   }
 
-  > a:hover{
+  > Link:hover{
     filter: brightness(0.97)
   }
 
-  > a:active{
+  > Link:active{
     filter: brightness(0.85)
   }
 `
@@ -50,7 +50,7 @@ const StyledMobileMenu = styled.div`
     color: var(--secondary);
   }
 
-  > Link{
+  > a{
     font-weight: 500;
     display: flex;
     gap: 10px;
