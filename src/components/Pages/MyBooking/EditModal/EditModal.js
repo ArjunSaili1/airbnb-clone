@@ -20,7 +20,7 @@ export default function EditModal({ bookingData, hideModal}) {
 
     return(
     <>
-        <Overlay onClick={hideModal}></Overlay>
+        <Overlay style={{top: 0}} onClick={hideModal}></Overlay>
         <ModalWrapper>
                 <Modal>
                     <ModalHeader>
