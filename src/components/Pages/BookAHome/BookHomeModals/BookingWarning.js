@@ -18,14 +18,12 @@ export default function BookingWarning({removeWarning}) {
     return (
     <>
         <ModalHeader>
-            <h2>Warning</h2>
+            <h2>You Already Have a Booking</h2>
         </ModalHeader>
         <div style={{
             textAlign: "center",
-            width: "80%",
         }}>
-            <h5>You already have a booking</h5>
-            <h6>Continuing will delete your previous booking</h6>
+            <h5 style={{color: "var(--primary)"}}>Continuing will delete your previous booking</h5>
         </div>
         <form style={{
             display: "flex",
