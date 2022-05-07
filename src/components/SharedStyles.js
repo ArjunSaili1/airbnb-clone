@@ -58,7 +58,7 @@ const Modal = styled(motion.div)`
     min-width: 300px;
     display: flex;
     z-index: 300;
-    padding: 2%;
+    padding: 40px;
     gap: 20px;
     background-color: white;
     align-items: center;
@@ -66,7 +66,6 @@ const Modal = styled(motion.div)`
     justify-content: center;
     height: auto;
     border-radius: 5px;
-    padding: 3%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
     background-color: var(--dark);
 
@@ -86,6 +85,7 @@ const ModalWrapper = styled.div`
 `
 
 const ModalHeader = styled(motion.div)`
+    text-align: center;
     display: grid;
     place-items: center;
     font-weight: 500;

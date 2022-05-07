@@ -9,7 +9,7 @@ const StyledHeader = styled.header`
   position: relative;
   justify-content: space-between;
   align-items: center;
-  padding: 2vmax;
+  padding: 1vmax;
   width: 100%;
   background-color: var(--dark);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
