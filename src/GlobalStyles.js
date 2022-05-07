@@ -1,7 +1,9 @@
 import { createGlobalStyle } from "styled-components";
+import { normalize } from 'styled-normalize'
 
 const GlobalStyles = createGlobalStyle`
 
+    ${normalize}
     :root{
         --dark: #4C5454;
         --primary: #FF715B;
@@ -20,6 +22,7 @@ const GlobalStyles = createGlobalStyle`
     }
 
     html, button, input{
+        color: "white";
         font-family: "DM Sans", sans-serif;
         font-size: min(50% + 1.5vw, 20px);
     }
