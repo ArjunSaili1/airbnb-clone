@@ -58,6 +58,7 @@ const Modal = styled(motion.div)`
     min-width: 300px;
     display: flex;
     z-index: 300;
+    padding: 2%;
     gap: 20px;
     background-color: white;
     align-items: center;
@@ -80,7 +81,7 @@ const ModalWrapper = styled.div`
     width: 100%;
     top: 0;
     place-items: center;
-    height: 100%;
+    height: 90%;
     background-color: var(--background);    
 `
 
@@ -105,6 +106,9 @@ const PageContent = styled(motion.main)`
     justify-content: center;
     align-items: center;
     background-color: var(--background);    
+
+    @media (max-width: 450px){
+    }
 `
 
 export {AuthFormField, Overlay, Button, Modal, ModalWrapper, ModalHeader, Page, PageContent}
