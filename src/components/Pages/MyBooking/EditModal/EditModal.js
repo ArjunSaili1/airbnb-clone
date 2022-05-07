@@ -54,8 +54,8 @@ export default function EditModal({ bookingData, hideModal}) {
                         padding: "5% 0 0 0",
                         display: "flex",
                         justifyContent: "space-between"}}>
-                        <Button onClick={hideModal}>Cancel</Button>
-                        <Button type="submit">Edit</Button>
+                        <Button cancel onClick={hideModal}>Cancel</Button>
+                        <Button submit type="submit">Edit</Button>
                     </div>
                 </form>
             </Modal>
