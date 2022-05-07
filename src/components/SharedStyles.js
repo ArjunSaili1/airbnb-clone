@@ -12,7 +12,7 @@ const AuthFormField = styled.div`
     }
 `
 
-const Overlay = styled.div`
+const Overlay = styled(motion.div)`
     position: fixed;
     width: 100%;
     height: 100%;

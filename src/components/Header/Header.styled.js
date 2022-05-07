@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 const StyledHeader = styled.header`
   z-index: 100;
@@ -30,11 +31,11 @@ const StyledHeader = styled.header`
   }
 `
 
-const MobileMenuContainer = styled.span`
+const MobileMenuContainer = styled(motion.span)`
   position: relative;
 `
 
-const StyledMobileMenu = styled.div`
+const StyledMobileMenu = styled(motion.div)`
   position: fixed;
   right: 0;
   z-index: 500;

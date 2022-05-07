@@ -3,6 +3,7 @@ import Header from '../../Header/Header'
 import { useDb } from '../../../contexts/DatabaseContext'
 import BookingCard from './BookingCard/BookingCard'
 import {Page, PageContent} from '../../SharedStyles'
+import { AnimatePresence, motion } from 'framer-motion'
 
 export default function MyBooking() {
 
@@ -11,10 +12,15 @@ export default function MyBooking() {
   return(
     <Page>
       <Header/>
-      <PageContent animate={{opacity: 1}} initial={{opacity: 0}}>
-      {!(Object.keys(bookingData).length === 0) ?
-          <BookingCard bookingData={bookingData}/>
-      : <h1>No Bookings Found</h1>}
-      </PageContent>
+        <PageContent>
+          <AnimatePresence exitBeforeEnter>
+            {!(Object.keys(bookingData).length === 0) ?
+                <BookingCard key="booking-card" bookingData={bookingData}/>
+            : <motion.h1 key="no-bookings" 
+            initial={{opacity: 0}} 
+            animate={{opacity: 1}} 
+            exit={{opacity: 0}}>No Bookings Found</motion.h1>}
+          </AnimatePresence>
+        </PageContent>
     </Page>)
 }

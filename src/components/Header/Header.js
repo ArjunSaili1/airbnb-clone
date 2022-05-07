@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext'
 import LogoutIcon from '@mui/icons-material/Logout';
 import { StyledHeader } from './Header.styled';
+import { AnimatePresence } from 'framer-motion';
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -38,7 +39,16 @@ export default function Header() {
                 </>
                 }
             </StyledHeader>
-            {showMobileMenu ? <MobileMenu navLinks={navLinks} hide={()=>{setShowMobileMenu(false)}}/> : null}
+            <AnimatePresence>
+            {showMobileMenu ?
+                <MobileMenu
+                 key="mobile-side-menu"
+                 exit={{opacity: 0}}
+                 navLinks={navLinks} 
+                 hide={()=>{setShowMobileMenu(false)}}/> 
+            : null}
+            </AnimatePresence>
+
         </>
     )
 }

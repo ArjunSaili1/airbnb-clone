@@ -9,6 +9,7 @@ import InfoIconFilled from '@mui/icons-material/Info';
 import EditIcon from '@mui/icons-material/EditOutlined';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditModal from '../EditModal/EditModal';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function BookingCard({bookingData}) {
 
@@ -18,7 +19,7 @@ export default function BookingCard({bookingData}) {
     let [firstName] = currentUser.displayName.split(" ")
     const {getBookingDetails, deleteBooking} = useDb();
     const [bookingInfo, setBookingInfo] = useState(null);
-    const [showDetails, setShowDetails] = useState(false)
+    const [showDetails, setShowDetails] = useState(true)
     const [showEdit, setShowEdit] = useState(false);
 
     async function handleDelete(){
@@ -38,29 +39,35 @@ export default function BookingCard({bookingData}) {
     },[locationId, getBookingDetails])
 
     return bookingInfo ? 
-        <>
-            {showEdit ? 
-            <EditModal bookingData={bookingData} hideModal={hideModal} show={showEdit}/> : null}
+    <>
+        <AnimatePresence>
+        {showEdit ? 
+            <EditModal key="edit-modal" bookingData={bookingData} hideModal={hideModal}/> : null}
+        </AnimatePresence>
+        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
             <BookingCardWrapper style={{backgroundColor: `#${bookingInfo["color"]}`}}>
                 <BookingImage src={image} alt={bookingInfo["name"]}/>
                 <BookingCardMain>
                     <h3>{firstName}'s booking at {bookingInfo["name"]} in {bookingInfo["city"]}</h3>
                     <h5>From: {checkIn} To: {checkOut}</h5>
-                    <BookingCardFooter style={{height: "3em"}}>
-                        <div>
+                    <BookingCardFooter>
+                        <div style={{padding: "10px 0"}}>
                             <button onClick={()=> setShowDetails(!showDetails)}>{!showDetails ? <InfoIcon/> : <InfoIconFilled/>}</button>
                             <button onClick={()=> setShowEdit(true)}><EditIcon/></button>
                             <button onClick={handleDelete}><DeleteIcon/></button>
                         </div>
-                        <div style={{
-                            padding: "5px 0"
-                        }}>
-                            <h5>{showDetails ? `Address: ${bookingInfo["address"]}` : null}</h5>
-                            <h5>{showDetails ? `Description: ${bookingInfo["description"]}` : null}</h5>
-                        </div>
+                        <AnimatePresence>
+                            {showDetails ? 
+                            <div 
+                            key="booking-card-details-dropdown">
+                                <h5>Address: {bookingInfo["address"]}</h5>
+                                <h6>Description: {bookingInfo["description"]}</h6>
+                            </div> : null}
+                        </AnimatePresence>
                     </BookingCardFooter>
                 </BookingCardMain>
             </BookingCardWrapper>
-        </>
+        </motion.div>
+    </>
     :null
 }

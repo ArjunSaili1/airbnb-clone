@@ -18,19 +18,22 @@ export default function MobileMenu({hide, navLinks}) {
         if(text === "Update Profile"){return <ManageAccountsIcon/>}
     }
     return (
-    <MobileMenuContainer>
-        <Overlay onClick={hide} style={{zIndex: "300"}}></Overlay>
-        <StyledMobileMenu>
-            {navLinks.map(({text, nav})=>
-            <Link to={nav} key={text}>
-            {getIcon(text)}
-            <h4>{text}</h4>
-            </Link>)}
-            <button onClick={signOutUser}>
-                <LogoutIcon/>
-                <h4>Logout</h4>
-            </button>
-        </StyledMobileMenu>
-    </MobileMenuContainer>
+        <MobileMenuContainer>
+            <Overlay initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            onClick={hide} style={{zIndex: "300"}}></Overlay>
+            <StyledMobileMenu initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+                {navLinks.map(({text, nav})=>
+                <Link to={nav} key={text}>
+                {getIcon(text)}
+                <h4>{text}</h4>
+                </Link>)}
+                <button onClick={signOutUser}>
+                    <LogoutIcon/>
+                    <h4>Logout</h4>
+                </button>
+            </StyledMobileMenu>
+        </MobileMenuContainer>
     )
 }
