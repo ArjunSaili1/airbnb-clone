@@ -59,11 +59,11 @@ export default function UpdateAccount() {
                 <UpdateFormSection>
                     <h3>Reset Password</h3>
                     <div>
-                        <Button cancel onClick={sendResetEmail}>Send Reset Email</Button>
+                        <Button style={{fontSize: "0.7rem"}} cancel onClick={sendResetEmail}>Send Reset Email</Button>
                     </div>
                 </UpdateFormSection>
                 <div style={{display: "flex", alignItems: "center", gap: "10px"}}>
-                    <Button submit disabled={loading} type="submit">Submit</Button>
+                    <Button style={{fontSize: "1rem"}} submit disabled={loading} type="submit">Submit</Button>
                     {error ? <h5 style={{color: "red"}}>There was an error uploading your file</h5> : null}
                 </div>
             </UpdateForm>

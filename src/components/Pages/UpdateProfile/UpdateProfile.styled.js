@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const UpdateForm =  styled.form`
     background-color: var(--dark);
-    margin: 20px 0;
+    margin: 20px;
     padding: 20px;
     overflow: hidden;
     border-radius: 10px;
