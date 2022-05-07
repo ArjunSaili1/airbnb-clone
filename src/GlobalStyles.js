@@ -15,6 +15,10 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    body{
+        background-color: var(--background);
+    }
+
     html, button, input{
         font-family: "DM Sans", sans-serif;
         font-size: min(50% + 1.5vw, 20px);
