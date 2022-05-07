@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import SignUp from './components/Pages/SignUp/SignUp';
 import UpdateAccount from './components/Pages/UpdateProfile/UpdateProfile';
 import RequireAuth from './privateRoutes/RequireAuth';
@@ -19,6 +19,7 @@ function App() {
         <DbProvider>
           <GlobalStyles/>
           <Routes>
+            <Route path="*" element={<Navigate to="/login"/>}/>
             <Route path="/signup" 
             element={
               <RequireNotUser>
