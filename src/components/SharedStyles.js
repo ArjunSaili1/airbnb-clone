@@ -56,6 +56,7 @@ const Button = styled.button`
 
 const Modal = styled(motion.div)`
     min-width: 300px;
+    max-width: 100vw;
     display: flex;
     z-index: 300;
     padding: 40px;

@@ -25,11 +25,17 @@ const GlobalStyles = createGlobalStyle`
         color: "white";
         font-family: "DM Sans", sans-serif;
         font-size: min(50% + 1.5vw, 20px);
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+
     }
 
     a{
         text-decoration: none;
         color: white;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
     }
 
     button{
