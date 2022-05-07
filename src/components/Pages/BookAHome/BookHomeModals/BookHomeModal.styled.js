@@ -9,8 +9,8 @@ const BookingDateForm =  styled(motion.form)`
 
 const BookingDateFormMain = styled.div`
     display: flex;
-    width: 100%;
-    gap: 3em;
+    max-width: 90%;
+    gap: 1em;
     flex-direction: row;
 `
 

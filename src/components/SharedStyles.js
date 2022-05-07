@@ -6,6 +6,10 @@ const AuthFormField = styled.div`
     width: 60vmin;
     gap: 10px;
     flex-direction: column;
+
+    @media (max-width: 430px){
+        width: 90vw !important;
+    }
 `
 
 const Overlay = styled.div`
@@ -51,6 +55,7 @@ const Button = styled.button`
 `
 
 const Modal = styled(motion.div)`
+    min-width: 300px;
     display: flex;
     z-index: 300;
     gap: 20px;
