@@ -56,10 +56,10 @@ const Button = styled.button`
 
 const Modal = styled(motion.div)`
     min-width: 300px;
-    max-width: 100vw;
+    max-width: 95vw;
     display: flex;
     z-index: 300;
-    padding: 40px;
+    padding: 5% 40px;
     gap: 20px;
     background-color: white;
     align-items: center;
@@ -81,7 +81,7 @@ const ModalWrapper = styled.div`
     width: 100%;
     top: 0;
     place-items: center;
-    height: 90%;
+    height: 95%;
     background-color: var(--background);    
 `
 
@@ -90,6 +90,9 @@ const ModalHeader = styled(motion.div)`
     display: grid;
     place-items: center;
     font-weight: 500;
+    > h1 { 
+        margin: 0;
+    }
 `
 
 const Page =  styled.div`
@@ -107,9 +110,6 @@ const PageContent = styled(motion.main)`
     justify-content: center;
     align-items: center;
     background-color: var(--background);    
-
-    @media (max-width: 450px){
-    }
 `
 
 export {AuthFormField, Overlay, Button, Modal, ModalWrapper, ModalHeader, Page, PageContent}

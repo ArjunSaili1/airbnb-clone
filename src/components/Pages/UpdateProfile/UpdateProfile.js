@@ -33,7 +33,7 @@ export default function UpdateAccount() {
     return (
     <Page>
         <Header/>
-        <PageContent animate={{opacity: 1}} initial={{opacity: 0}}>
+        <PageContent style={{flex: "0 0 auto"}}animate={{opacity: 1}} initial={{opacity: 0}}>
             <UpdateForm onSubmit={handleUpdateProfile}>
                 <UpdateProfilePicWrapper>
                     <div>

@@ -2,13 +2,12 @@ import styled from 'styled-components'
 
 const UpdateForm =  styled.form`
     background-color: var(--dark);
-    margin: 20px;
+    margin: 25px;
     padding: 20px;
     overflow: hidden;
     border-radius: 10px;
     display: flex;
     width: 95%;
-    max-width: 1000px;
     gap: 30px;
     flex-wrap: wrap;
 
