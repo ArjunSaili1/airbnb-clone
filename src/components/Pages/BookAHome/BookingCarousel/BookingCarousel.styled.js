@@ -20,7 +20,6 @@ const CarouselButtons = styled.div`
     width: 100%;
     display: flex;
     position: relative;
-    margin-left: 2%;
     height: 100%;
     justify-content: space-between;
     align-items: center;
