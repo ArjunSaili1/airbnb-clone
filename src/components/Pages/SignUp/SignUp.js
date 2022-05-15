@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
+import useAccount from '../../../hooks/useAccount';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import {Modal, ModalWrapper, ModalHeader, Button, AuthFormField} from '../../SharedStyles'
@@ -8,33 +9,24 @@ function SignUp() {
   const fullNameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const {error, loading, statusUpdate} = useAccount()
   const passwordConfirmRef = useRef(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
   const { signUp } = useAuth();
-
-  function formatErrorMsg(error){
-    const errorWords = error.replace(/(.*?[/])/, "").replace(/[-]+/g, ' ').split(" ");
-    return errorWords.map((word)=>{
-      return word[0].toUpperCase() + word.slice(1)
-    }).join(' ')
-  }
 
   async function handleSignUp(e){
     e.preventDefault();
-    setError('');
+    statusUpdate({type: "error_reset"})
     if(passwordConfirmRef.current.value !== passwordRef.current.value){
-      setError("Passwords are not the same")
+      statusUpdate({type: "error", errorText: "Passwords are not the same"})
       return;
     }
     try{
-      setLoading(true)
-      signUp(emailRef.current.value, passwordRef.current.value, fullNameRef.current.value)
-    }catch(error){
-      setError(formatErrorMsg(error.code))
+      statusUpdate({type: "form_submit"})
+      await signUp(emailRef.current.value, passwordRef.current.value, fullNameRef.current.value)
+      statusUpdate({type: "auth_success"})
     }
-    finally{
-      setLoading(false)
+    catch(error){
+      statusUpdate({type: "error", code: error.code})
     }
   }
 

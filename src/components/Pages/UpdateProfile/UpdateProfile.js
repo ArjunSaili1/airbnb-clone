@@ -1,6 +1,7 @@
-import React, {useRef, useState} from 'react'
+import React, {useRef} from 'react'
 import { useAuth } from '../../../contexts/AuthContext';
 import Header from '../../Header/Header'
+import useAccount from '../../../hooks/useAccount'
 import {Page, PageContent, Button} from '../../SharedStyles'
 import { UpdateForm, UpdateFormSection, UpdateProfilePicWrapper, ProfilePic } from './UpdateProfile.styled';
 
@@ -8,18 +9,16 @@ export default function UpdateAccount() {
 
     const fileRef = useRef(null)
     const nameRef = useRef(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
+    const {loading, error, statusUpdate} = useAccount()
     const {updateProfilePic, currentUser, forgotPassword, updateName} = useAuth()
     const {photoURL, displayName, email, phoneNumber} = currentUser;
 
     async function handleUpdateProfile(e){
         e.preventDefault()
         if(fileRef.current.files[0]){
-            setLoading(true)
+            statusUpdate({type: "form_submit"});
             const upload = await updateProfilePic(fileRef.current.files[0])
-            if(!upload){setError(true)}
-            setLoading(false);
+            if(!upload){statusUpdate({type: "error"})}
         }
         if(nameRef.current.value){updateName(nameRef.current.value)}
         if(!loading){window.location.reload()}

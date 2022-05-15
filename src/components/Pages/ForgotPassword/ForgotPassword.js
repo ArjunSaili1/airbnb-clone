@@ -1,29 +1,23 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 import { ModalHeader, Modal, ModalWrapper, Button, AuthFormField } from '../../SharedStyles';
+import useAccount from '../../../hooks/useAccount';
 
 function ForgotPassword() {
 
-  const emailRef = useRef(null);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const { forgotPassword } = useAuth();
+  const emailRef = useRef(null)
+  const {loading, success, error, statusUpdate} = useAccount()
+  const { forgotPassword } = useAuth()
 
   async function handleForgotPass(e){
-    e.preventDefault();
-    setError('');
+    e.preventDefault()
     try{
-      setLoading(true)
+      statusUpdate({type: "form_submit"})
       await forgotPassword(emailRef.current.value)
-      setSuccess(true)
+      statusUpdate({type: "auth_success"})
     }catch(error){
-      setError(error.code)
-      setSuccess(false)
-    }
-    finally{
-      setLoading(false)
+      statusUpdate({type: "error", code: error.code})
     }
   }
 

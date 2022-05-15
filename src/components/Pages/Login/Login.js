@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { useNavigate } from 'react-router';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
+import useAccount from '../../../hooks/useAccount';
 import { ModalHeader, Modal, ModalWrapper, Button, AuthFormField } from '../../SharedStyles';
 
 function Login() {
@@ -9,8 +10,7 @@ function Login() {
   const emailRef = useRef(null);
   const nav = useNavigate()
   const passwordRef = useRef(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const {error, loading, statusUpdate} = useAccount()
   const { login } = useAuth();
 
   function guestLogin(e){
@@ -19,25 +19,15 @@ function Login() {
     handleLogin(e);
   }
 
-  function formatErrorMsg(error){
-    const errorWords = error.replace(/(.*?[/])/, "").replace(/[-]+/g, ' ').split(" ");
-    return errorWords.map((word)=>{
-      return word[0].toUpperCase() + word.slice(1)
-    }).join(' ')
-  }
-
   async function handleLogin(e){
     e.preventDefault();
-    setError('');
+    statusUpdate({type: "error_reset"});
     try{
-      setLoading(true)
+      statusUpdate({type: "form_submit"})
       await login(emailRef.current.value, passwordRef.current.value)
       nav('/my-booking')
     }catch(error){
-      setError(formatErrorMsg(error.code))
-    }
-    finally{
-      setLoading(false)
+      statusUpdate({type: "error", code: error.code})
     }
   }
 
