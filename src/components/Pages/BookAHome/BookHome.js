@@ -20,7 +20,12 @@ export default function BookHome() {
   const {bookingData, addData} = useDb();
 
   useEffect(()=>{
-    if(bookingData["checkIn"] && bookingData["checkOut"] && bookingData["locationId"] &&!newBooking){setModalScreen("warning")}
+    const bookingValid = 
+      bookingData["checkIn"] && 
+      bookingData["checkOut"] && 
+      bookingData["locationId"]
+
+    if(bookingValid &&!newBooking){setModalScreen("warning")}
   }, [bookingData, newBooking])
 
   useEffect(()=>{
