@@ -1,5 +1,6 @@
-import React, { useContext } from 'react'
-import { storage } from '../firebase';
+import React from 'react'
+import { storage } from '../../firebase';
+import AuthContext from './AuthContext';
 import { ref, getDownloadURL, uploadBytes} from '@firebase/storage';
 import { 
     createUserWithEmailAndPassword, 
@@ -9,12 +10,8 @@ import {
     sendPasswordResetEmail,
     signOut
 } from '@firebase/auth';
-import { createContext,useState, useEffect} from "react";
-import { auth } from '../firebase';
-
-const AuthContext = createContext();
-
-export function useAuth(){ return useContext(AuthContext) }
+import { useState, useEffect} from "react";
+import { auth } from '../../firebase';
 
 export function AuthProvider({children}) {
 
@@ -71,8 +68,17 @@ export function AuthProvider({children}) {
         })
     }, [])
 
+    const value = {
+        currentUser, 
+        signUp, 
+        updateProfilePic, 
+        updateName, 
+        login, 
+        forgotPassword, 
+        signOutUser}
+
     return (
-        <AuthContext.Provider value={{currentUser, signUp, updateProfilePic, updateName, login, forgotPassword, signOutUser}}>
+        <AuthContext.Provider value={value}>
             {children}
         </AuthContext.Provider>
     )

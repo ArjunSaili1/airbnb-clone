@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../../Header/Header'
-import { useDb } from '../../../contexts/DatabaseContext'
+import useDb from '../../../hooks/useDb'
 import BookingCard from './BookingCard/BookingCard'
 import {Page, PageContent} from '../../SharedStyles'
 import { AnimatePresence, motion } from 'framer-motion'

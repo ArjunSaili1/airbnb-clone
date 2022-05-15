@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ref, getDownloadURL } from "firebase/storage";
-import { useDb } from '../../../../contexts/DatabaseContext';
+import useDb from '../../../../hooks/useDb';
 import { storage } from '../../../../firebase';
 import {Button} from '../../../SharedStyles'
 import { StyledOptionInfo } from './BookingCarousel.styled';

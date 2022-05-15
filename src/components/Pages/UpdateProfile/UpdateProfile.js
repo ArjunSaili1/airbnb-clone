@@ -1,5 +1,5 @@
 import React, {useRef} from 'react'
-import { useAuth } from '../../../contexts/AuthContext';
+import useAuth from '../../../hooks/useAuth'
 import Header from '../../Header/Header'
 import useAccount from '../../../hooks/useAccount'
 import {Page, PageContent, Button} from '../../SharedStyles'

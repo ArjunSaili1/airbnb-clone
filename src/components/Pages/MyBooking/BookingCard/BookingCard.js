@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ref, getDownloadURL } from "firebase/storage";
-import { useDb } from '../../../../contexts/DatabaseContext';
-import { useAuth } from '../../../../contexts/AuthContext';
+import useDb from '../../../../hooks/useDb';
+import useAuth from '../../../../hooks/useAuth';
 import { storage } from '../../../../firebase';
 import { BookingCardFooter, BookingCardWrapper, BookingCardMain, BookingImage } from './BookingCard.styled';
 import InfoIcon from '@mui/icons-material/InfoOutlined';

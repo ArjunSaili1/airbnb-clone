@@ -5,7 +5,7 @@ import SetLocationModal from './BookHomeModals/SetLocationModal'
 import SetDatesModal from './BookHomeModals/SetDatesModal'
 import BookingWarning from './BookHomeModals/BookingWarning'
 import BookingCarousel from './BookingCarousel/BookingCarousel'
-import { useDb } from '../../../contexts/DatabaseContext'
+import useDb from '../../../hooks/useDb'
 import { useNavigate } from 'react-router'
 
 export default function BookHome() {

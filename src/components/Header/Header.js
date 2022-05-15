@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext'
+import useAuth from '../../hooks/useAuth';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { StyledHeader } from './Header.styled';
 import { AnimatePresence } from 'framer-motion';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { useDb } from '../../../../contexts/DatabaseContext';
+import useDb from '../../../../hooks/useDb';
 import {Button, ModalHeader} from '../../../SharedStyles'
 import Dropdown from './Dropdown';
 import { LocationForm, LocationInput } from './BookHomeModal.styled';

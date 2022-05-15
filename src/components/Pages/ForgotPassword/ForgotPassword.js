@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useAuth } from '../../../contexts/AuthContext';
+import useAuth from '../../../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import { ModalHeader, Modal, ModalWrapper, Button, AuthFormField } from '../../SharedStyles';
 import useAccount from '../../../hooks/useAccount';

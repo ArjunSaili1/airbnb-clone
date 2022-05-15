@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router';
-import { useAuth } from '../../../contexts/AuthContext';
+import useAuth from '../../../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import useAccount from '../../../hooks/useAccount';
 import { ModalHeader, Modal, ModalWrapper, Button, AuthFormField } from '../../SharedStyles';

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDb } from '../../../../contexts/DatabaseContext'
+import useDb from '../../../../hooks/useDb';
 import BookingOption from './BookingOption'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';

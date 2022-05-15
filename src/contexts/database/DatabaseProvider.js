@@ -1,11 +1,18 @@
-import React, { useContext, useState, useEffect, createContext } from 'react'
-import { db } from '../firebase'
-import { useAuth } from './AuthContext';
-import { setDoc, deleteDoc, doc, updateDoc, collection, getDocs, getDoc, query, where, onSnapshot } from '@firebase/firestore';
-
-const DatabaseContext = createContext();
-
-export function useDb(){return useContext(DatabaseContext)}
+import React, { useState, useEffect } from 'react'
+import DatabaseContext from './DatabaseContext';
+import { db } from '../../firebase'
+import useAuth from '../../hooks/useAuth';
+import { 
+    setDoc, 
+    deleteDoc,
+    doc, 
+    updateDoc, 
+    collection, 
+    getDocs, 
+    getDoc, 
+    query, 
+    where, 
+    onSnapshot } from '@firebase/firestore';
 
 export function DbProvider({children}){
 
@@ -73,8 +80,17 @@ export function DbProvider({children}){
         return unsub
     }, [currentUser])
 
+    const value = { 
+        addData, 
+        deleteBooking, 
+        getBookingDetails, 
+        bookingData,
+        addQuery,
+        queryLocations,
+        getLocationNames}
+
     return(
-        <DatabaseContext.Provider value={{ addData, deleteBooking, getBookingDetails, bookingData, addQuery, queryLocations, getLocationNames}}>
+        <DatabaseContext.Provider value={value}>
             {children}
         </DatabaseContext.Provider>
     )
