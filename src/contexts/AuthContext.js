@@ -20,11 +20,11 @@ export function AuthProvider({children}) {
 
     const [currentUser, setCurrentUser] = useState(null);
 
-    function signUp(email, password, name){
-        createUserWithEmailAndPassword(auth, email, password).then((userCred)=>{
-            updateName(name, userCred)
-            setProfilePic(userCred, false);
-        })
+    async function signUp(email, password, name){
+        const userCred = await createUserWithEmailAndPassword(auth, email, password);
+        updateName(name, userCred)
+        setProfilePic(userCred, false);
+        return userCred;
     }
 
     function updateName(name, userCred){
@@ -45,12 +45,11 @@ export function AuthProvider({children}) {
         } 
     }
 
-    function setProfilePic(userCred, fileRef){
+    async function setProfilePic(userCred, fileRef){
         let file = fileRef ? fileRef : ref(storage, "profile-pictures/Default.jpg")
-        getDownloadURL(file).then((url)=>{
-            updateProfile(userCred ? userCred.user : currentUser, {
-                photoURL: url
-            })  
+        const url = await getDownloadURL(file);
+        updateProfile(userCred ? userCred.user : currentUser, {
+            photoURL: url
         })
     }
 
